@@ -8,7 +8,7 @@ const Layout = ({ title, children }) => (
     <Head>
       <title>{title}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="stylesheet" type="text/css" href="/static/bulma.css" />
+      <link rel="stylesheet" type="text/css" href="/static/bulma.min.css" />
     </Head>
     <Container>{children}</Container>
   </div>
