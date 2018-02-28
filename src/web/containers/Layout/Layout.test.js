@@ -5,7 +5,7 @@ import Layout from './Layout';
 import Container from '../../components/Container/Container';
 
 describe('Render Layout', () => {
-  const content = <div id="test">toto</div>;
+  const content = <div id="test">Hello world</div>;
   const title = 'test';
   let wrapper;
 
@@ -13,15 +13,19 @@ describe('Render Layout', () => {
     wrapper = shallow(<Layout title={title}>{content}</Layout>);
   });
 
-  it('should render a container with children prop', () => {
+  it('should render a container', () => {
     const children = wrapper.find(Container);
     expect(children).toHaveLength(1);
     expect(children.prop('children')).toEqual(content);
   });
 
+  it('should render a container with children prop', () => {
+    const children = wrapper.find(Container);
+    expect(children.prop('children')).toEqual(content);
+  });
+
   it('should render head with title', () => {
-    const head = wrapper.find(Head).shallow();
-    const titleTag = head.find('title');
-    expect(titleTag.text()).toEqual(title);
+    const head = wrapper.find(Head);
+    expect(head.find('title').text()).toEqual(title);
   });
 });
