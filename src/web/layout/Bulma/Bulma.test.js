@@ -1,21 +1,22 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Head from 'next/head';
-import Layout from './Layout';
-import Container from '../../components/Container/Container';
+import Layout from './';
+import Container from '../../components/Container/';
 
-describe('Render Layout', () => {
-  const content = <div id="test">Hello world</div>;
-  const title = 'test';
+describe('Bulma', () => {
+  let content;
+  let title;
   let wrapper;
 
   beforeEach(() => {
+    title = 'test';
+    content = <div id="test">Hello world</div>;
     wrapper = shallow(<Layout title={title}>{content}</Layout>);
   });
 
   it('should render a container', () => {
     const children = wrapper.find(Container);
-    expect(children).toHaveLength(1);
     expect(children.prop('children')).toEqual(content);
   });
 

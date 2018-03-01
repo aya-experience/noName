@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import Container from '../../components/Container/Container';
+import Container from '../../components/Container';
 
-const Layout = ({ title, children }) => (
+const Bulma = ({ title, children }) => (
   <div>
     <Head>
       <title>{title}</title>
@@ -14,9 +14,10 @@ const Layout = ({ title, children }) => (
   </div>
 );
 
-Layout.propTypes = {
+Bulma.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
+    .isRequired,
 };
 
-export default Layout;
+export default Bulma;

@@ -1,12 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Container from './Container';
+import Container from './';
 
-describe('Render Container', () => {
-  const content = <div id="test">Hello world</div>;
+describe('Container', () => {
+  let content;
   let wrapper;
+
   beforeEach(() => {
+    content = <div id="test">Hello world</div>;
     wrapper = shallow(<Container>{content}</Container>);
   });
 
