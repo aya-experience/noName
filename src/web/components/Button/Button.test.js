@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Button from './';
+import Icon from '../Icon';
 
 describe('Button', () => {
   let wrapper;
@@ -53,13 +54,19 @@ describe('Button', () => {
 
   it('should have a button with a color class when the props color is set', () => {
     wrapper.setProps({ color: 'primary' });
-    const buttonElement = wrapper.find('button.is-primary');
-    expect(buttonElement).toHaveLength(1);
+    const button = wrapper.find('button.is-primary');
+    expect(button).toHaveLength(1);
+  });
+
+  it('should have a icon component with children prop', () => {
+    wrapper.setProps({ icon: 'ion-home' });
+    const icon = wrapper.find(Icon);
+    expect(icon.prop('children')).toBe('ion-home');
   });
 
   it('should have a button with a size class when the props size is set', () => {
     wrapper.setProps({ size: 'small' });
-    const buttonElement = wrapper.find('button.is-small');
-    expect(buttonElement).toHaveLength(1);
+    const button = wrapper.find('button.is-small');
+    expect(button).toHaveLength(1);
   });
 });

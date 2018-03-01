@@ -17,7 +17,7 @@ export default function Button({
   const classes = `button ${color ? `is-${color}` : ''} ${size ? ` is-${size}` : ''} ${
     outlined ? 'is-outlined' : ''
   } ${inverted ? 'is-inverted' : ''} ${rounded ? 'is-rounded' : ''} ${loading ? 'is-loading' : ''}`;
-  const iconComponent = icon ? <Icon color={color}>{icon}</Icon> : null;
+  const iconComponent = icon ? <Icon>{icon}</Icon> : null;
   return (
     <button className={classes} disabled={disabled} onClick={onClick}>
       {iconComponent}
