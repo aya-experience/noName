@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import Container from '../../components/Container';
 
-const Bulma = ({ title, children }) => (
+const MainLayout = ({ title, children }) => (
   <div>
     <Head>
       <title>{title}</title>
@@ -14,10 +14,10 @@ const Bulma = ({ title, children }) => (
   </div>
 );
 
-Bulma.propTypes = {
+MainLayout.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
     .isRequired,
 };
 
-export default Bulma;
+export default MainLayout;

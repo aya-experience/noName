@@ -10,17 +10,17 @@ describe('Bulma', () => {
   let wrapper;
 
   beforeEach(() => {
-    title = 'test';
-    content = <div id="test">Hello world</div>;
+    title = 'No Name';
+    content = <div id="hello">Hello world</div>;
     wrapper = shallow(<Layout title={title}>{content}</Layout>);
   });
 
-  it('should render a container', () => {
+  it('should render a Container', () => {
     const children = wrapper.find(Container);
-    expect(children.prop('children')).toEqual(content);
+    expect(children).toHaveLength(1);
   });
 
-  it('should render a container with children prop', () => {
+  it('should render a Container with children prop', () => {
     const children = wrapper.find(Container);
     expect(children.prop('children')).toEqual(content);
   });
