@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../src/web/containers/Layout/Layout';
+import Layout from '../src/web/layout/Bulma/';
 
 const Index = () => (
   <Layout title="No Name">
