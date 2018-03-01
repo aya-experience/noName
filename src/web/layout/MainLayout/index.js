@@ -8,7 +8,8 @@ const MainLayout = ({ title, children }) => (
     <Head>
       <title>{title}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="stylesheet" type="text/css" href="/static/bulma.min.css" />
+      <link rel="stylesheet" type="text/css" href="/static/css/ionicons.min.css" />
+      <link rel="stylesheet" type="text/css" href="/static/css/bulma.min.css" />
     </Head>
     <Container>{children}</Container>
   </div>

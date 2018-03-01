@@ -19,6 +19,7 @@
     "bulma": "^0.6.2",
     "commander": "^2.14.1",
     "express": "^4.16.2",
+    "ionicons": "ionic-team/ionicons",
     "next": "^5.0.0",
     "opn": "^5.2.0",
     "prop-types": "^15.6.1",
