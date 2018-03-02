@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Head from 'next/head';
-import Layout from './';
+import MainLayout from './';
 import Container from '../../components/Container/';
 
 describe('MainLayout', () => {
@@ -12,7 +12,7 @@ describe('MainLayout', () => {
   beforeEach(() => {
     title = 'No Name';
     content = <div id="hello">Hello world</div>;
-    wrapper = shallow(<Layout title={title}>{content}</Layout>);
+    wrapper = shallow(<MainLayout title={title}>{content}</MainLayout>);
   });
 
   it('should render a Container with children prop', () => {
