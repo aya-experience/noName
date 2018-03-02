@@ -16,6 +16,7 @@
   "author": "Marvin FRACHET, Alexandre GORY",
   "license": "MIT",
   "dependencies": {
+    "bulma": "^0.6.2",
     "commander": "^2.14.1",
     "express": "^4.16.2",
     "next": "^5.0.0",

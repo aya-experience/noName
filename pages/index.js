@@ -1,9 +1,10 @@
 import React from 'react';
+import MainLayout from '../src/web/layout/MainLayout/';
 
 const Index = () => (
-  <div>
+  <MainLayout title="No Name">
     <p>Hello world !</p>
-  </div>
+  </MainLayout>
 );
 
 export default Index;
