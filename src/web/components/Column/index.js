@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function Column({ children, size }) {
-  const classes = `column ${size > 0 && size < 12 ? `is-${size}` : ''}`;
+  let classes = 'column';
+  if (size > 0 && size < 11) {
+    classes += ` is-${size}`;
+  }
+
   return <div className={classes}>{children}</div>;
 }
 
