@@ -6,11 +6,11 @@ describe('Icon', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Icon name="fa-ban" />);
+    wrapper = shallow(<Icon name="ion-ionic" />);
   });
 
   it('should render a i with children text has a class', () => {
-    const icon = wrapper.find('i.fa-ban');
+    const icon = wrapper.find('i.ion-ionic');
     expect(icon).toHaveLength(1);
   });
 
