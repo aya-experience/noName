@@ -9,8 +9,12 @@ describe('Columns', () => {
   beforeEach(() => {
     const content = (
       <Columns>
-        <Column>Hello</Column>
-        <Column>world</Column>
+        <Column>
+          <p>Hello</p>
+        </Column>
+        <Column>
+          <p>world</p>
+        </Column>
       </Columns>
     );
     wrapper = shallow(content);
