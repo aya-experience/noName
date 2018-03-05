@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Icon from './';
 
-describe('Container', () => {
+describe('Icon', () => {
   let wrapper;
 
   beforeEach(() => {
@@ -18,6 +18,11 @@ describe('Container', () => {
     wrapper.setProps({ color: 'primary' });
     const span = wrapper.find('span.has-text-primary');
     expect(span).toHaveLength(1);
+  });
+
+  it('should have a button with no color and no size by default', () => {
+    const span = wrapper.find('span');
+    expect(span.prop('className')).toBe('icon');
   });
 
   it('should have a button with a size class when the props size is set', () => {
