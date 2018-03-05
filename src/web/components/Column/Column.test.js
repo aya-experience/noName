@@ -1,0 +1,32 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+import Column from './';
+
+describe('Column', () => {
+  let content;
+  let wrapper;
+
+  beforeEach(() => {
+    content = <div id="hello">Hello world</div>;
+    wrapper = shallow(<Column>{content}</Column>);
+  });
+
+  it('should render children component', () => {
+    expect(wrapper.children()).toHaveLength(1);
+  });
+
+  it('should have a is-* class if size is a number', () => {
+    wrapper.setProps({ size: 1 });
+    expect(wrapper.find('div.column.is-1'));
+  });
+
+  it('should not have a is-* class if size is less than 1', () => {
+    wrapper.setProps({ size: 0 });
+    expect(wrapper.find('div.column.is-0'));
+  });
+
+  it('should not have a is-* class if size is more than 11', () => {
+    wrapper.setProps({ size: 12 });
+    expect(wrapper.find('div.column.is-12'));
+  });
+});
