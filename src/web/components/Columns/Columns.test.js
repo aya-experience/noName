@@ -19,5 +19,4 @@ describe('Columns', () => {
   it('should render children component', () => {
     expect(wrapper.children()).toHaveLength(2);
   });
-
 });

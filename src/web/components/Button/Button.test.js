@@ -9,7 +9,6 @@ describe('Button', () => {
 
   beforeEach(() => {
     onClick = jest.fn();
-    // use mount to simulate onClick with disabled button
     wrapper = shallow(<Button onClick={onClick}>Hello world</Button>);
   });
 
