@@ -6,7 +6,7 @@ describe('Icon', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Icon>fa-ban</Icon>);
+    wrapper = shallow(<Icon name="fa-ban" />);
   });
 
   it('should render a i with children text has a class', () => {
