@@ -14,13 +14,12 @@ export default function Button({
   loading,
   icon,
 }) {
-  const classes = `button ${color ? `is-${color}` : ''} ${size ? ` is-${size}` : ''} ${
-    outlined ? 'is-outlined' : ''
-  } ${inverted ? 'is-inverted' : ''} ${rounded ? 'is-rounded' : ''} ${loading ? 'is-loading' : ''}`;
-  const iconComponent = icon ? <Icon>{icon}</Icon> : null;
+  const classes = `button${color && ` is-${color}`}${size && ` is-${size}`}${
+    outlined ? ' is-outlined' : ''
+  }${inverted ? ' is-inverted' : ''}${rounded ? ' is-rounded' : ''}${loading ? ' is-loading' : ''}`;
   return (
     <button className={classes} disabled={disabled} onClick={onClick}>
-      {iconComponent}
+      {icon && <Icon name={icon} />}
       {children}
     </button>
   );

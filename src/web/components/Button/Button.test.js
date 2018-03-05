@@ -21,6 +21,11 @@ describe('Button', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
+  it('should have a button with no special class by default', () => {
+    const button = wrapper.find('button');
+    expect(button.prop('className')).toBe('button');
+  });
+
   it('should have a disabled button when the prop disabled is true', () => {
     wrapper.setProps({ disabled: true });
     const button = wrapper.find('button');
@@ -60,7 +65,7 @@ describe('Button', () => {
   it('should have a icon component with children prop', () => {
     wrapper.setProps({ icon: 'ion-home' });
     const icon = wrapper.find(Icon);
-    expect(icon.prop('children')).toBe('ion-home');
+    expect(icon.prop('name')).toBe('ion-home');
   });
 
   it('should have a button with a size class when the props size is set', () => {
