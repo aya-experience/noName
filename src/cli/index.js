@@ -2,12 +2,13 @@
  * CLI goes here
  */
 const program = require('commander');
-const packages = require('../../package');
+const packageInfo = require('../../package');
 const startServer = require('../server/httpServer');
 
 program
-  .version(packages.version)
-  .description('An application for debugging React-Native App')
+  .version(packageInfo.version)
+  .description(packageInfo.description)
+  .option('-p, --port [type]', 'run the app on the port [3000]', 3000)
   .parse(process.argv);
 
-startServer();
+startServer(program.port);

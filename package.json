@@ -1,7 +1,7 @@
 {
   "name": "jenko",
   "version": "0.0.1",
-  "description": "",
+  "description": "An application for debugging React-Native App",
   "main": "index.js",
   "bin": {
     "jenko": "./src/cli/index.js"
@@ -10,7 +10,8 @@
     "dev": "next",
     "serve": "node ./src/server/httpServer",
     "test": "jest --coverage",
-    "format": "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\"",
+    "format":
+      "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\"",
     "lint": "eslint ./src && eslint ./pages"
   },
   "author": "Marvin FRACHET, Alexandre GORY",
@@ -43,8 +44,6 @@
     "prettier-eslint-cli": "^4.7.1"
   },
   "jest": {
-    "setupFiles": [
-      "./configs/setup/test.setup.js"
-    ]
+    "setupFiles": ["./configs/setup/test.setup.js"]
   }
 }
