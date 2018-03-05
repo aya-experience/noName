@@ -15,18 +15,22 @@ describe('Column', () => {
     expect(wrapper.children()).toHaveLength(1);
   });
 
+  it('should not have is-* by default', () => {
+    expect(wrapper.find('div.column').prop('className')).toBe('column');
+  });
+
   it('should have a is-* class if size is a number', () => {
     wrapper.setProps({ size: 1 });
-    expect(wrapper.find('div.column.is-1'));
+    expect(wrapper.find('div.column.is-1')).toHaveLength(1);
   });
 
   it('should not have a is-* class if size is less than 1', () => {
     wrapper.setProps({ size: 0 });
-    expect(wrapper.find('div.column.is-0'));
+    expect(wrapper.find('div.column.is-0')).toHaveLength(0);
   });
 
   it('should not have a is-* class if size is more than 11', () => {
     wrapper.setProps({ size: 12 });
-    expect(wrapper.find('div.column.is-12'));
+    expect(wrapper.find('div.column.is-12')).toHaveLength(0);
   });
 });
