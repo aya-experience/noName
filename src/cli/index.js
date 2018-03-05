@@ -3,15 +3,11 @@
  */
 const program = require('commander');
 const packages = require('../../package');
+const startServer = require('../server/httpServer');
 
 program
   .version(packages.version)
   .description('An application for debug React-Native App')
-  .option('-d', '--developpment', 'Developpment mode')
   .parse(process.argv);
 
-if (program.developpment) {
-  process.env.NODE_ENV = 'developpment';
-}
-
-require('../server/httpServer');
+startServer();
