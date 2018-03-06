@@ -13,7 +13,7 @@ describe('Subtitle', () => {
     expect(wrapper.find('h2.subtitle').text()).toBe('Hello World');
   });
 
-  it('should render a h2 with is-1 by default', () => {
+  it('should render a h2 with is-2 by default', () => {
     expect(wrapper.find('h2.subtitle.is-2')).toHaveLength(1);
   });
 
