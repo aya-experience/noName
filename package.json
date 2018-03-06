@@ -10,7 +10,8 @@
     "dev": "next",
     "serve": "node ./src/server/httpServer",
     "test": "jest --coverage",
-    "format": "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\"",
+    "format":
+      "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\" && prettier-eslint --write \"stories/**/*.js\"",
     "lint": "eslint ./src && eslint ./pages",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -50,8 +51,6 @@
     "babel-core": "^6.26.0"
   },
   "jest": {
-    "setupFiles": [
-      "./configs/setup/test.setup.js"
-    ]
+    "setupFiles": ["./configs/setup/test.setup.js"]
   }
 }
