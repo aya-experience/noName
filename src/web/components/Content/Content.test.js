@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Content from './';
 
-describe('Container', () => {
+describe('Content', () => {
   let content;
   let wrapper;
 
@@ -11,7 +11,7 @@ describe('Container', () => {
     wrapper = shallow(<Content>{content}</Content>);
   });
 
-  it('should render children component', () => {
+  it('should render a children component', () => {
     expect(wrapper.children()).toHaveLength(1);
   });
 
