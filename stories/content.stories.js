@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Content from './../src/web/components/Content';
-import Container from './../src/web/components/Container';
 
 // TODO remove html entities when they are implemented
 const content = [
@@ -16,23 +15,7 @@ const content = [
 ];
 
 storiesOf('Content', module)
-  .add('with small size', () => (
-    <Container>
-      <Content size="small">{content}</Content>
-    </Container>
-  ))
-  .add('with normal size', () => (
-    <Container>
-      <Content>{content}</Content>
-    </Container>
-  ))
-  .add('with medium size', () => (
-    <Container>
-      <Content size="medium">{content}</Content>
-    </Container>
-  ))
-  .add('with large size', () => (
-    <Container>
-      <Content size="large">{content}</Content>
-    </Container>
-  ));
+  .add('with small size', () => <Content size="small">{content}</Content>)
+  .add('with normal size', () => <Content>{content}</Content>)
+  .add('with medium size', () => <Content size="medium">{content}</Content>)
+  .add('with large size', () => <Content size="large">{content}</Content>);
