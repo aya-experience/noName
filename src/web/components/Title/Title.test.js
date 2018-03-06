@@ -13,7 +13,7 @@ describe('Title', () => {
     expect(wrapper.find('h1.title').text()).toBe('Hello World');
   });
 
-  it('should render a h1 a h1 with is-3 by default', () => {
+  it('should render a h1 with is-3 by default', () => {
     expect(wrapper.find('h1.title.is-3')).toHaveLength(1);
   });
 
