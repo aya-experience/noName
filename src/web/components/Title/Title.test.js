@@ -23,7 +23,7 @@ describe('Title', () => {
   });
 
   it('should render a h1 with is-6 if size = 6', () => {
-    wrapper.setProps({ size: 1 });
-    expect(wrapper.find('h1.title.is-1')).toHaveLength(1);
+    wrapper.setProps({ size: 6 });
+    expect(wrapper.find('h1.title.is-6')).toHaveLength(1);
   });
 });
