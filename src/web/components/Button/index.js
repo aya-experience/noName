@@ -43,7 +43,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  color: '',
+  color: 'primary',
   size: '',
   disabled: false,
   outlined: false,

@@ -20,9 +20,9 @@ describe('Button', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('should have a button with no special class by default', () => {
+  it('should have a button with only is-primary by default', () => {
     const button = wrapper.find('button');
-    expect(button.prop('className')).toBe('button');
+    expect(button.prop('className')).toBe('button is-primary');
   });
 
   it('should have a disabled button when the prop disabled is true', () => {
