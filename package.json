@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "next",
-    "serve": "node ./src/server/httpServer",
+    "serve": "node ./src/cli/index",
     "test": "jest --coverage",
     "format":
       "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\"",
