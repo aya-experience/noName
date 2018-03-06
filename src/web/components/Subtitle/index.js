@@ -2,24 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function Subtitle({ children, level }) {
-  const classes = `subtitle${` is-${level}`}`;
-  switch (level) {
-    case 1:
-      return <h2 className={classes}>{children}</h2>;
-    case 2:
-      return <h3 className={classes}>{children}</h3>;
-    case 3:
-      return <h4 className={classes}>{children}</h4>;
-    case 4:
-      return <h5 className={classes}>{children}</h5>;
-    default:
-      return <h6 className={classes}>{children}</h6>;
-  }
+  const classes = `subtitle${` is-${level + 1}`}`;
+  const Heading = `h${level + 1}`;
+  return <Heading className={classes}>{children}</Heading>;
 }
 
 Subtitle.propTypes = {
   children: PropTypes.string.isRequired,
-  level: PropTypes.number,
+  level: PropTypes.oneOf([1, 2, 3, 4, 5]),
 };
 
 Subtitle.defaultProps = {
