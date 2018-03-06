@@ -19,7 +19,7 @@ describe('Content', () => {
     expect(wrapper.find('div.content').prop('className')).toBe('content');
   });
 
-  it('should render a div with is-small class', () => {
+  it('should render a div with is-* class if size is set', () => {
     wrapper.setProps({ size: 'small' });
     expect(wrapper.find('div.content').prop('className')).toBe('content is-small');
   });
