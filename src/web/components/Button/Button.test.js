@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Button from './';
-import Icon from '../Icon';
 
 describe('Button', () => {
   let wrapper;
@@ -12,11 +11,11 @@ describe('Button', () => {
     wrapper = shallow(<Button onClick={onClick}>Hello world</Button>);
   });
 
-  it('should render children component', () => {
+  it('should render a children component', () => {
     expect(wrapper.text()).toEqual('Hello world');
   });
 
-  it('should trigger on Click an event', () => {
+  it('should trigger onClick event', () => {
     wrapper.simulate('click');
     expect(onClick).toHaveBeenCalledTimes(1);
   });
@@ -29,7 +28,7 @@ describe('Button', () => {
   it('should have a disabled button when the prop disabled is true', () => {
     wrapper.setProps({ disabled: true });
     const button = wrapper.find('button');
-    expect(button.prop('disabled')).toEqual(true);
+    expect(button.prop('disabled')).toBe(true);
   });
 
   it('should have a is-outlined class when the prop outlined is true', () => {
@@ -60,12 +59,6 @@ describe('Button', () => {
     wrapper.setProps({ color: 'primary' });
     const button = wrapper.find('button.is-primary');
     expect(button).toHaveLength(1);
-  });
-
-  it('should have a icon component with children prop', () => {
-    wrapper.setProps({ icon: 'ion-home' });
-    const icon = wrapper.find(Icon);
-    expect(icon.prop('name')).toBe('ion-home');
   });
 
   it('should have a button with a size class when the props size is set', () => {

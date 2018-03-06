@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from '../Icon';
 
 export default function Button({
   children,
@@ -12,14 +11,16 @@ export default function Button({
   inverted,
   rounded,
   loading,
-  icon,
 }) {
-  const classes = `button${color && ` is-${color}`}${size && ` is-${size}`}${
-    outlined ? ' is-outlined' : ''
-  }${inverted ? ' is-inverted' : ''}${rounded ? ' is-rounded' : ''}${loading ? ' is-loading' : ''}`;
+  const colorClass = color && ` is-${color}`;
+  const sizeClass = size && ` is-${size}`;
+  const outlinedClass = outlined ? ' is-outlined' : '';
+  const invertedClass = inverted ? ' is-inverted' : '';
+  const roundedClass = rounded ? ' is-rounded' : '';
+  const loadingClass = loading ? ' is-loading' : '';
+  const classes = `button${colorClass}${sizeClass}${outlinedClass}${invertedClass}${roundedClass}${loadingClass}`;
   return (
     <button className={classes} disabled={disabled} onClick={onClick}>
-      {icon && <Icon name={icon} />}
       {children}
     </button>
   );
@@ -34,7 +35,6 @@ Button.propTypes = {
   onClick: PropTypes.func.isRequired,
   color: PropTypes.string,
   size: PropTypes.string,
-  icon: PropTypes.string,
   disabled: PropTypes.bool,
   outlined: PropTypes.bool,
   inverted: PropTypes.bool,
@@ -45,7 +45,6 @@ Button.propTypes = {
 Button.defaultProps = {
   color: '',
   size: '',
-  icon: '',
   disabled: false,
   outlined: false,
   inverted: false,
