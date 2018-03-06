@@ -11,7 +11,9 @@
     "serve": "node ./src/server/httpServer",
     "test": "jest --coverage",
     "format": "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\"",
-    "lint": "eslint ./src && eslint ./pages"
+    "lint": "eslint ./src && eslint ./pages",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "author": "Marvin FRACHET, Alexandre GORY",
   "license": "MIT",
@@ -40,7 +42,12 @@
     "eslint-plugin-react": "^7.7.0",
     "jest": "^22.4.2",
     "prettier": "^1.11.0",
-    "prettier-eslint-cli": "^4.7.1"
+    "prettier-eslint-cli": "^4.7.1",
+    "@storybook/react": "^3.3.14",
+    "@storybook/addon-actions": "^3.3.14",
+    "@storybook/addon-links": "^3.3.14",
+    "@storybook/addons": "^3.3.14",
+    "babel-core": "^6.26.0"
   },
   "jest": {
     "setupFiles": [
