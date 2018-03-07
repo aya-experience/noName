@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Title from './../src/web/components/Title';
 import Subtitle from './../src/web/components/Subtitle';
+import Text from './../src/web/components/Text';
 
 storiesOf('Typography', module)
   .add('Title', () => [
@@ -21,4 +22,5 @@ storiesOf('Typography', module)
     <Subtitle level={3}>Size 3</Subtitle>,
     <Subtitle level={4}>Size 4</Subtitle>,
     <Subtitle level={5}>Size 5</Subtitle>,
-  ]);
+  ])
+  .add('Text', () => [<Text>Hello world</Text>]);
