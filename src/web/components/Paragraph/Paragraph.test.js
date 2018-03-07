@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Paragraph from './';
 
-describe('Paragraph', () => {
+describe('Text', () => {
   let wrapper;
 
   beforeEach(() => {
