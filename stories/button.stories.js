@@ -53,16 +53,14 @@ storiesOf('Button', module)
   ])
   .add('with icon', () => [
     <Button onClick={action('button-click1')}>
-      <Icon name="ion-ionic" />Before
+      <Icon name="ion-ionic" /> Before
     </Button>,
     <Button onClick={action('button-click2')}>
-      After<Icon name="ion-home" />
+      After <Icon name="ion-home" />
     </Button>,
     <Button onClick={action('button-click3')}>
-      <Icon name="ion-social-android" color="danger" />2 in same time<Icon
-        name="ion-social-javascript"
-        color="primary"
-      />
+      <Icon name="ion-social-android" color="danger" /> 2 in same time{' '}
+      <Icon name="ion-social-javascript" />
     </Button>,
     <Button onClick={action('button-click4')}>
       <Icon name="ion-social-octocat" color="info" />
