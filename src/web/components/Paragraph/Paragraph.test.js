@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Paragraph from './';
+import Text from './';
 
 describe('Text', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Paragraph>Hello World</Paragraph>);
+    wrapper = shallow(<Text>Hello World</Text>);
   });
 
   it('should render a p with children as a text', () => {
