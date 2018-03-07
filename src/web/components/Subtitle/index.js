@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Typographie from '../Typography';
 
-export default function Subtitle({ children, level }) {
-  const raisedLevel = level + 1;
-  const classes = `subtitle is-${raisedLevel}`;
-  const Heading = `h${raisedLevel}`;
-  return <Heading className={classes}>{children}</Heading>;
+export default function Subtitle(props) {
+  const raisedLevel = props.level + 1;
+  const tag = `h${raisedLevel}`;
+  return (
+    <Typographie tag={tag} className="subtitle" {...props} size={raisedLevel}>
+      {props.children}
+    </Typographie>
+  );
 }
 
 Subtitle.propTypes = {
