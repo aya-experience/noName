@@ -12,7 +12,7 @@ export default function Typography({
   align,
 }) {
   const sizeClass = `${className && ' '}is-${size}`;
-  const weightClass = ` has-text-weight-${weight}`;
+  const weightClass = weight && ` has-text-weight-${weight}`;
   const transformationClass = transformation && ` is-${transformation}`;
   const colorClass = color && ` has-text-${color}`;
   const alignClass = align && ` has-text-${align}`;
@@ -24,11 +24,11 @@ export default function Typography({
 Typography.propTypes = {
   children: PropTypes.string.isRequired,
   size: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7]),
-  tag: PropTypes.oneOf(['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+  tag: PropTypes.oneOf(['p', 'span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
   className: PropTypes.string,
   color: PropTypes.string,
   align: PropTypes.oneOf(['', 'centered', 'justified', 'left', 'right']),
-  weight: PropTypes.oneOf(['light', 'normal', 'semibold', 'bold']),
+  weight: PropTypes.oneOf(['', 'light', 'normal', 'semibold', 'bold']),
   transformation: PropTypes.oneOf(['', 'capitalized', 'lowercase', 'uppercase', 'italic']),
 };
 
@@ -38,6 +38,6 @@ Typography.defaultProps = {
   className: '',
   color: '',
   align: '',
-  weight: 'normal',
+  weight: '',
   transformation: '',
 };

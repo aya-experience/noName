@@ -14,7 +14,7 @@ describe('Typography', () => {
   });
 
   it('should render a p with is-6 and normal weight without color, alignment, transformation or className by default', () => {
-    expect(wrapper.find('p.is-6.has-text-weight-normal').prop('className')).toBe('is-6 has-text-weight-normal');
+    expect(wrapper.find('p.is-6').prop('className')).toBe('is-6');
   });
 
   it('should render a h1', () => {
