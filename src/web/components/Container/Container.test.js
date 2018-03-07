@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Container from './';
+import Box from './';
 
 describe('Container', () => {
   let content;
@@ -8,7 +8,7 @@ describe('Container', () => {
 
   beforeEach(() => {
     content = <div id="hello">Hello world</div>;
-    wrapper = shallow(<Container>{content}</Container>);
+    wrapper = shallow(<Box>{content}</Box>);
   });
 
   it('should render children component', () => {
