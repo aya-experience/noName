@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Content from './../src/web/components/Content';
 
-// TODO remove html entities when they are implemented
 const content = [
   <h1>Title</h1>,
   <p>Paragraph</p>,
