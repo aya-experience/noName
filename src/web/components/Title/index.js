@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Typographie from '../Typography';
 
-export default function Title({ children, size }) {
-  const classes = `title is-${size}`;
-  return <h1 className={classes}>{children}</h1>;
+export default function Title(props) {
+  return (
+    <Typographie tag="h1" className="title" {...props}>
+      {props.children}
+    </Typographie>
+  );
 }
 
 Title.propTypes = {
@@ -12,5 +16,5 @@ Title.propTypes = {
 };
 
 Title.defaultProps = {
-  size: 3,
+  size: 1,
 };
