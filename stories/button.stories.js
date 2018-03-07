@@ -7,87 +7,87 @@ import Icon from '../src/web/components/Icon';
 storiesOf('Button', module)
   .add('basic button', () => <Button onClick={action('button-click')}>Simple button</Button>)
   .add('with size', () => [
-    <Button onClick={action('button-click1')} size="small">
-      Simple button
+    <Button onClick={action('small')} size="small">
+      Small button
     </Button>,
-    <Button onClick={action('button-click2')}>Simple button</Button>,
-    <Button onClick={action('button-click3')} size="medium">
-      Simple button
+    <Button onClick={action('default')}>Default button</Button>,
+    <Button onClick={action('medium')} size="medium">
+      Medium button
     </Button>,
-    <Button onClick={action('button-click4')} size="large">
-      Simple button
+    <Button onClick={action('large')} size="large">
+      Large button
     </Button>,
   ])
   .add('with color', () => [
-    <Button onClick={action('button-click1')}>Simple button</Button>,
-    <Button onClick={action('button-click2')} color="link">
-      Simple button
+    <Button onClick={action('default')}>Default button</Button>,
+    <Button onClick={action('link')} color="link">
+      Link button
     </Button>,
-    <Button onClick={action('button-click3')} color="info">
-      Simple button
+    <Button onClick={action('info')} color="info">
+      Info button
     </Button>,
-    <Button onClick={action('button-click4')} color="success">
-      Simple button
+    <Button onClick={action('success')} color="success">
+      Success button
     </Button>,
-    <Button onClick={action('button-click5')} color="warning">
-      Simple button
+    <Button onClick={action('warning')} color="warning">
+      Warning button
     </Button>,
-    <Button onClick={action('button-click6')} color="danger">
-      Simple button
+    <Button onClick={action('danger')} color="danger">
+      Danger button
     </Button>,
-    <Button onClick={action('button-click7')} color="light">
-      Simple button
+    <Button onClick={action('light')} color="light">
+      Light button
     </Button>,
-    <Button onClick={action('button-click8')} color="white">
-      Simple button
+    <Button onClick={action('white')} color="white">
+      White button
     </Button>,
-    <Button onClick={action('button-click9')} color="dark">
-      Simple button
+    <Button onClick={action('dark')} color="dark">
+      Dark button
     </Button>,
-    <Button onClick={action('button-click10')} color="black">
-      Simple button
+    <Button onClick={action('black')} color="black">
+      Black button
     </Button>,
-    <Button onClick={action('button-click11')} color="text">
-      Simple button
+    <Button onClick={action('text')} color="text">
+      Text button
     </Button>,
   ])
   .add('with icon', () => [
-    <Button onClick={action('button-click1')}>
+    <Button onClick={action('before-icon')}>
       <Icon name="ion-ionic" /> Before
     </Button>,
-    <Button onClick={action('button-click2')}>
+    <Button onClick={action('after-icon')}>
       After <Icon name="ion-home" />
     </Button>,
-    <Button onClick={action('button-click3')}>
-      <Icon name="ion-social-android" color="danger" /> 2 in same time{' '}
+    <Button onClick={action('between-icon')}>
+      <Icon name="ion-social-android" color="danger" /> 2 in same time
       <Icon name="ion-social-javascript" />
     </Button>,
-    <Button onClick={action('button-click4')}>
+    <Button onClick={action('only-icon')}>
       <Icon name="ion-social-octocat" color="info" />
     </Button>,
   ])
   .add('with disabled', () => (
-    <Button onClick={action('button-click')} disabled>
-      Simple button
+    <Button onClick={action('disabled')} disabled>
+      Diasbled button
     </Button>
   ))
   .add('with outlined', () => (
-    <Button onClick={action('button-click')} outlined>
-      Simple button
+    <Button onClick={action('outlined')} outlined>
+      Outlined button
     </Button>
   ))
   .add('with inverted', () => (
-    <Button onClick={action('button-click')} inverted>
-      Simple button
+    <Button onClick={action('inverted')} inverted>
+      Inverted button
     </Button>
   ))
   .add('with rounded', () => (
-    <Button onClick={action('button-click')} rounded>
-      Simple button
+    <Button onClick={action('rounded')} rounded>
+      Rounded button
     </Button>
   ))
   .add('with loading', () => (
-    <Button onClick={action('button-click')} loading>
-      Simple button
+    <Button onClick={action('loading')} loading>
+      Loading button
     </Button>
   ));
