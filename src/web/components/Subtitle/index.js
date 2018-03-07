@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function Subtitle({ children, level }) {
-  const classes = `subtitle${` is-${level + 1}`}`;
-  const Heading = `h${level + 1}`;
+  const raisedLevel = level + 1;
+  const classes = `subtitle is-${raisedLevel}`;
+  const Heading = `h${raisedLevel}`;
   return <Heading className={classes}>{children}</Heading>;
 }
 
