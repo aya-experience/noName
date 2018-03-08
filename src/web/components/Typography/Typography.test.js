@@ -15,6 +15,10 @@ describe('Typography', () => {
     expect(wrapper.find(Text).prop('children')).toBe('Hello World');
   });
 
+  it('should render a Text without className by default', () => {
+    expect(wrapper.find(Text).prop('className')).toBe('');
+  });
+
   it('should render a Text with className = "has-text-weight-light"', () => {
     wrapper.setProps({ weight: 'light' });
     expect(wrapper.find(Text).prop('className')).toContain('has-text-weight-light');
