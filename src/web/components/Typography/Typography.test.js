@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import connect from './TypographyContainer';
 import Text from '../Text';
 
@@ -8,7 +8,7 @@ describe('Typography', () => {
 
   beforeEach(() => {
     const TextImproved = connect(Text);
-    wrapper = mount(<TextImproved>Hello World</TextImproved>);
+    wrapper = shallow(<TextImproved>Hello World</TextImproved>);
   });
 
   it('should render a Text with children props', () => {
