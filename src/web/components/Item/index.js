@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Item({ children }) {
-  return <li>{children}</li>;
+export default function Item({ item, render }) {
+  return <li>{render(item)}</li>;
 }
 
 Item.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]).isRequired,
+  item: PropTypes.shape({}).isRequired,
+  render: PropTypes.func.isRequired,
 };

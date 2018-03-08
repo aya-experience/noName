@@ -4,12 +4,17 @@ import Item from './';
 
 describe('Item', () => {
   let wrapper;
+  let data;
+  let renderItem;
 
   beforeEach(() => {
-    wrapper = shallow(<Item>Hello world</Item>);
+    data = { id: 'GDJETI12K3J4L', name: 'turtle' };
+    renderItem = item => <div>{item.name}</div>;
+    wrapper = shallow(<Item item={data} render={renderItem} />);
   });
 
-  it('should render children component', () => {
-    expect(wrapper.children()).toHaveLength(1);
+  it('should render a li with a content created by render func', () => {
+    const li = wrapper.find('li');
+    expect(li.contains(renderItem(data))).toBeTruthy();
   });
 });
