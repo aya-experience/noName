@@ -27,6 +27,7 @@ describe('Typography', () => {
 
   it('should render a p with a Alignment class', () => {
     wrapper.setProps({ align: 'centered' });
+    // console.log(wrapper.debug());
     expect(wrapper.find(Text).prop('className')).toContain('has-text-centered');
   });
 
