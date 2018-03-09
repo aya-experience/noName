@@ -8,13 +8,13 @@ const renderItem = (item) => {
   if (Object.prototype.hasOwnProperty.call(item, 'items') && item.items.length > 0) {
     return <Menu data={item} />;
   }
-  return <Text>item.title</Text>;
+  return <Text>{item.name}</Text>;
 };
 
 export default function Menu({ data }) {
   return (
     <nav>
-      <Subtitle>{data.title}</Subtitle>
+      <Subtitle>{data.name}</Subtitle>
       <List data={data.items} renderItem={renderItem} />
     </nav>
   );
