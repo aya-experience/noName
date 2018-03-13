@@ -3,7 +3,6 @@ import { shallow } from 'enzyme';
 import Menu from './';
 import Subtitle from '../Subtitle';
 import List from '../List';
-import Text from '../Text';
 
 describe('Menu', () => {
   let wrapper;
