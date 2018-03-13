@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import connect from './';
+import sizable from './';
 
 describe('Size', () => {
   let wrapper;
@@ -8,7 +8,7 @@ describe('Size', () => {
 
   beforeEach(() => {
     DivComponent = props => <div {...props}>Hello World</div>;
-    const SizeDiv = connect(DivComponent);
+    const SizeDiv = sizable(DivComponent);
     wrapper = shallow(<SizeDiv />);
   });
 

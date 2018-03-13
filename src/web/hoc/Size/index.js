@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function connect(Component) {
+export default function sizable(Component) {
   const Size = ({ className, size, ...props }) => {
     const classes = className + (size && ` is-${size}`);
     return <Component {...props} className={classes.trim()} />;
