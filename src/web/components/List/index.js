@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import Item from '../Item';
 
 export default function List({ data, renderItem, keyName }) {
-  if (data.length < 1) {
+  if (!data.length) {
     return null;
   }
 
   const content = data.map((item, index) => {
     const keyValue = keyName ? item[keyName] : index;
-    return <Item key={keyValue} content={renderItem(item)} />;
+    return <Item key={keyValue}>{renderItem(item)}</Item>;
   });
 
   return <ul>{content}</ul>;

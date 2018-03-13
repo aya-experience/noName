@@ -10,10 +10,10 @@ describe('Item', () => {
   beforeEach(() => {
     data = { id: 'GDJETI12K3J4L', name: 'turtle' };
     content = <div>{data.name}</div>;
-    wrapper = shallow(<Item content={content} />);
+    wrapper = shallow(<Item>{content}</Item>);
   });
 
-  it('should render a li with a content created by render func', () => {
+  it('should render a li with children as content', () => {
     const li = wrapper.find('li');
     expect(li.contains(content)).toBeTruthy();
   });
