@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Item({ item, render }) {
-  return <li>{render(item)}</li>;
+export default function Item({ content }) {
+  return <li>{content}</li>;
 }
 
 Item.propTypes = {
-  item: PropTypes.shape({}).isRequired,
-  render: PropTypes.func.isRequired,
+  content: PropTypes.node.isRequired,
 };

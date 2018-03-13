@@ -6,9 +6,10 @@ export default function List({ data, renderItem, keyName }) {
   if (data.length < 1) {
     return null;
   }
+
   const content = data.map((item, index) => {
     const keyValue = keyName ? item[keyName] : index;
-    return <Item item={item} key={keyValue} render={renderItem} />;
+    return <Item key={keyValue} content={renderItem(item)} />;
   });
 
   return <ul>{content}</ul>;
