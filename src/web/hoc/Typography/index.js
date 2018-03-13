@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function connect(TypographyComponent) {
+export default function typography(Component) {
   function Typography(props) {
     const {
       color, align, weight, transformation,
@@ -13,7 +13,7 @@ export default function connect(TypographyComponent) {
     const alignClass = align && ` has-text-${align}`;
     const classes = `${weightClass}${transformationClass}${colorClass}${alignClass}`;
 
-    return <TypographyComponent {...props} className={classes} />;
+    return <Component {...props} className={classes} />;
   }
 
   Typography.propTypes = {

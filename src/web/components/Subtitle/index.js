@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import connect from '../../hoc/Typography';
+import typography from '../../hoc/Typography';
 
 function Subtitle({ children, level, className }) {
   const raisedLevel = level + 1;
@@ -20,4 +20,4 @@ Subtitle.defaultProps = {
   className: '',
 };
 
-export default connect(Subtitle);
+export default typography(Subtitle);

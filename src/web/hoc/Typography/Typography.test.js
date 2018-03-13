@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import connect from './';
+import typography from './';
 
 describe('Typography', () => {
   let wrapper;
@@ -8,7 +8,7 @@ describe('Typography', () => {
 
   beforeEach(() => {
     DivComponent = props => <div {...props}>Hello World</div>;
-    const DivImproved = connect(DivComponent);
+    const DivImproved = typography(DivComponent);
     wrapper = shallow(<DivImproved>Hello World</DivImproved>);
   });
 

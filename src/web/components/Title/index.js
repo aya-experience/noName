@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import connect from '../../hoc/Typography';
+import typography from '../../hoc/Typography';
 
 function Title({ children, size, className }) {
   const classes = `title is-${size} ${className}`;
@@ -18,4 +18,4 @@ Title.defaultProps = {
   className: '',
 };
 
-export default connect(Title);
+export default typography(Title);
