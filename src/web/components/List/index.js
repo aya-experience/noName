@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Item from '../Item';
 
-export default function List({ data, renderItem, keyName }) {
+export default function List({ data, renderItem }) {
   if (!data.length) {
     return null;
   }
 
-  const content = data.map((item, index) => {
-    const keyValue = keyName ? item[keyName] : index;
-    return <Item key={keyValue}>{renderItem(item)}</Item>;
-  });
+  const content = data.map((item, index) => renderItem(item, index));
 
   return <ul>{content}</ul>;
 }
@@ -18,9 +14,4 @@ export default function List({ data, renderItem, keyName }) {
 List.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   renderItem: PropTypes.func.isRequired,
-  keyName: PropTypes.string,
-};
-
-List.defaultProps = {
-  keyName: '',
 };

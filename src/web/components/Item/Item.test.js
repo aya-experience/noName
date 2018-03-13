@@ -17,4 +17,15 @@ describe('Item', () => {
     const li = wrapper.find('li');
     expect(li.contains(content)).toBeTruthy();
   });
+
+  it('should render li without clasName by default', () => {
+    const li = wrapper.find('li');
+    expect(li.prop('className')).toBe('');
+  });
+
+  it('should render li without clasName by default', () => {
+    wrapper.setProps({ className: 'hello' });
+    const li = wrapper.find('li');
+    expect(li.prop('className')).toBe('hello');
+  });
 });

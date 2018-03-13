@@ -14,7 +14,7 @@ describe('List', () => {
       { id: 'hashID2', name: 'mickael' },
       { id: 'hashID3', name: 'aya' },
     ];
-    renderItem = item => <div>{item.name}</div>;
+    renderItem = item => <Item key={item.id}>{item.name}</Item>;
     wrapper = shallow(<List data={data} renderItem={renderItem} />);
   });
 
@@ -25,26 +25,5 @@ describe('List', () => {
   it('should return null if data is an empty list', () => {
     wrapper.setProps({ data: [] });
     expect(wrapper.isEmptyRender()).toBeTruthy();
-  });
-
-  it('should render an Item component with a key equal to the element index by default (first item)', () => {
-    const item = wrapper.find(Item).first();
-    expect(item.key()).toBe('0');
-  });
-
-  it('should render an Item component with a key equal to the element index by default (last item)', () => {
-    const item = wrapper.find(Item).last();
-    expect(item.key()).toBe('2');
-  });
-
-  it('should render an Item component with a key equal to the element index by default (last item)', () => {
-    const item = wrapper.find(Item).last();
-    expect(item.key()).toBe('2');
-  });
-
-  it('should render an Item component with a personalized key when keyName is set', () => {
-    wrapper.setProps({ keyName: 'id' });
-    const item = wrapper.find(Item).first();
-    expect(item.key()).toBe('hashID1');
   });
 });
