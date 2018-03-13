@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import connect from '../../hoc/Color';
+import colorify from '../../hoc/Color';
 
 const Notification = ({ children, className, onClose }) => {
   const classes = `notification${className && ` ${className}`}`;
@@ -24,4 +24,4 @@ Notification.defaultProps = {
   onClose: null,
 };
 
-export default connect(Notification);
+export default colorify(Notification);

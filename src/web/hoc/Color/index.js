@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function connect(Component) {
-  function Color({ color, className, ...props }) {
-    const classes = className + color && ` is-${color}`;
+export default function colorify(Component) {
+  function Color(props) {
+    const classes = props.className + props.color && ` is-${props.color}`;
     return <Component {...props} className={classes} />;
   }
 
