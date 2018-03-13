@@ -4,7 +4,6 @@ import connect from '../../hoc/Color';
 
 const Notification = ({ children, className, onClose }) => {
   const classes = `notification${className && ` ${className}`}`;
-
   const closeButton = onClose && <button className="delete" onClick={onClose} />;
   return (
     <div className={classes}>

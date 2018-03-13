@@ -10,7 +10,7 @@ describe('Notification', () => {
   beforeEach(() => {
     content = <p>Hello World</p>;
     onClose = jest.fn();
-    wrapper = shallow(<Notification onClose={onClose}>{content}</Notification>);
+    wrapper = shallow(<Notification onClose={onClose}>{content}</Notification>).shallow();
   });
 
   it('should render children component', () => {
