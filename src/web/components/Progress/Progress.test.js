@@ -6,21 +6,21 @@ describe('Progress', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Progress value="50" />);
+    wrapper = shallow(<Progress value={50} />);
   });
 
   it('should render a progress bar with 0% completed', () => {
-    wrapper.setProps({ value: '0' });
-    expect(wrapper.find('progress').prop('value')).toBe('0');
+    wrapper.setProps({ value: 0 });
+    expect(wrapper.find('progress').prop('value')).toBe(0);
   });
 
   it('should render a progress bar with 50% completed', () => {
-    expect(wrapper.find('progress').prop('value')).toBe('50');
+    expect(wrapper.find('progress').prop('value')).toBe(50);
   });
 
   it('should render a progress bar with 100% completed', () => {
-    wrapper.setProps({ value: '100' });
-    expect(wrapper.find('progress').prop('value')).toBe('100');
+    wrapper.setProps({ value: 100 });
+    expect(wrapper.find('progress').prop('value')).toBe(100);
   });
 
   it('should render only progress class if className is not set', () => {
