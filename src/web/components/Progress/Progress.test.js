@@ -31,4 +31,13 @@ describe('Progress', () => {
     wrapper.setProps({ className: 'hello' });
     expect(wrapper.find('progress').prop('className')).toBe('progress hello');
   });
+
+  it('should render a progress bar with 100 as max value by default', () => {
+    expect(wrapper.find('progress').prop('max')).toBe(100);
+  });
+
+  it('should render a progress bar with 100 as max value', () => {
+    wrapper.setProps({ max: 200 });
+    expect(wrapper.find('progress').prop('max')).toBe(200);
+  });
 });
