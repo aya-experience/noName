@@ -6,7 +6,7 @@ describe('Subtitle', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Subtitle>Hello World</Subtitle>);
+    wrapper = shallow(<Subtitle>Hello World</Subtitle>).shallow();
   });
 
   it('should render a h2 with children as a text', () => {

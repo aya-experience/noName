@@ -6,7 +6,7 @@ describe('Text', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Text>Hello World</Text>);
+    wrapper = shallow(<Text>Hello World</Text>).shallow();
   });
 
   it('should render a p with children as a text', () => {

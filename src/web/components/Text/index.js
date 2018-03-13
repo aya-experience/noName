@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import connect from '../../hoc/Typography';
 
-export default function Text({ children, className }) {
+function Text({ children, className }) {
   return <p className={className}>{children}</p>;
 }
 
@@ -13,3 +14,5 @@ Text.propTypes = {
 Text.defaultProps = {
   className: '',
 };
+
+export default connect(Text);
