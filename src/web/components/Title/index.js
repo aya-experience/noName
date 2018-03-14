@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import typography from '../../hoc/Typography';
 
-function Title({ children, size, className }) {
-  const classes = `title is-${size} ${className}`;
+export function Title({ children, size, className }) {
+  const classes = `title is-${size}${className && ` ${className}`}`;
   return <h1 className={classes}>{children}</h1>;
 }
 

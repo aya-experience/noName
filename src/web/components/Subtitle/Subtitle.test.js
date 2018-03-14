@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Subtitle from './';
+import { Subtitle } from '.';
 
 describe('Subtitle', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Subtitle>Hello World</Subtitle>).shallow();
+    wrapper = shallow(<Subtitle>Hello World</Subtitle>);
   });
 
   it('should render a h2 with children as a text', () => {

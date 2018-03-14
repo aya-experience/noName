@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import typography from '../../hoc/Typography';
 
-function Subtitle({ children, level, className }) {
+export function Subtitle({ children, level, className }) {
   const raisedLevel = level + 1;
   const classes = `subtitle is-${raisedLevel} ${className}`;
   const Heading = `h${raisedLevel}`;

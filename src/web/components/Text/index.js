@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import typography from '../../hoc/Typography';
 
-function Text({ children, className }) {
+export function Text({ children, className }) {
   return <p className={className}>{children}</p>;
 }
 
