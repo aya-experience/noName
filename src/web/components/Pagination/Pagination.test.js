@@ -56,7 +56,7 @@ describe('Pagination', () => {
     expect(wrapper.find('.pagination-next')).toHaveLength(0);
   });
 
-  // Later
+  // Implement Later
   // it('should trigger onChange event with a page number when a user click on a page number', () => {});
   // it('should trigger onChange event with current page - 1 when a user click on next button', () => {});
   // it('should trigger onChange event with a page number + 1 when a user click on previous button', () => {});
