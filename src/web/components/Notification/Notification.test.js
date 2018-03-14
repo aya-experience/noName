@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Notification from './';
+import { Notification } from './';
 
 describe('Notification', () => {
   let wrapper;
@@ -10,7 +10,7 @@ describe('Notification', () => {
   beforeEach(() => {
     content = <p>Hello World</p>;
     onClose = jest.fn();
-    wrapper = shallow(<Notification onClose={onClose}>{content}</Notification>).shallow();
+    wrapper = shallow(<Notification onClose={onClose}>{content}</Notification>);
   });
 
   it('should render children component', () => {
