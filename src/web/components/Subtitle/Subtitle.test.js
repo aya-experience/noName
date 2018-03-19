@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Subtitle from './';
+import { Subtitle } from '.';
 
 describe('Subtitle', () => {
   let wrapper;

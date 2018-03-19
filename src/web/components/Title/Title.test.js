@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Title from './';
+import { Title } from './';
 
 describe('Title', () => {
   let wrapper;
@@ -13,8 +13,8 @@ describe('Title', () => {
     expect(wrapper.find('h1.title').text()).toBe('Hello World');
   });
 
-  it('should render a h1 with is-3 by default', () => {
-    expect(wrapper.find('h1.title.is-3')).toHaveLength(1);
+  it('should render a h1 with is-1 by default', () => {
+    expect(wrapper.find('h1.title.is-1')).toHaveLength(1);
   });
 
   it('should render a h1 with is-1 if size = 1', () => {
@@ -25,5 +25,10 @@ describe('Title', () => {
   it('should render a h1 with is-6 if size = 6', () => {
     wrapper.setProps({ size: 6 });
     expect(wrapper.find('h1.title.is-6')).toHaveLength(1);
+  });
+
+  it('should render a h1 with className as class', () => {
+    wrapper.setProps({ className: 'hello' });
+    expect(wrapper.find('h1.title.hello')).toHaveLength(1);
   });
 });
