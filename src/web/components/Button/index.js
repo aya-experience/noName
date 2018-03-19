@@ -11,6 +11,7 @@ export default function Button({
   inverted,
   rounded,
   loading,
+  className,
 }) {
   const colorClass = color && ` is-${color}`;
   const sizeClass = size && ` is-${size}`;
@@ -18,7 +19,8 @@ export default function Button({
   const invertedClass = inverted ? ' is-inverted' : '';
   const roundedClass = rounded ? ' is-rounded' : '';
   const loadingClass = loading ? ' is-loading' : '';
-  const classes = `button${colorClass}${sizeClass}${outlinedClass}${invertedClass}${roundedClass}${loadingClass}`;
+  const classes = `button${colorClass}${sizeClass}${outlinedClass}${invertedClass}${roundedClass}${loadingClass}${className &&
+    ` ${className}`}`;
   return (
     <button className={classes} disabled={disabled} onClick={onClick}>
       {children}
@@ -34,6 +36,7 @@ Button.propTypes = {
   ]).isRequired,
   onClick: PropTypes.func.isRequired,
   color: PropTypes.string,
+  className: PropTypes.string,
   size: PropTypes.string,
   disabled: PropTypes.bool,
   outlined: PropTypes.bool,
@@ -44,6 +47,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   color: 'primary',
+  className: '',
   size: '',
   disabled: false,
   outlined: false,

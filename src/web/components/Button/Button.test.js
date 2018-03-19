@@ -66,4 +66,9 @@ describe('Button', () => {
     const button = wrapper.find('button.is-small');
     expect(button).toHaveLength(1);
   });
+
+  it('should render a button with the classes in className', () => {
+    wrapper.setProps({ className: 'hello' });
+    expect(wrapper.find('button.hello')).toHaveLength(1);
+  });
 });
