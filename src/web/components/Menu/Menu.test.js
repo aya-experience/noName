@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Menu from './';
-import Subtitle from '../Subtitle';
+import Text from '../Text';
 import List from '../List';
 
 describe('Menu', () => {
@@ -33,7 +33,7 @@ describe('Menu', () => {
   });
 
   it('should render a title menu', () => {
-    const title = wrapper.find(Subtitle).first();
+    const title = wrapper.find(Text).first();
     expect(title.prop('children')).toBe(menuData.name);
   });
 
@@ -43,11 +43,11 @@ describe('Menu', () => {
   });
 
   it('should render a sub menu when a menu item have an another menu', () => {
-    const subMenu = wrapper
+    const subMenu = shallow(wrapper
       .find(List)
       .first()
-      .prop('renderItem')(menuData.items[0]);
-    expect(subMenu.type).toBe(Menu);
+      .prop('renderItem')(menuData.items[0]));
+    expect(subMenu.find(Menu)).toHaveLength(1);
   });
 
   it("should render a Text component when the item menu doesn't have items", () => {
@@ -55,7 +55,7 @@ describe('Menu', () => {
       .find(List)
       .first()
       .prop('renderItem')(menuData.items[1]);
-    expect(menuItem.props.children).toBe(menuData.items[1].name);
+    expect(shallow(menuItem.props.children).prop('children')).toBe(menuData.items[1].name);
   });
 
   // TODO later
