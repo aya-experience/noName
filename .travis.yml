@@ -4,8 +4,6 @@ node_js:
   - "8"
   - "9"
 
-script: bash ./deploy.sh
-
 env:
   global:
   - ENCRYPTION_LABEL: "9305f989d237"
@@ -13,3 +11,10 @@ env:
 
 after_script:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+
+deploy:
+  - provider: script
+    script: bash scripts/deploy.sh
+    on:
+      branch: master
+  
