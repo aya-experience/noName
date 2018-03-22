@@ -3,5 +3,13 @@ language: node_js
 node_js:
   - "8"
   - "9"
+
+script: bash ./deploy.sh
+
+env:
+  global:
+  - ENCRYPTION_LABEL: "9305f989d237"
+  - COMMIT_AUTHOR_EMAIL: "you@example.com"
+
 after_script:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
