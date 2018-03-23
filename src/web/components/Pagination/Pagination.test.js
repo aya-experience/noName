@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Pagination from './';
+import Button from '../Button';
 
 describe('Pagination', () => {
   let wrapper;
@@ -8,56 +9,112 @@ describe('Pagination', () => {
 
   beforeEach(() => {
     onChange = jest.fn();
-    wrapper = shallow(<Pagination onChange={onChange} currenrPage={5} page={100} />);
+    wrapper = shallow(<Pagination onChange={onChange} currentPage={50} page={100} />);
   });
 
-  it('should render the first page', () => {
-    const page = wrapper.find('ul.pagination-list').first();
-    expect(page.text()).expect('1');
+  it('should render the first page number', () => {
+    const button = wrapper.find(Button).at(2);
+    expect(button.prop('children')).toBe('1');
   });
 
   it('should render the last page', () => {
-    const page = wrapper.find('ul.pagination-list').last();
-    expect(page.text()).toBe('100');
+    const button = wrapper.find(Button).last();
+    expect(button.prop('children')).toBe('100');
+  });
+
+  it('should render the current page', () => {
+    const button = wrapper.find(Button).at(4);
+    expect(button.prop('children')).toBe('50');
   });
 
   it('should render the current page  number with is-current class', () => {
-    const page = wrapper.find('li.is-current');
-    expect(page.text()).toBe('50');
+    const button = wrapper.find(Button).at(4);
+    expect(button.hasClass('is-current')).toBeTruthy();
   });
 
   it('should render the previous page number', () => {
-    const page = wrapper.find('li.before');
-    expect(page.text()).toBe('49');
+    const button = wrapper.find(Button).at(3);
+    expect(button.prop('children')).toBe('49');
   });
 
   it('should render the next page number', () => {
-    const page = wrapper.find('li.after');
-    expect(page.text()).toBe('51');
+    const button = wrapper.find(Button).at(5);
+    expect(button.prop('children')).toBe('51');
   });
 
-  it('should not render the before page number when the last page is selected', () => {
-    wrapper.setProps({ page: 1 });
-    expect(wrapper.find('li.after')).toHaveLength(0);
+  it('should hide some page number when the first page is selected', () => {
+    wrapper.setProps({ currentPage: 1 });
+    const buttons = wrapper.find(Button);
+    expect(buttons).toHaveLength(5);
   });
 
-  it('should not render the previous button when the last page is selected', () => {
-    wrapper.setProps({ page: 1 });
-    expect(wrapper.find('.pagination-previous')).toHaveLength(0);
+  it('should hide some page number when the last page is selected', () => {
+    wrapper.setProps({ currentPage: 100 });
+    const buttons = wrapper.find(Button);
+    expect(buttons).toHaveLength(5);
   });
 
-  it('should not render the after page number when the last page is selected', () => {
-    wrapper.setProps({ page: 100 });
-    expect(wrapper.find('li.after')).toHaveLength(0);
+  it('should hide some page number when the page after the first page number is selected', () => {
+    wrapper.setProps({ currentPage: 2 });
+    const buttons = wrapper.find(Button);
+    expect(buttons).toHaveLength(6);
+  });
+
+  it('should hide some page number when the page before the last page number is selected', () => {
+    wrapper.setProps({ currentPage: 99 });
+    const buttons = wrapper.find(Button);
+    expect(buttons).toHaveLength(6);
+  });
+
+  it('should not render the previous button when the first page is selected', () => {
+    wrapper.setProps({ currentPage: 1 });
+    expect(wrapper.find('.pagination-previous').prop('disabled')).toBeTruthy();
   });
 
   it('should not render the next button when the last page is selected', () => {
-    wrapper.setProps({ page: 100 });
-    expect(wrapper.find('.pagination-next')).toHaveLength(0);
+    wrapper.setProps({ currentPage: 100 });
+    expect(wrapper.find('.pagination-next').prop('disabled')).toBeTruthy();
   });
 
-  // Implement Later
-  // it('should trigger onChange event with a page number when a user click on a page number', () => {});
-  // it('should trigger onChange event with current page - 1 when a user click on next button', () => {});
-  // it('should trigger onChange event with a page number + 1 when a user click on previous button', () => {});
+  it('should trigger onChange event with a page number when a user click on previous button', () => {
+    const button = wrapper.find(Button).at(0);
+    button.simulate('click');
+    expect(onChange).toBeCalledWith(49);
+  });
+
+  it('should trigger onChange event with a page number when a user click on next button', () => {
+    const button = wrapper.find(Button).at(1);
+    button.simulate('click');
+    expect(onChange).toBeCalledWith(51);
+  });
+
+  it('should trigger onChange event with a page number when a user click on a first page button', () => {
+    const button = wrapper.find(Button).at(2);
+    button.simulate('click');
+    expect(onChange).toBeCalledWith(1);
+  });
+
+  it('should trigger onChange event with a page number when a user click on a last page button', () => {
+    const button = wrapper.find(Button).last();
+    button.simulate('click');
+    expect(onChange).toBeCalledWith(100);
+  });
+
+  it('should trigger onChange event with a page number when a user click on a page before current page', () => {
+    const button = wrapper.find(Button).at(3);
+    button.simulate('click');
+    expect(onChange).toBeCalledWith(49);
+  });
+
+  it('should trigger onChange event with a page number when a user click on a page after current page', () => {
+    const button = wrapper.find(Button).at(5);
+    button.simulate('click');
+    expect(onChange).toBeCalledWith(51);
+  });
+
+  it('should not trigger when the user click on the current page', () => {
+    const button = wrapper.find(Button).at(4);
+    button.simulate('click');
+    expect(onChange).not.toBeCalled();
+  });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import COLOR from '../../constant';
 
 export default function colorify(Component) {
   function Color(props) {
@@ -9,19 +10,7 @@ export default function colorify(Component) {
 
   Color.propTypes = {
     className: PropTypes.string,
-    color: PropTypes.oneOf([
-      '',
-      'white',
-      'black',
-      'light',
-      'dark',
-      'primary',
-      'link',
-      'info',
-      'success',
-      'warning',
-      'danger',
-    ]),
+    color: PropTypes.oneOf(COLOR),
   };
 
   Color.defaultProps = {
