@@ -2,12 +2,27 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import colorify from './';
 
-const divComponent = props => <div {...props}>Hello World</div>;
-
 describe('Color', () => {
-  it('should add a className if a color prop is set', () => {
-    const ColorDiv = colorify(divComponent);
-    const wrapper = shallow(<ColorDiv color="primary">Test</ColorDiv>);
-    expect(wrapper.find('div.is-primary'));
+  let wrapper;
+  let DivComponent;
+
+  beforeEach(() => {
+    DivComponent = props => <div {...props}>Hello World</div>;
+    const ColorDiv = colorify(DivComponent);
+    wrapper = shallow(<ColorDiv />);
+  });
+
+  it('should render the connected component without class by default', () => {
+    expect(wrapper.find(DivComponent).prop('className')).toBe('');
+  });
+
+  it('should render the connected component with is-danger classes', () => {
+    wrapper.setProps({ color: 'danger' });
+    expect(wrapper.find(DivComponent).prop('className')).toBe('is-danger');
+  });
+
+  it('should transfert className props to the connected component', () => {
+    wrapper.setProps({ className: 'hello' });
+    expect(wrapper.find(DivComponent).prop('className')).toBe('hello');
   });
 });

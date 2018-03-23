@@ -47,7 +47,7 @@ describe('Menu', () => {
       .find(List)
       .first()
       .prop('renderItem')(menuData.items[0]));
-    expect(subMenu.find(Menu)).toHaveLength(1);
+    expect(subMenu.find(List)).toHaveLength(1);
   });
 
   it("should render a Text component when the item menu doesn't have items", () => {

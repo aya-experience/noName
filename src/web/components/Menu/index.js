@@ -8,7 +8,8 @@ const renderItem = (item) => {
   if (item.items && item.items.length) {
     return (
       <Item key={item.name}>
-        <Menu data={item} />
+        <Text className="menu-label">{item.name}</Text>
+        <List data={item.items} renderItem={renderItem} />
       </Item>
     );
   }
@@ -21,7 +22,7 @@ const renderItem = (item) => {
 
 export default function Menu({ data }) {
   return (
-    <nav>
+    <nav className="menu">
       <Text className="menu-label">{data.name}</Text>
       <List className="menu-list" data={data.items} renderItem={renderItem} />
     </nav>
