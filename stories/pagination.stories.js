@@ -7,14 +7,19 @@ import COLOR from '../src/web/constant';
 storiesOf('Pagination', module)
   .add('basic Pagination', () => (
     <React.Fragment>
-      <Pagination page={100} currentPage={50} onChange={action('basic')} />
-      <Pagination page={100} currentPage={1} onChange={action('basic')} />
-      <Pagination page={100} currentPage={2} onChange={action('basic')} />
-      <Pagination page={100} currentPage={99} onChange={action('basic')} />
-      <Pagination page={100} currentPage={100} onChange={action('basic')} />
+      <Pagination page={100} currentPage={50} onChange={action('full')} />
+      <Pagination page={100} currentPage={1} onChange={action('firstPage')} />
+      <Pagination page={100} currentPage={2} onChange={action('secondPage')} />
+      <Pagination page={100} currentPage={99} onChange={action('beforeLastPage')} />
+      <Pagination page={100} currentPage={100} onChange={action('lastPage')} />
     </React.Fragment>
   ))
   .add('with color', () =>
     COLOR.map(color => (
-      <Pagination color={color} page={100} currentPage={50} onChange={action(color)} />
+      <Pagination
+        color={color}
+        page={100}
+        currentPage={50}
+        onChange={action(color || 'default')}
+      />
     )));
