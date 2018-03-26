@@ -4,7 +4,7 @@ import List from '../List';
 import Item from '../Item';
 import sizable from '../../hoc/Size';
 /* eslint-disable */
-// Utilisation du composant bulma utilisation de lien sans href
+// use of tabs component bulma with a whithout href
 
 class Tabs extends React.Component {
   constructor(props) {
