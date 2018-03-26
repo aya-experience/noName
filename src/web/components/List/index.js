@@ -12,6 +12,6 @@ export default function List({ data, renderItem }) {
 }
 
 List.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.any).isRequired,
   renderItem: PropTypes.func.isRequired,
 };
