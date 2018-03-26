@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { LinkText } from './';
 
-describe('Text', () => {
+describe('LinkText', () => {
   let wrapper;
 
   beforeEach(() => {
