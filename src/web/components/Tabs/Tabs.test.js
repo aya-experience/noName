@@ -26,9 +26,15 @@ describe('Tabs', () => {
     expect(onSelected).toBeCalledWith(3);
   });
 
-  it('should trigger onSelected event when a tab is clicked ', () => {
+  it('should render an is-active item ', () => {
     const render = wrapper.find(List).prop('renderItem');
     const item = shallow(render(data[0], 0));
     expect(item.hasClass('is-active')).toBeTruthy();
+  });
+
+  it('should not render an is-active item ', () => {
+    const render = wrapper.find(List).prop('renderItem');
+    const item = shallow(render(data[1], 1));
+    expect(item.hasClass('is-active')).toBeFalsy();
   });
 });
