@@ -1,24 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import colorify from '../../hoc/Color';
+import sizable from '../../hoc/Size';
 
 function Button({
-  children,
-  onClick,
-  disabled,
-  size,
-  outlined,
-  inverted,
-  rounded,
-  loading,
-  className,
+  children, onClick, disabled, outlined, inverted, rounded, loading, className,
 }) {
-  const sizeClass = size && ` is-${size}`;
   const outlinedClass = outlined ? ' is-outlined' : '';
   const invertedClass = inverted ? ' is-inverted' : '';
   const roundedClass = rounded ? ' is-rounded' : '';
   const loadingClass = loading ? ' is-loading' : '';
-  const classes = `button${sizeClass}${outlinedClass}${invertedClass}${roundedClass}${loadingClass}${className &&
+  const classes = `button${outlinedClass}${invertedClass}${roundedClass}${loadingClass}${className &&
     ` ${className}`}`;
   return (
     <button className={classes} disabled={disabled} onClick={onClick}>
@@ -35,7 +27,6 @@ Button.propTypes = {
   ]).isRequired,
   onClick: PropTypes.func.isRequired,
   className: PropTypes.string,
-  size: PropTypes.string,
   disabled: PropTypes.bool,
   outlined: PropTypes.bool,
   inverted: PropTypes.bool,
@@ -45,7 +36,6 @@ Button.propTypes = {
 
 Button.defaultProps = {
   className: '',
-  size: '',
   disabled: false,
   outlined: false,
   inverted: false,
@@ -53,5 +43,5 @@ Button.defaultProps = {
   loading: false,
 };
 
-const ColorButton = colorify(Button);
+const ColorButton = sizable(colorify(Button));
 export { Button as ButtonBase, ColorButton as default };

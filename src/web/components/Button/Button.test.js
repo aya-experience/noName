@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Button } from './';
+import { ButtonBase } from './';
 
 describe('Button', () => {
   let wrapper;
@@ -8,7 +8,7 @@ describe('Button', () => {
 
   beforeEach(() => {
     onClick = jest.fn();
-    wrapper = shallow(<Button onClick={onClick}>Hello world</Button>);
+    wrapper = shallow(<ButtonBase onClick={onClick}>Hello world</ButtonBase>);
   });
 
   it('should render a children component', () => {
@@ -47,12 +47,6 @@ describe('Button', () => {
   it('should have a is-loading class when the prop loading is true', () => {
     wrapper.setProps({ loading: true });
     const button = wrapper.find('button.is-loading');
-    expect(button).toHaveLength(1);
-  });
-
-  it('should have a button with a size class when the props size is set', () => {
-    wrapper.setProps({ size: 'small' });
-    const button = wrapper.find('button.is-small');
     expect(button).toHaveLength(1);
   });
 
