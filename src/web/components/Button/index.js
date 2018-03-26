@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import colorify from '../../hoc/Color';
 
-export default function Button({
+function Button({
   children,
   onClick,
-  color,
   disabled,
   size,
   outlined,
@@ -13,13 +13,12 @@ export default function Button({
   loading,
   className,
 }) {
-  const colorClass = color && ` is-${color}`;
   const sizeClass = size && ` is-${size}`;
   const outlinedClass = outlined ? ' is-outlined' : '';
   const invertedClass = inverted ? ' is-inverted' : '';
   const roundedClass = rounded ? ' is-rounded' : '';
   const loadingClass = loading ? ' is-loading' : '';
-  const classes = `button${colorClass}${sizeClass}${outlinedClass}${invertedClass}${roundedClass}${loadingClass}${className &&
+  const classes = `button${sizeClass}${outlinedClass}${invertedClass}${roundedClass}${loadingClass}${className &&
     ` ${className}`}`;
   return (
     <button className={classes} disabled={disabled} onClick={onClick}>
@@ -35,7 +34,6 @@ Button.propTypes = {
     PropTypes.arrayOf(PropTypes.element),
   ]).isRequired,
   onClick: PropTypes.func.isRequired,
-  color: PropTypes.string,
   className: PropTypes.string,
   size: PropTypes.string,
   disabled: PropTypes.bool,
@@ -46,7 +44,6 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  color: 'primary',
   className: '',
   size: '',
   disabled: false,
@@ -55,3 +52,6 @@ Button.defaultProps = {
   rounded: false,
   loading: false,
 };
+
+const ColorButton = colorify(Button);
+export { Button as ButtonBase, ColorButton as default };
