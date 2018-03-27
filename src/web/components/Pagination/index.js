@@ -2,87 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import COLOR from '../../constant';
 import Button from '../Button';
+import PaginationNumberList from './PaginationNumberList';
 
 class Pagination extends React.Component {
-  constructor(props) {
-    super(props);
-    this.nextPageHandler = () => {
-      this.props.onChange(this.props.currentPage + 1);
-    };
+  nextPageHandler = () => {
+    const { currentPage, onChange } = this.props;
+    onChange(currentPage + 1);
+  };
 
-    this.previousPageHandler = () => {
-      this.props.onChange(this.props.currentPage - 1);
-    };
-
-    this.firstPageHandler = () => {
-      this.props.onChange(1);
-    };
-
-    this.lastPageHandler = () => {
-      this.props.onChange(this.props.page);
-    };
-
-    this.currentPageHandler = () => null;
-  }
+  previousPageHandler = () => {
+    const { currentPage, onChange } = this.props;
+    onChange(currentPage - 1);
+  };
 
   render() {
-    const { currentPage, page, color } = this.props;
+    const {
+      currentPage, page, color, onChange, range,
+    } = this.props;
     const classes = 'pagination is-centered';
     const noPrevious = currentPage === 1;
     const noAfter = currentPage === page;
-    const nextPage = currentPage + 1;
-    const previousPage = currentPage - 1;
 
-    const previousContent = !noPrevious && (
-      <React.Fragment>
-        {!(currentPage === 2) && (
-          <React.Fragment>
-            <li>
-              <Button color={color} onClick={this.firstPageHandler} className="pagination-link">
-                1
-              </Button>
-            </li>
-            <li>
-              <span className="pagination-ellipsis">&hellip;</span>
-            </li>
-          </React.Fragment>
-        )}
-        <li>
-          <Button color={color} onClick={this.previousPageHandler} className="pagination-link">
-            {previousPage.toString()}
-          </Button>
-        </li>
-      </React.Fragment>
-    );
-
-    const afterContent = !noAfter && (
-      <React.Fragment>
-        <li>
-          <Button
-            color={color}
-            onClick={this.nextPageHandler}
-            href="#no-anchor"
-            className="pagination-link"
-          >
-            {nextPage.toString()}
-          </Button>
-        </li>
-        {!(currentPage === page - 1) && (
-          <React.Fragment>
-            <li>
-              <span className="pagination-ellipsis">&hellip;</span>
-            </li>
-            <li>
-              <Button color={color} onClick={this.lastPageHandler} className="pagination-link">
-                {page.toString()}
-              </Button>
-            </li>
-          </React.Fragment>
-        )}
-      </React.Fragment>
-    );
     return (
-      <nav className={classes} aria-label="pagination">
+      <nav className={classes}>
         <Button
           color={color}
           onClick={this.previousPageHandler}
@@ -99,20 +41,14 @@ class Pagination extends React.Component {
         >
           Next
         </Button>
-        <ul className="pagination-list">
-          {previousContent}
-          <li>
-            <Button
-              color={color}
-              onClick={this.currentPageHandler}
-              className="pagination-link is-current"
-              disabled
-            >
-              {currentPage.toString()}
-            </Button>
-          </li>
-          {afterContent}
-        </ul>
+
+        <PaginationNumberList
+          range={range}
+          currentPage={currentPage}
+          page={100}
+          onSelected={onChange}
+          color={color}
+        />
       </nav>
     );
   }
@@ -123,10 +59,12 @@ Pagination.propTypes = {
   currentPage: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
   color: PropTypes.oneOf(COLOR),
+  range: PropTypes.number,
 };
 
 Pagination.defaultProps = {
   color: '',
+  range: 2,
 };
 
 export default Pagination;
