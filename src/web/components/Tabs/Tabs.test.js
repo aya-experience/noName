@@ -37,4 +37,9 @@ describe('Tabs', () => {
     const item = shallow(render(data[1], 1));
     expect(item.hasClass('is-active')).toBeFalsy();
   });
+
+  it('should transfert className prop ', () => {
+    wrapper.setProps({ className: 'hello' });
+    expect(wrapper.find('nav').hasClass('hello')).toBeTruthy();
+  });
 });
