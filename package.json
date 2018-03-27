@@ -11,7 +11,7 @@
     "serve": "node ./src/cli/index",
     "test": "jest --coverage",
     "format":
-    "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\" && prettier-eslint --write \"stories/**/*.js\"",
+      "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\" && prettier-eslint --write \"stories/**/*.js\"",
     "lint": "eslint ./src && eslint ./pages",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -30,9 +30,11 @@
   },
   "devDependencies": {
     "babel-jest": "^22.4.1",
+    "babel-eslint": "^8.2.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "coveralls": "^3.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
