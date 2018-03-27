@@ -3,7 +3,7 @@ const express = require('express');
 const next = require('next');
 const open = require('opn');
 const http = require('http');
-const socketServer = require('./socketServer');
+const socketServer = require('./SocketServer');
 
 const DEV = process.env.NODE_ENV !== 'production';
 
