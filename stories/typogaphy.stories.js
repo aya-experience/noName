@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Title from './../src/web/components/Title';
 import Subtitle from './../src/web/components/Subtitle';
 import Text from './../src/web/components/Text';
+import LinkText from './../src/web/components/LinkText';
 
 storiesOf('Typography', module)
   .add('Title', () => [
@@ -24,6 +25,7 @@ storiesOf('Typography', module)
     <Subtitle level={5}>Size 5</Subtitle>,
   ])
   .add('Text', () => [<Text>Hello world</Text>])
+  .add('Link Text', () => [<LinkText href="#">Hello world</LinkText>])
   .add('with Color', () => [
     <Text color="">Default</Text>,
     <Text color="black">Black</Text>,
