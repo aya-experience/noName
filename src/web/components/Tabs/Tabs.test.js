@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { TabsBase } from './';
 import List from '../List';
+import Touchable from '../Touchable';
 
 describe('Tabs', () => {
   let wrapper;
@@ -21,9 +22,9 @@ describe('Tabs', () => {
 
   it('should trigger onSelected event when a tab is clicked ', () => {
     const render = wrapper.find(List).prop('renderItem');
-    const item = shallow(render(data[3], 3));
-    item.find('a').simulate('click');
-    expect(onSelected).toBeCalledWith(3);
+    const item = shallow(render(data[2], 2));
+    item.find(Touchable).prop('onClick')(2);
+    expect(onSelected).toBeCalledWith(2);
   });
 
   it('should render an is-active item ', () => {
