@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Pagination from './';
 import Button from '../Button';
+import PaginationNumberList from './PaginationNumberList';
 
 describe('Pagination', () => {
   let wrapper;
@@ -10,6 +11,16 @@ describe('Pagination', () => {
   beforeEach(() => {
     onChange = jest.fn();
     wrapper = shallow(<Pagination onChange={onChange} currentPage={50} page={100} />);
+  });
+
+  it('should pass correctly the prop page, onSelected, currentPage, range and color to PaginationNumberList', () => {
+    expect(wrapper.find(PaginationNumberList).props()).toEqual({
+      onSelected: onChange,
+      currentPage: 50,
+      page: 100,
+      range: 2,
+      color: '',
+    });
   });
 
   it('should render a disabled previous button when the first page is selected', () => {
@@ -32,5 +43,23 @@ describe('Pagination', () => {
     const button = wrapper.find(Button).at(1);
     button.simulate('click');
     expect(onChange).toBeCalledWith(51);
+  });
+
+  it('should trigger onChange event when onSelected event is trigger on PaginationNumberList', () => {
+    const onSelected = wrapper.find(PaginationNumberList).prop('onSelected');
+    onSelected(1);
+    expect(onChange).toBeCalledWith(1);
+  });
+
+  it('should not change page when the current page is last and nextPageHandler is called ', () => {
+    wrapper.setProps({ currentPage: 100 });
+    wrapper.instance().nextPageHandler();
+    expect(onChange).not.toBeCalled();
+  });
+
+  it('should not change page when the current page is last and nextPageHandler is called ', () => {
+    wrapper.setProps({ currentPage: 0 });
+    wrapper.instance().previousPageHandler();
+    expect(onChange).not.toBeCalled();
   });
 });

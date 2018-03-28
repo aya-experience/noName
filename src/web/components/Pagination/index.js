@@ -6,13 +6,13 @@ import PaginationNumberList from './PaginationNumberList';
 
 class Pagination extends React.Component {
   nextPageHandler = () => {
-    const { currentPage, onChange } = this.props;
-    onChange(currentPage + 1);
+    const { currentPage, onChange, page } = this.props;
+    if (currentPage < page) onChange(currentPage + 1);
   };
 
   previousPageHandler = () => {
     const { currentPage, onChange } = this.props;
-    onChange(currentPage - 1);
+    if (currentPage > 0) onChange(currentPage - 1);
   };
 
   render() {
