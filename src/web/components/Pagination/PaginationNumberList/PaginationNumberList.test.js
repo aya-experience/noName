@@ -66,7 +66,16 @@ describe('PaginationNumberList', () => {
     wrapper.setProps({ currentPage: 2 });
     expect(wrapper.find('.is-current').prop('value')).toBe(2);
   });
+
   // Other case
+  it('should render 7 button when the current page is not on the bordure', () => {
+    expect(wrapper.find(PaginationPageButton)).toHaveLength(7);
+  });
+
+  it('should render 11 button', () => {
+    wrapper.setProps({ range: 4 });
+    expect(wrapper.find(PaginationPageButton)).toHaveLength(11);
+  });
 
   // currentPage = Page - 1
   it('should render 5 button when currentPage = 99', () => {

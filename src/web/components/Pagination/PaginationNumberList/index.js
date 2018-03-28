@@ -10,9 +10,6 @@ const PaginationNumberList = ({
   const rangeArray = Array.from(new Array(range), (val, index) => index + 1);
   const right = rangeArray.filter(value => currentPage + value < page - 1);
   const left = rangeArray.filter(value => currentPage - value > 1).reverse();
-  // console.log('range', rangeArray);
-  // console.log('right', right);
-  // console.log('left', left);
   return (
     <ul className="pagination-list">
       {currentPage > 1 && <PaginationPageButton color={color} value={1} onClick={onSelected} />}

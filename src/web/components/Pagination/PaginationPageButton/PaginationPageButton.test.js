@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import PaginationPageButton from './';
 import Button from '../../Button';
-import { wrap } from 'module';
 
 describe('PaginationPageButton', () => {
   let wrapper;
