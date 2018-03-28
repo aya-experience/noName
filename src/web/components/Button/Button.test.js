@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { ButtonBase } from './';
 
-describe('Button', () => {
+describe('ButtonBase', () => {
   let wrapper;
   let onClick;
 

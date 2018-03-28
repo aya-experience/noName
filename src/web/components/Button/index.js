@@ -3,8 +3,15 @@ import PropTypes from 'prop-types';
 import colorify from '../../hoc/Color';
 import sizable from '../../hoc/Size';
 
-function Button({
-  children, onClick, disabled, outlined, inverted, rounded, loading, className,
+function ButtonBase({
+  children,
+  onClick,
+  disabled,
+  outlined,
+  inverted,
+  rounded,
+  loading,
+  className,
 }) {
   const outlinedClass = outlined ? ' is-outlined' : '';
   const invertedClass = inverted ? ' is-inverted' : '';
@@ -19,7 +26,7 @@ function Button({
   );
 }
 
-Button.propTypes = {
+ButtonBase.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
@@ -34,7 +41,7 @@ Button.propTypes = {
   loading: PropTypes.bool,
 };
 
-Button.defaultProps = {
+ButtonBase.defaultProps = {
   className: '',
   disabled: false,
   outlined: false,
@@ -43,5 +50,5 @@ Button.defaultProps = {
   loading: false,
 };
 
-const ColorButton = sizable(colorify(Button));
-export { Button as ButtonBase, ColorButton as default };
+const ImprovedButton = sizable(colorify(ButtonBase));
+export { ButtonBase, ImprovedButton as default };
