@@ -10,12 +10,8 @@
     "dev": "next",
     "serve": "node ./src/cli/index",
     "test": "jest --coverage",
-<<<<<<< HEAD
     "format":
       "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\" && prettier-eslint --write \"stories/**/*.js\"",
-=======
-    "format": "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\" && prettier-eslint --write \"stories/**/*.js\"",
->>>>>>> feat(presentation): Add Dropdown component
     "lint": "eslint ./src && eslint ./pages",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -40,11 +36,6 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.4.1",
-<<<<<<< HEAD
-    "babel-eslint": "^8.2.2",
-=======
-    "babel-plugin-transform-class-properties": "^6.24.1",
->>>>>>> feat(presentation): Add Dropdown component
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
@@ -62,8 +53,6 @@
     "prettier-eslint-cli": "^4.7.1"
   },
   "jest": {
-    "setupFiles": [
-      "./configs/setup/test.setup.js"
-    ]
+    "setupFiles": ["./configs/setup/test.setup.js"]
   }
 }
