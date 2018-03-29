@@ -62,8 +62,4 @@ describe('Menu', () => {
       .prop('renderItem')(menuData.items[1]);
     expect(shallow(menuItem.props.children).prop('children')).toBe(menuData.items[1].name);
   });
-
-  // TODO later
-  // it('should trigger a click event when a title menu is clicked', () => {});
-  // it('should trigger a click event when a sub menu is clicked', () => {});
 });
