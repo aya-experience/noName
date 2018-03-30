@@ -8,12 +8,24 @@ import sizable from '../../hoc/Size';
 // use of tabs component bulma with a whithout href
 
 class Tabs extends React.Component {
-  renderItem = (item, itemIndex) => {
-    const { onSelected, index } = this.props;
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedKey: props.initialKey || (props.data[0] && props.data[0].key) || '',
+    };
+  }
+
+  onClick = key => {
+    this.setState({ selectedKey: key });
+    this.props.onChange(key);
+  };
+
+  renderItem = ({ key, component }) => {
+    const { selectedKey } = this.state;
     return (
-      <Item className={index == itemIndex ? 'is-active' : ''}>
-        <Touchable value={index} onClick={onSelected}>
-          {item}
+      <Item className={selectedKey == key ? 'is-active' : ''}>
+        <Touchable value={key} onClick={this.onClick}>
+          {component()}
         </Touchable>
       </Item>
     );
@@ -29,16 +41,18 @@ class Tabs extends React.Component {
     );
   }
 }
+const itemPropType = PropTypes.shape({ key: PropTypes.string, component: PropTypes.any });
 
 Tabs.propTypes = {
-  onSelected: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired,
-  data: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.element, PropTypes.string])),
+  onChange: PropTypes.func.isRequired,
+  initialKey: PropTypes.string,
+  data: PropTypes.arrayOf(itemPropType),
   className: PropTypes.string,
 };
 
 Tabs.defaultProps = {
   className: '',
+  initialKey: '',
 };
 const SizableTabs = sizable(Tabs);
 export { Tabs as TabsBase, SizableTabs as default };
