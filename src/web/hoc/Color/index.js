@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function colorify(Component) {
   function Color(props) {
-    const { className, color } = this.props;
+    const { className, color } = props;
     const classes = (className && `${className}${color && ' '}`) + (color && `is-${color}`);
     return <Component {...props} className={classes} />;
   }

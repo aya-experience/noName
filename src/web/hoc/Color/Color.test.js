@@ -22,7 +22,7 @@ describe('Color', () => {
   });
 
   it('should transfert className props to the connected component', () => {
-    wrapper.setProps({ className: 'hello' });
-    expect(wrapper.find(DivComponent).prop('className')).toBe('hello');
+    wrapper.setProps({ className: 'hello', color: 'danger' });
+    expect(wrapper.find(DivComponent).prop('className')).toBe('hello is-danger');
   });
 });
