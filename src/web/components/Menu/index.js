@@ -5,20 +5,29 @@ import LinkText from '../LinkText';
 import List from '../List';
 import Item from '../Item';
 
-const renderItem = (item) => {
-  if (item.items && item.items.length) {
+const renderItem = ({ items, name, link }) => {
+  if (items && items.length) {
     return (
-      <Item key={item.name}>
-        <Text className="menu-label">{item.name}</Text>
-        <List data={item.items} className="menu-list" renderItem={renderItem} />
+      <Item key={name}>
+        <Text className="menu-label">{name}</Text>
+        <List data={items} className="menu-list" renderItem={renderItem} />
       </Item>
     );
   }
   return (
-    <Item key={item.name}>
-      <LinkText href={item.link}>{item.name}</LinkText>
+    <Item key={name}>
+      <LinkText href={link}>{name}</LinkText>
     </Item>
   );
+};
+renderItem.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({})),
+  name: PropTypes.string.isRequired,
+  link: PropTypes.string,
+};
+renderItem.defaultProps = {
+  link: '',
+  items: null,
 };
 
 export default function Menu({ data }) {
