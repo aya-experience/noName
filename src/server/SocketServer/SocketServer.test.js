@@ -1,5 +1,5 @@
 const socketIo = require('./');
-const MainController = require('../../lib/controller/Main');
+const MainController = require('../../lib/controllers/Main');
 
 jest.mock('socket.io', () =>
   jest.fn(() => ({

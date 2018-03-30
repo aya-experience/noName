@@ -1,6 +1,6 @@
 const MainController = require('./');
 
-describe('MainController@connectionHandler', () => {
+describe('MainController', () => {
   let socket;
 
   beforeEach(() => {
@@ -17,16 +17,6 @@ describe('MainController@connectionHandler', () => {
   it('should call on function', () => {
     MainController.connectionHandler(socket);
     expect(socket.on).toBeCalledWith('disconnect', MainController.disconnectionHandler);
-  });
-});
-
-describe('MainController@disconnectionHandler', () => {
-  let socket;
-
-  beforeEach(() => {
-    socket = {
-      on: jest.fn(),
-    };
   });
 
   it('should return nothing whithout error', () => {
