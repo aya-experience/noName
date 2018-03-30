@@ -5,20 +5,33 @@ import Button from '../Button';
 import PaginationNumberList from './PaginationNumberList';
 
 class Pagination extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPage: props.initialPage,
+    };
+  }
+
+  setPage = (page) => {
+    const { onChange } = this.props;
+    this.setState({ currentPage: page });
+    onChange(page);
+  };
+
   nextPageHandler = () => {
-    const { currentPage, onChange, page } = this.props;
-    if (currentPage < page) onChange(currentPage + 1);
+    const { page } = this.props;
+    const { currentPage } = this.state;
+    if (currentPage < page) this.setPage(currentPage + 1);
   };
 
   previousPageHandler = () => {
-    const { currentPage, onChange } = this.props;
-    if (currentPage > 0) onChange(currentPage - 1);
+    const { currentPage } = this.state;
+    if (currentPage > 0) this.setPage(currentPage - 1);
   };
 
   render() {
-    const {
-      currentPage, page, color, onChange, range,
-    } = this.props;
+    const { page, color, range } = this.props;
+    const { currentPage } = this.state;
     const classes = 'pagination is-centered';
     const noPrevious = currentPage === 1;
     const noAfter = currentPage === page;
@@ -46,7 +59,7 @@ class Pagination extends React.Component {
           range={range}
           currentPage={currentPage}
           page={100}
-          onSelected={onChange}
+          onSelected={this.setPage}
           color={color}
         />
       </nav>
@@ -56,7 +69,7 @@ class Pagination extends React.Component {
 
 Pagination.propTypes = {
   onChange: PropTypes.func.isRequired,
-  currentPage: PropTypes.number.isRequired,
+  initialPage: PropTypes.number,
   page: PropTypes.number.isRequired,
   color: PropTypes.oneOf(COLOR),
   range: PropTypes.number,
@@ -64,6 +77,7 @@ Pagination.propTypes = {
 
 Pagination.defaultProps = {
   color: '',
+  initialPage: 1,
   range: 2,
 };
 
