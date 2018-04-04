@@ -7,19 +7,18 @@ import COLOR from '../src/web/constant';
 storiesOf('Pagination', module)
   .add('basic Pagination', () => (
     <React.Fragment>
-      <Pagination page={100} currentPage={50} onChange={action('full')} />
-      <Pagination page={100} currentPage={1} onChange={action('firstPage')} />
-      <Pagination page={100} currentPage={2} onChange={action('secondPage')} />
-      <Pagination page={100} currentPage={99} onChange={action('beforeLastPage')} />
-      <Pagination page={100} currentPage={100} onChange={action('lastPage')} />
+      <Pagination page={100} initialPage={50} onChange={action('full')} />
+      <Pagination page={100} initialPage={1} onChange={action('firstPage')} />
+      <Pagination page={100} initialPage={2} onChange={action('secondPage')} />
+      <Pagination page={100} initialPage={99} onChange={action('beforeLastPage')} />
+      <Pagination page={100} initialPage={100} onChange={action('lastPage')} />
     </React.Fragment>
   ))
   .add('with color', () =>
     COLOR.map(color => (
-      <Pagination
-        color={color}
-        page={100}
-        currentPage={50}
-        onChange={action(color || 'default')}
-      />
+      <Pagination color={color} page={100} currentPage={50} onChange={action(color || 'default')} />
+    )))
+  .add('with range', () =>
+    [1, 2, 3, 4, 5].map(value => (
+      <Pagination range={value} page={100} currentPage={50} onChange={action(`range-${value}`)} />
     )));
