@@ -4,6 +4,7 @@ import List from '../List';
 import Item from '../Item';
 import Touchable from '../Touchable';
 import sizable from '../../hoc/Size';
+import { Div } from 'glamorous';
 /* eslint-disable */
 // use of tabs component bulma with a whithout href
 
@@ -11,7 +12,7 @@ class Tabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedKey: props.initialKey || (props.data[0] && props.data[0].key) || '',
+      selectedKey: props.initialKey || (props.data[0] && props.data[0].key),
     };
   }
 
@@ -23,9 +24,9 @@ class Tabs extends React.Component {
   renderItem = ({ key, component }) => {
     const { selectedKey } = this.state;
     return (
-      <Item className={selectedKey == key ? 'is-active' : ''}>
+      <Item key={key} className={selectedKey == key ? 'is-active' : ''}>
         <Touchable value={key} onClick={this.onClick}>
-          {component()}
+          {key}
         </Touchable>
       </Item>
     );
@@ -33,11 +34,16 @@ class Tabs extends React.Component {
 
   render() {
     const { data, className } = this.props;
+    const { selectedKey } = this.state;
     const classes = `tabs${className && ` ${className}`}`;
+    const currentTab = data.find(item => item.key === selectedKey);
     return (
-      <nav className={classes}>
-        <List data={data} renderItem={this.renderItem} />
-      </nav>
+      <div>
+        <nav className={classes}>
+          <List data={data} renderItem={this.renderItem} />
+        </nav>
+        {currentTab && currentTab.component()}
+      </div>
     );
   }
 }
