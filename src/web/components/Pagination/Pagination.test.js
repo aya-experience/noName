@@ -19,7 +19,7 @@ describe('Pagination', () => {
       currentPage: 50,
       page: 100,
       range: 2,
-      color: '',
+      color: 'dark',
     });
   });
 
