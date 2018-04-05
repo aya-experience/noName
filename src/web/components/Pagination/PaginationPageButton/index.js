@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import COLOR from '../../../constant';
 import Button from '../../Button';
 
+const style = {
+  
+}
+
 class PaginationPageButton extends React.Component {
   onClickHandler = () => {
     const { value, onClick } = this.props;

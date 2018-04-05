@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import COLOR from '../../constant';
 import Button from '../Button';
 import PaginationNumberList from './PaginationNumberList';
+import './Pagination.css';
 
 class Pagination extends React.Component {
   constructor(props) {
@@ -76,7 +77,7 @@ Pagination.propTypes = {
 };
 
 Pagination.defaultProps = {
-  color: '',
+  color: 'dark',
   initialPage: 1,
   range: 2,
 };
