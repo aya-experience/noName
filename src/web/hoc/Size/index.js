@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function sizable(Component) {
-  const Size = ({ className, size, ...props }) => {
+  const Size = (props) => {
+    const { className, size } = props;
     const classes = className + (size && ` is-${size}`);
     return <Component {...props} className={classes.trim()} />;
   };
