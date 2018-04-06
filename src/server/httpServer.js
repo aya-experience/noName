@@ -2,6 +2,8 @@
 const express = require('express');
 const next = require('next');
 const open = require('opn');
+const http = require('http');
+const socketServer = require('./SocketServer');
 
 const DEV = process.env.NODE_ENV !== 'production';
 
@@ -14,13 +16,13 @@ const startServer = async (port) => {
   };
 
   try {
-    const server = express();
-    const app = next({ dev: DEV });
-    const handle = app.getRequestHandler();
-
-    await app.prepare();
-
-    server.get('*', handle);
+    const app = express();
+    const server = http.Server(app);
+    socketServer(server);
+    const nextjs = next({ dev: DEV });
+    const handle = nextjs.getRequestHandler();
+    await nextjs.prepare();
+    app.get('*', handle);
     server.listen(port, serverHandler);
   } catch (ex) {
     console.error(ex.stack);
