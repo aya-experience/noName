@@ -1,8 +1,4 @@
 class ClientController {
-  constructor(client) {
-    this.client = client;
-  }
-
   static disconnectionHandler() {
     console.log('Client close');
     // TODO
