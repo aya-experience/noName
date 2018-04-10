@@ -71,16 +71,22 @@ storiesOf('Button', module)
       Diasbled button
     </Button>
   ))
-  .add('with outlined', () => (
+  .add('with outlined', () => [
     <Button onClick={action('outlined')} outlined>
       Outlined button
-    </Button>
-  ))
-  .add('with inverted', () => (
-    <Button onClick={action('inverted')} inverted>
-      Inverted button
-    </Button>
-  ))
+    </Button>,
+    <Button onClick={action('info')} outlined color="info">
+      Info button
+    </Button>,
+  ])
+  .add('with inverted', () => [
+    <Button onClick={action('outlined')} inverted>
+      Outlined button
+    </Button>,
+    <Button onClick={action('info')} inverted color="info">
+      Info button
+    </Button>,
+  ])
   .add('with rounded', () => (
     <Button onClick={action('rounded')} rounded>
       Rounded button
