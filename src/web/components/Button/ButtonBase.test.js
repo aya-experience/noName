@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Button from './';
+import { ButtonBase } from './';
 
-describe('Button', () => {
+describe('ButtonBase', () => {
   let wrapper;
   let onClick;
 
   beforeEach(() => {
     onClick = jest.fn();
-    wrapper = shallow(<Button onClick={onClick}>Hello world</Button>);
+    wrapper = shallow(<ButtonBase onClick={onClick}>Hello world</ButtonBase>);
   });
 
   it('should render a children component', () => {
@@ -18,11 +18,6 @@ describe('Button', () => {
   it('should trigger onClick event', () => {
     wrapper.simulate('click');
     expect(onClick).toHaveBeenCalledTimes(1);
-  });
-
-  it('should have a button with only is-primary by default', () => {
-    const button = wrapper.find('button');
-    expect(button.prop('className')).toBe('button is-primary');
   });
 
   it('should have a disabled button when the prop disabled is true', () => {
@@ -52,18 +47,6 @@ describe('Button', () => {
   it('should have a is-loading class when the prop loading is true', () => {
     wrapper.setProps({ loading: true });
     const button = wrapper.find('button.is-loading');
-    expect(button).toHaveLength(1);
-  });
-
-  it('should have a button with a color class when the props color is set', () => {
-    wrapper.setProps({ color: 'primary' });
-    const button = wrapper.find('button.is-primary');
-    expect(button).toHaveLength(1);
-  });
-
-  it('should have a button with a size class when the props size is set', () => {
-    wrapper.setProps({ size: 'small' });
-    const button = wrapper.find('button.is-small');
     expect(button).toHaveLength(1);
   });
 

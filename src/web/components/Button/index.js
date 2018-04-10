@@ -1,25 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import colorify from '../../hoc/Color';
+import sizable from '../../hoc/Size';
 
-export default function Button({
+function ButtonBase({
   children,
   onClick,
-  color,
   disabled,
-  size,
   outlined,
   inverted,
   rounded,
   loading,
   className,
 }) {
-  const colorClass = color && ` is-${color}`;
-  const sizeClass = size && ` is-${size}`;
   const outlinedClass = outlined ? ' is-outlined' : '';
   const invertedClass = inverted ? ' is-inverted' : '';
   const roundedClass = rounded ? ' is-rounded' : '';
   const loadingClass = loading ? ' is-loading' : '';
-  const classes = `button${colorClass}${sizeClass}${outlinedClass}${invertedClass}${roundedClass}${loadingClass}${className &&
+  const classes = `button${outlinedClass}${invertedClass}${roundedClass}${loadingClass}${className &&
     ` ${className}`}`;
   return (
     <button className={classes} disabled={disabled} onClick={onClick}>
@@ -28,16 +26,14 @@ export default function Button({
   );
 }
 
-Button.propTypes = {
+ButtonBase.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element),
   ]).isRequired,
   onClick: PropTypes.func.isRequired,
-  color: PropTypes.string,
   className: PropTypes.string,
-  size: PropTypes.string,
   disabled: PropTypes.bool,
   outlined: PropTypes.bool,
   inverted: PropTypes.bool,
@@ -45,13 +41,14 @@ Button.propTypes = {
   loading: PropTypes.bool,
 };
 
-Button.defaultProps = {
-  color: 'primary',
+ButtonBase.defaultProps = {
   className: '',
-  size: '',
   disabled: false,
   outlined: false,
   inverted: false,
   rounded: false,
   loading: false,
 };
+
+const ImprovedButton = sizable(colorify(ButtonBase));
+export { ButtonBase, ImprovedButton as default };
