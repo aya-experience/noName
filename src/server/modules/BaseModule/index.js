@@ -4,14 +4,6 @@ class BaseModule {
     this.filters = filters;
   }
 
-  mount(io) {
-    this.io = io;
-  }
-
-  unmount() {
-    this.io = null;
-  }
-
   emit(data) {
     if (this.io) this.io.emit(this.name, data);
   }
