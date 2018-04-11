@@ -30,19 +30,20 @@ class SocketServer {
 
   /**
    * Emit to all socket an event
-   * @param {string} event
+   * @param {string} ev
    * @param {object} data
    */
-  emit(event, data) {
-    this.io.emit(event, data);
+  emit(ev, data) {
+    this.io.emit(ev, data);
   }
 
   /**
-   * Call handler function when a new client is connected
+   * subscribe to an event
+   * @param {string} ev
    * @param {Function} handler
    */
-  on(event, handler) {
-    this.io.on(event, handler);
+  on(ev, handler) {
+    this.io.on(ev, handler);
   }
 }
 

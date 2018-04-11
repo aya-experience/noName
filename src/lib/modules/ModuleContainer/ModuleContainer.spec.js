@@ -6,6 +6,7 @@ jest.mock('../UIManager');
 
 describe('ModuleContainer', () => {
   let moduleContainer;
+
   beforeEach(() => {
     moduleContainer = new ModuleContainer();
   });

@@ -8,6 +8,7 @@ jest.mock('socket.io', () =>
 
 describe('SocketServer', () => {
   let socketServer;
+
   beforeEach(() => {
     socketServer = new SocketServer({});
   });
