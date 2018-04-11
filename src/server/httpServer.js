@@ -4,9 +4,8 @@ const next = require('next');
 const open = require('opn');
 const http = require('http');
 const SocketServer = require('./SocketServer');
-const ClientController = require('../lib/controllers/Client');
+const Controller = require('../lib/controllers/Controller');
 const ModuleContainer = require('../lib/modules/ModuleContainer');
-const modules = require('../lib/config/modules');
 
 const DEV = process.env.NODE_ENV !== 'production';
 
@@ -24,10 +23,11 @@ const startServer = async (port) => {
     const nextjs = next({ dev: DEV });
     const handle = nextjs.getRequestHandler();
     const socketServer = new SocketServer(server);
-    const moduleContainer = new ModuleContainer(socketServer, { modules });
+    const moduleContainer = new ModuleContainer();
+    const controller = new Controller(socketServer, moduleContainer);
     await nextjs.prepare();
     app.get('*', handle);
-    socketServer.connect(socket => ClientController.connectHandler(socket, moduleContainer));
+    socketServer.connect(socket => controller.connectHandler(socket, moduleContainer));
     server.listen(port, serverHandler);
   } catch (ex) {
     console.error(ex.stack);
