@@ -9,6 +9,10 @@ class ModuleContainer {
     };
   }
 
+  /**
+   * return a module
+   * @param {string} name
+   */
   get(name) {
     const ModuleClass = this.registeredModule[name];
     if (ModuleClass) return new ModuleClass();
