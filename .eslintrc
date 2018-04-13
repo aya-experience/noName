@@ -10,7 +10,8 @@
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "import/no-extraneous-dependencies": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off"
   },
   "env": {
     "jest": true
