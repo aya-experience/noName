@@ -5,13 +5,11 @@ import LevelItem from '../LevelItem';
 
 const Level = ({ children }) => <div className="level">{children}</div>;
 
-const LevelType = PropTypes.oneOfType([
-  PropTypes.instanceOf(LevelArea),
-  PropTypes.instanceOf(LevelItem),
-]);
+const LevelType = [LevelArea, LevelItem];
 
 Level.propTypes = {
-  children: PropTypes.arrayOf(LevelType).isRequired,
+  children: PropTypes.oneOfType(LevelType, LevelType.map(type => PropTypes.arrayOf(type)))
+    .isRequired,
 };
 
 export default Level;

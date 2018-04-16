@@ -5,7 +5,7 @@ import LevelItem from '../LevelItem';
 const LevelArea = ({ children, position }) => <div className={`level-${position}`}>{children}</div>;
 
 LevelArea.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.instanceOf(LevelItem)).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(LevelItem), PropTypes.node]).isRequired,
   position: PropTypes.oneOf(['right', 'left']).isRequired,
 };
 
