@@ -4,7 +4,7 @@ import List from '../List';
 import Box from '../Box';
 import ConsoleLine from './ConsoleLine';
 
-const renderItem = item => <ConsoleLine data={item} />;
+const renderItem = (item, index) => <ConsoleLine data={item} key={index} />;
 
 const Console = ({ data }) => (
   <Box>
