@@ -5,4 +5,5 @@ import COLOR from '../src/web/constant';
 
 storiesOf('Tag', module)
   .add('basic Tag', () => <Tag>My tag</Tag>)
+  .add('rounded Tag', () => <Tag rounded>My tag</Tag>)
   .add('with color', () => COLOR.map(color => <Tag color={color}>My Tag {color}</Tag>));
