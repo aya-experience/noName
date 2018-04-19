@@ -16,7 +16,7 @@ describe('Roundable', () => {
     expect(wrapper.find(DivComponent).prop('className')).toBe('');
   });
 
-  it('should render the connected component with is-danger classes', () => {
+  it('should render the connected component with is-rounded classes', () => {
     wrapper.setProps({ rounded: true });
     expect(wrapper.find(DivComponent).prop('className')).toBe('is-rounded');
   });
