@@ -15,8 +15,8 @@ class ModuleContainer {
    */
   get(name) {
     const ModuleClass = this.registeredModule[name];
-    if (ModuleClass) return new ModuleClass();
-    throw new Error(`No module exist with the name ${name}`);
+    if (ModuleClass) return new ModuleClass(this.sessionManager);
+    throw new Error(`No existing module with the name ${name}`);
   }
 }
 
