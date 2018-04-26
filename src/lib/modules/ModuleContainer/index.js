@@ -1,12 +1,16 @@
 const UIManager = require('../UIManager');
 const RCTEventEmitter = require('../RCTEventEmitter');
+const SessionManager = require('../SessionManager');
+const AppRegistry = require('../AppRegistry');
 
 class ModuleContainer {
   constructor() {
     this.registeredModule = {
       UIManager,
       RCTEventEmitter,
+      AppRegistry,
     };
+    this.sessionManager = new SessionManager();
   }
 
   /**
