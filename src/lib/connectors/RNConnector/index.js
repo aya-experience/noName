@@ -5,6 +5,8 @@ import buffer from 'rn-snoopy/stream/buffer';
 // import EventEmitter from 'react-native/Libraries/EventEmitter/EventEmitter';
 import EventEmitter from 'react-native/Libraries/vendor/emitter/EventEmitter';
 
+const bannedModule = ['Timing', 'JSTimers', 'RCTDeviceEventEmitter'];
+
 class RNConnector {
   constructor({ server, eventName = 'bridge-data' }) {
     this.socket = io(server);
@@ -18,6 +20,8 @@ class RNConnector {
   }
 
   _buffer = events => buffer()(events);
+
+  _filter = events => events.filter(info => !bannedModule.includes(info.module));
 
   _onData = (data) => {
     this.socket.emit(this.eventName, data);
