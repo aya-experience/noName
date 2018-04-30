@@ -16,7 +16,7 @@ class RNConnector {
   stream() {
     const emitter = new EventEmitter();
     const events = Snoopy.stream(emitter);
-    return this._buffer(events).subscribe(this._onData);
+    return this._buffer(this._filter(events)).subscribe(this._onData);
   }
 
   _buffer = events => buffer()(events);
