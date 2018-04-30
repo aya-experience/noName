@@ -10,8 +10,7 @@
     "dev": "next",
     "serve": "node ./src/cli/index",
     "test": "jest --coverage",
-    "format":
-      "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\" && prettier-eslint --write \"stories/**/*.js\"",
+    "format": "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\" && prettier-eslint --write \"stories/**/*.js\"",
     "lint": "eslint ./src && eslint ./pages",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -29,7 +28,6 @@
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-native": "^0.55.3",
     "rn-snoopy": "^2.0.2",
     "socket.io": "^2.1.0"
   },
@@ -59,10 +57,11 @@
     "prettier-eslint-cli": "^4.7.1"
   },
   "jest": {
-    "setupFiles": ["./configs/setup/test.setup.js"],
+    "setupFiles": [
+      "./configs/setup/test.setup.js"
+    ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
       "\\rn-snoopy.js$": "<rootDir>/__mocks__/rn-snoopy.js",
       "rn-snoopy/(.*)/buffer": "<rootDir>/__mocks__/buffer.js",
