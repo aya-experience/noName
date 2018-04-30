@@ -21,7 +21,7 @@ describe('Notification', () => {
     expect(wrapper.find('button.delete')).toHaveLength(1);
   });
 
-  it('should render a div with notification class by default', () => {
+  it('should render a div with notification + className', () => {
     expect(wrapper.find('div.notification')).toHaveLength(1);
   });
 

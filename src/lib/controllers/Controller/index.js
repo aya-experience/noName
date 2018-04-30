@@ -10,6 +10,7 @@ class Controller {
     this.bridgeDataHandler = this.bridgeDataHandler.bind(this);
     this.connectHandler = this.connectHandler.bind(this);
     this.disconnectHandler = this.disconnectHandler.bind(this);
+    this.handleDataLine = this.handleDataLine.bind(this);
   }
 
   /**
@@ -29,18 +30,33 @@ class Controller {
     socket.on('disconnect', this.disconnectHandler);
   }
 
+  handleDataLine(data) {
+    try {
+      const module = this.moduleContainer.get(data.module);
+      this.socketServer.emit(data.module, module.handle(data));
+      data.handle = true;
+    } catch (err) {
+      console.error(err.message);
+      data.handle = false;
+    }
+    this.handleMiddleware(data);
+  }
+
   /**
    * handler for data from the bridge
    * @param {object} data
    */
   bridgeDataHandler(data) {
-    try {
-      const module = this.moduleContainer.get(data.module);
-      this.socketServer.emit(data.module, module.handle(data));
-    } catch (err) {
-      console.error(err.message);
-      this.socketServer.emit('UnknownData', data);
-    }
+    if (Array.isArray(data)) data.forEach(this.handleDataLine);
+    else this.handleDataLine(data);
+  }
+
+  handleMiddleware(data) {
+    this.consoleMiddleware(data);
+  }
+
+  consoleMiddleware(data) {
+    this.socketServer.emit('console', data);
   }
 }
 

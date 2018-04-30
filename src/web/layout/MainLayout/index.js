@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import Container from '../../components/Container';
+import Sidebar from '../../components/Sidebar';
+import MainMenu from './MainMenu';
 
 const MainLayout = ({ title, children }) => (
   <div>
@@ -11,14 +13,15 @@ const MainLayout = ({ title, children }) => (
       <link rel="stylesheet" type="text/css" href="/static/css/bulma.min.css" />
       <link rel="stylesheet" type="text/css" href="/static/css/ionicons.min.css" />
     </Head>
-    <Container>{children}</Container>
+    <Sidebar content={<MainMenu />}>
+      <Container>{children}</Container>
+    </Sidebar>
   </div>
 );
 
 MainLayout.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
-    .isRequired,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
 };
 
 export default MainLayout;

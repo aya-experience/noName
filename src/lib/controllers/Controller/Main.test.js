@@ -72,6 +72,6 @@ describe('Controller', () => {
       throw new Error();
     });
     controller.bridgeDataHandler(data);
-    expect(socketServer.emit).toBeCalledWith('UnknownData', data);
+    expect(socketServer.emit).toBeCalledWith('console', data);
   });
 });
