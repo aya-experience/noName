@@ -1,16 +1,16 @@
 import io from 'socket.io-client';
-import { Observable } from 'rxjs';
+import Connector from '../Connector';
 
-export default class WebConnector {
+export default class WebConnector extends Connector {
   constructor({ server = null }) {
-    this.io = io(server);
+    super(server, 'client');
   }
 
-  on(ev) {
-    return Observable.create((observer) => {
-      const onData = data => observer.next(data);
-      this.io.on(ev, onData);
-      return () => io.removeListener(ev, onData);
-    });
+  getConsole() {
+    return this.on('console');
+  }
+
+  getViewState() {
+    return this.on('view-state');
   }
 }

@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Console from '../../components/Console';
 import ToolBar from '../../components/ToolBar';
 import { FILTERS } from '../../constant';
 import WebConnector from '../../../lib/connectors/WebConnector';
 
-const nbItem = 20;
+const defaultMaxSize = 50;
+
+const dataFilter = filterHandlers => data =>
+  data.filter(item => filterHandlers.every(rule => !rule(item)));
+
+const getActivatedFilterHandlers = filters =>
+  Object.keys(filters)
+    .filter(key => filters[key].activated)
+    .map(key => filters[key].handle);
+
+const dataMerger = (data, maxSize = defaultMaxSize) => newData => [
+  ...newData,
+  ...data.slice(0, maxSize - newData.length),
+];
 
 class index extends Component {
   constructor(props) {
@@ -14,22 +26,25 @@ class index extends Component {
       data: [],
       filters: FILTERS,
     };
+    this.connector = new WebConnector({});
   }
 
   componentDidMount() {
-    const connector = new WebConnector({});
-    connector.on('console').subscribe(this.onData);
+    this.subscription = this.connector
+      .getConsole()
+      .filter(data => this.filter()(data))
+      .map(data => dataMerger(this.state.data)(data))
+      .subscribe(data => this.setState({ data }));
   }
 
-  onData = (data) => {
+  componentWillUnmount() {
+    this.subscription.unsubscribe();
+  }
+
+  getFilter = () => {
     const { filters } = this.state;
-    const rules = Object.keys(filters)
-      .filter(key => filters[key].activated)
-      .map(key => filters[key].handle);
-    console.log(rules);
-    if (rules.length === 0 || !rules.every(rule => !rule(data))) {
-      this.setState({ data: [data, ...this.state.data.slice(0, nbItem)] });
-    }
+    const filterHandlers = getActivatedFilterHandlers(filters);
+    return dataFilter(filterHandlers);
   };
 
   toolbarHandler = (name) => {
@@ -48,6 +63,5 @@ class index extends Component {
     );
   }
 }
-
 
 export default index;

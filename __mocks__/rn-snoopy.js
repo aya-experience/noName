@@ -1,7 +1,10 @@
+const eventGenerator = () => ({
+  bufferTime: jest.fn(eventGenerator),
+  subscribe: jest.fn(),
+  filter: jest.fn(eventGenerator),
+});
+
 const snoopy = {
-  stream: jest.fn(() => ({
-    bufferTime: jest.fn(),
-    subscribe: jest.fn(),
-  })),
+  stream: jest.fn(eventGenerator),
 };
 export default snoopy;

@@ -10,6 +10,7 @@ describe('Controller', () => {
     moduleInstance = { handle: jest.fn() };
     socketServer = {
       emit: jest.fn(),
+      of: jest.fn(() => socketServer),
     };
     moduleContainer = {
       get: jest.fn(() => moduleInstance),
