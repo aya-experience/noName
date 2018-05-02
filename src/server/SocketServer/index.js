@@ -17,7 +17,7 @@ class SocketServer {
    * @param {Function} handler
    */
   connect(handler) {
-    this.io.on('connection', handler);
+    this.io.of('/source').on('connection', handler);
   }
 
   /**
@@ -33,8 +33,8 @@ class SocketServer {
    * @param {string} ev
    * @param {object} data
    */
-  emit(ev, data) {
-    this.io.emit(ev, data);
+  emit(ev, data, namespace) {
+    (namespace ? this.io.of(namespace) : this.io).emit(ev, data);
   }
 
   /**

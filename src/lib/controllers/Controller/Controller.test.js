@@ -64,7 +64,7 @@ describe('Controller', () => {
     const data = { module: 'Hello', method: 'World' };
     moduleInstance.handle.mockImplementationOnce(() => 'test');
     controller.bridgeDataHandler(data);
-    expect(socketServer.emit).toBeCalledWith(data.module, 'test');
+    expect(socketServer.emit).toBeCalledWith(data.module, 'test', '/client');
   });
 
   it('should call socketService.emit with data.module and module.handle result', () => {
@@ -73,6 +73,6 @@ describe('Controller', () => {
       throw new Error();
     });
     controller.bridgeDataHandler(data);
-    expect(socketServer.emit).toBeCalledWith('console', data);
+    expect(socketServer.emit).toBeCalledWith('console', data, '/client');
   });
 });

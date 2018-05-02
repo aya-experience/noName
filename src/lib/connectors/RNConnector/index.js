@@ -7,9 +7,9 @@ import EventEmitter from 'react-native/Libraries/vendor/emitter/EventEmitter';
 // import EventEmitter from 'react-native/Libraries/EventEmitter/EventEmitter';
 import Connector from '../Connector';
 
-const bannedModule = ['Timing', 'JSTimers', 'RCTDeviceEventEmitter'];
+const acceptedModule = ['Networking', 'RTCEventEmitter', 'AppRegistry', 'UIManager'];
 
-const filter = events => events.filter(info => !bannedModule.includes(info.module));
+const filter = events => events.filter(info => acceptedModule.includes(info.module));
 
 class RNConnector extends Connector {
   constructor({ server, eventName = 'bridge-data' }) {

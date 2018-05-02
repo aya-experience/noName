@@ -33,7 +33,7 @@ class Controller {
   handleDataLine(data) {
     try {
       const module = this.moduleContainer.get(data.module);
-      this.socketServer.of('/client').emit(data.module, module.handle(data));
+      this.socketServer.emit(data.module, module.handle(data), '/client');
       data.handle = true;
     } catch (err) {
       console.error(err.message);
@@ -56,7 +56,8 @@ class Controller {
   }
 
   consoleMiddleware(data) {
-    this.socketServer.of('/client').emit('console', data);
+    // console.log(this.socketServer);
+    this.socketServer.emit('console', data, '/client');
   }
 }
 

@@ -4,6 +4,7 @@ jest.mock('socket.io', () =>
   jest.fn(() => ({
     on: jest.fn(),
     emit: jest.fn(),
+    of: jest.fn(),
   })));
 
 describe('SocketServer', () => {
@@ -17,13 +18,14 @@ describe('SocketServer', () => {
     expect(socketServer.io).toHaveProperty('on');
   });
 
-  it('should call io.conntect with "connect" and a handler func', () => {
+  it('should call io.connect with "connect" and a handler func', () => {
     const handler = jest.fn();
+    socketServer.io.of.mockReturnValue(socketServer.io);
     socketServer.connect(handler);
     expect(socketServer.io.on).toBeCalledWith('connection', handler);
   });
 
-  it('should call io.on with "connect" and a handler func', () => {
+  it('should call io.on with "disconnect" and a handler func', () => {
     const handler = jest.fn();
     socketServer.disconnect(handler);
     expect(socketServer.io.on).toBeCalledWith('disconnect', handler);
