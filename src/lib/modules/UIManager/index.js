@@ -1,4 +1,5 @@
 const BaseModule = require('../BaseModule');
+const Response = require('../../models/Response');
 const View = require('../../models/View');
 
 class UIManager extends BaseModule {
@@ -11,12 +12,6 @@ class UIManager extends BaseModule {
     this.handle = this.handle.bind(this);
   }
 
-  handle(data) {
-    console.log(data.method);
-    super.handle(data);
-    return this._getViewContainer();
-  }
-
   /**
    * Create a view and add it in view container
    * map createView method from the bridge
@@ -26,6 +21,7 @@ class UIManager extends BaseModule {
     const viewContainer = this._getViewContainer();
     const view = new View(args[0], args[1], args[3]);
     viewContainer.addView(view);
+    return new Response('ViewState', viewContainer.root);
   }
 
   /**
@@ -38,6 +34,7 @@ class UIManager extends BaseModule {
     const parent = viewContainer.get(args[0]);
     const children = args[1].map(viewContainer.get);
     parent.setChildren(children);
+    return new Response('ViewState', viewContainer.root);
   }
 
   _move(viewTag, moveFrom, moveTo) {
@@ -86,6 +83,8 @@ class UIManager extends BaseModule {
     if (removeFrom.length) {
       this._removeChildren(viewTag, removeFrom);
     }
+
+    return new Response('ViewState', this._getViewContainer().root);
   }
 
   updateView(args) {
@@ -93,12 +92,14 @@ class UIManager extends BaseModule {
     const view = viewContainer.get(args[0]);
     view.setClassName(args[1]);
     view.setProps(args[2]);
+    return new Response('ViewState', viewContainer.root);
   }
 
   measureInWindow(args) {
     const viewContainer = this._getViewContainer();
     const view = viewContainer.get(args[0]);
     view.addMesures('measureInWindow', args[1]);
+    return new Response('ViewState', viewContainer.root);
   }
 
   dispatchViewManagerCommand(args) {
@@ -107,20 +108,26 @@ class UIManager extends BaseModule {
     const commandId = args[1];
     const commandArgs = args[2];
     view.addCommandCall(commandId, commandArgs);
+    return new Response('ViewState', viewContainer.root);
   }
 
   setJSResponder(args) {
-    this._getViewContainer().setJsResponder(args[0], args[1]);
+    const viewContainer = this._getViewContainer();
+    viewContainer.setJsResponder(args[0], args[1]);
+    return new Response('ViewEvent', viewContainer.jsResponders);
   }
 
   clearJSResponder() {
-    this._getViewContainer().clearJSResponders();
+    const viewContainer = this._getViewContainer();
+    viewContainer.clearJSResponders();
+    return new Response('ViewEvent', viewContainer.jsResponders);
   }
 
   measure(args) {
     const viewContainer = this._getViewContainer();
     const view = viewContainer.get(args[0]);
     view.addMesures('measure', args[1]);
+    return new Response('ViewState', viewContainer.root);
   }
 
   _getViewContainer() {

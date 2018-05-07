@@ -1,3 +1,4 @@
+const { Observable } = require('rxjs');
 const UIManager = require('../UIManager');
 const RCTEventEmitter = require('../RCTEventEmitter');
 const SessionManager = require('../SessionManager');

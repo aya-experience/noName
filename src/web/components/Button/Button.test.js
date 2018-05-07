@@ -55,6 +55,12 @@ describe('Button', () => {
     expect(button).toHaveLength(1);
   });
 
+  it('should have a is-active class when the prop active is true', () => {
+    wrapper.setProps({ active: true });
+    const button = wrapper.find('button.is-active');
+    expect(button).toHaveLength(1);
+  });
+
   it('should have a button with a color class when the props color is set', () => {
     wrapper.setProps({ color: 'primary' });
     const button = wrapper.find('button.is-primary');

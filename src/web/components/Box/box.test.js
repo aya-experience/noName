@@ -15,4 +15,9 @@ describe('Box', () => {
     const children = wrapper.find('div#hello');
     expect(children.text()).toEqual('Hello world');
   });
+
+  it('should render a button with the classes in className', () => {
+    wrapper.setProps({ className: 'hello' });
+    expect(wrapper.find('div.hello')).toHaveLength(1);
+  });
 });

@@ -11,13 +11,10 @@ class ConsolePage extends Component {
 
   componentDidMount() {
     const connectors = new WebConnector({});
-    connectors.on('UIManager').subscribe(data => this.updateUiState(data));
-    connectors.on('UIManager').subscribe(data => console.log(data));
+    connectors.getViewState().subscribe(this.updateUiState);
   }
 
-  updateUiState(data) {
-    this.setState({ data });
-  }
+  updateUiState = data => this.setState({ data });
 
   render() {
     return (

@@ -26,10 +26,10 @@ class index extends Component {
       data: [],
       filters: FILTERS,
     };
-    this.connector = new WebConnector({});
   }
 
   componentDidMount() {
+    this.connector = new WebConnector({});
     this.subscription = this.connector
       .getConsole()
       .filter(data => this.filter()(data))

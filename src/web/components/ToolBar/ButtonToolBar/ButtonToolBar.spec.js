@@ -44,7 +44,12 @@ describe('ButtonToolBar', () => {
   });
 
   it('should not render an icon by default', () => {
-    console.log(wrapper.debug());
     expect(wrapper.find(Icon)).toHaveLength(0);
+  });
+
+  it('should render a info color button when activated and colr empty is set', () => {
+    wrapper.setProps({ color: '', activated: true });
+    const button = wrapper.find(Button);
+    expect(button.prop('color')).toBe('info');
   });
 });

@@ -1,31 +1,38 @@
-const socketIo = require('socket.io');
+const IO = require('socket.io');
+const { Observable } = require('rxjs');
+const Socket = require('./Socket');
 
 /**
  * Abstract Api of socket.io lib
  */
 class SocketServer {
   /**
-   * Create a websocket whith an instant of http server
+   * Create a websocket with an instant of http server
    * @param {httpServer} httpServer
    */
   constructor(httpServer) {
-    this.io = socketIo(httpServer);
+    this.io = IO(httpServer, {
+      serveClient: false,
+    });
   }
 
   /**
    * Call handler function when a new client is connected
-   * @param {Function} handler
+   * @param {string} namespaceValue default '/'
+   * @returns Observable
    */
-  connect(handler) {
-    this.io.of('/source').on('connection', handler);
-  }
-
-  /**
-   * Call handler function when a client is disconnected
-   * @param {Function} handler
-   */
-  disconnect(handler) {
-    this.io.on('disconnect', handler);
+  connect(namespaceValue = '/') {
+    return Observable.create((observer) => {
+      // create a namespace to limit the emit impact
+      const namespace = this.io.of(namespaceValue);
+      // Handle connect and disconnect
+      const handlerConnect = socketIo => observer.next(new Socket(socketIo));
+      namespace.on('connect', handlerConnect);
+      // Handle unsubscribe remove listener
+      return () => {
+        namespace.removeListener('connect', handlerConnect);
+      };
+    });
   }
 
   /**
@@ -35,15 +42,6 @@ class SocketServer {
    */
   emit(ev, data, namespace) {
     (namespace ? this.io.of(namespace) : this.io).emit(ev, data);
-  }
-
-  /**
-   * subscribe to an event
-   * @param {string} ev
-   * @param {Function} handler
-   */
-  on(ev, handler) {
-    this.io.on(ev, handler);
   }
 }
 

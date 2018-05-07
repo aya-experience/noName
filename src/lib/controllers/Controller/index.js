@@ -1,63 +1,94 @@
+const Response = require('../../models/Response');
+const SubjectType = require('../../enum/SubjectType');
+const { Observable } = require('rxjs');
+
 class Controller {
   /**
    * Create a controller instance
-   * @param {SocketServer} socketServer
+   * @param {SocketServerV2} socketServer
    * @param {ModuleContainer} moduleContainer
    */
-  constructor(socketServer, moduleContainer) {
+  constructor(socketServer, moduleContainer, subjectContainer) {
     this.socketServer = socketServer;
     this.moduleContainer = moduleContainer;
-    this.bridgeDataHandler = this.bridgeDataHandler.bind(this);
-    this.connectHandler = this.connectHandler.bind(this);
-    this.disconnectHandler = this.disconnectHandler.bind(this);
-    this.handleDataLine = this.handleDataLine.bind(this);
+    this.subjectContainer = subjectContainer;
+    this.handleSource = this.handleSource.bind(this);
+    this.handleClient = this.handleClient.bind(this);
   }
 
-  /**
-   * handler for disconnected user event
-   */
-  disconnectHandler() {
-    console.log('Client close');
+  start() {
+    // Handle source socket
+    this.socketServer
+      .connect('/source')
+      .subscribe(
+        this.handleSource,
+        error => console.log(`Source: error - ${error.message}`),
+        () => console.log('Source: Stop listenning source'),
+      );
+
+    // Handle client socket
+    this.socketServer
+      .connect('/client')
+      .subscribe(
+        this.handleClient,
+        error => console.log(`Client: error - ${error.message}`),
+        () => console.log('Client: kicked'),
+      );
   }
 
-  /**
-   * handler for connected user event
-   * @param {Socket} socket
-   */
-  connectHandler(socket) {
-    console.log('Client open');
-    socket.on('bridge-data', this.bridgeDataHandler);
-    socket.on('disconnect', this.disconnectHandler);
-  }
+  handleSource(socket) {
+    console.log('Source: connected');
+    socket.disconnect(() => console.log('Source: disconnected'));
 
-  handleDataLine(data) {
-    try {
-      const module = this.moduleContainer.get(data.module);
-      this.socketServer.emit(data.module, module.handle(data), '/client');
-      data.handle = true;
-    } catch (err) {
-      console.error(err.message);
-      data.handle = false;
-    }
-    this.handleMiddleware(data);
+    socket
+      .on('bridge-data')
+      // Split array
+      .map(batch => Observable.from(batch))
+      // send Observable to middleware
+      .let(obs => obs /* middleware handler */) // TODO
+      // handle data return response
+      .map(data => this.moduleContainer.handle(data))
+      .subscribe(response => this.subjectContainer.handle(response));
   }
+  /* eslint-disable class-methods-use-this */
+  handleClient(socket) {
+    console.log(`Client ${socket.id}: connected`);
+    let subscriptions = [];
+    Object.keys(SubjectType).forEach((key) => {
+      const subjectName = SubjectType[key];
+      const subject = this.subjectContainer.get(subjectName);
 
-  /**
-   * handler for data from the bridge
-   * @param {object} data
-   */
-  bridgeDataHandler(data) {
-    if (Array.isArray(data)) data.forEach(this.handleDataLine);
-    else this.handleDataLine(data);
-  }
+      let subscription = null;
 
-  handleMiddleware(data) {
-    this.consoleMiddleware(data);
-  }
+      socket.on(subjectName).subscribe((message) => {
+        console.log(`Client ${socket.id}: ${
+          message !== 'on' ? 'unsubscribe' : 'subscribe'
+        } to ${subjectName}`);
+        switch (message) {
+          case 'on':
+            if (subscription === null) {
+              subscription = subject
+                .asObservable()
+                .subscribe(data => socket.emit(subjectName, data));
+              subscriptions = [...subscriptions, subscription];
+            }
+            break;
+          case 'off':
+            if (subscription) {
+              subscription = subscription.unsubscribe();
+            }
+            break;
+          // maybe one day can handle other command
+          default:
+            break;
+        }
+      });
+    });
 
-  consoleMiddleware(data) {
-    // console.log(this.socketServer);
-    this.socketServer.emit('console', data, '/client');
+    socket.disconnect().subscribe(() => {
+      subscriptions.forEach(subscription => subscription.unsubscribe());
+      console.log(`Client ${socket.id}: disconnected`);
+    });
   }
 }
 
