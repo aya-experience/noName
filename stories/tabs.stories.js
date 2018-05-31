@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Tabs from '../src/web/components/Tabs';
-import Text from '../src/web/components/Text';
+import Tabs from '../src/web/old/components/Tabs';
+import Text from '../src/web/old/components/Text';
 
 const data = [
   { key: 'Hello', component: () => <Text>Hello</Text> },

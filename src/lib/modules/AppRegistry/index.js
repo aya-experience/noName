@@ -13,7 +13,7 @@ class AppRegistry extends BaseModule {
     const root = new View(args[1].rootTag, args[0]);
     const viewContainer = new ViewContainer(root);
     this.sessionManager.set('ViewContainer', viewContainer);
-    return new Response('ViewState', viewContainer);
+    return new Response('TreeView', viewContainer);
   }
 }
 

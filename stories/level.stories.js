@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Level from './../src/web/components/Level';
-import LevelArea from './../src/web/components/LevelArea';
-import LevelItem from './../src/web/components/LevelItem';
-import { Text } from '../src/web/components/Text';
+import Level from '../src/web/old/components/Level';
+import LevelArea from '../src/web/old/components/LevelArea';
+import LevelItem from '../src/web/old/components/LevelItem';
+import { Text } from '../src/web/old/components/Text';
 
 const item = [
   <LevelItem>

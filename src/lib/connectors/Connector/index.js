@@ -1,18 +1,20 @@
 import io from 'socket.io-client';
 
-const buildEndPointUrl = (server, namespace) =>
-  (server || '') + ((namespace && `/${namespace}`) || '') || null;
 
 class Connector {
+  static buildEndPointUrl(server, namespace) {
+    return (server || '') + ((namespace && `/${namespace}`) || '') || null;
+  }
+
+  emit(ev, data) {
+    this.io.emit(ev, data);
+  }
+
   constructor(server, namespace) {
-    const url = buildEndPointUrl(server, namespace);
+    const url = Connector.buildEndPointUrl(server, namespace);
     this.io = io(url);
     this.emit = this.emit.bind(this);
   }
-
-  emit(eventName, data) {
-    this.io.emit(eventName, data);
-  }
 }
 
-export { Connector as default, buildEndPointUrl };
+export default Connector;

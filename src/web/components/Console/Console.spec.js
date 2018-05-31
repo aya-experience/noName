@@ -1,40 +1,40 @@
 import React from 'react';
+import Paper from '@material-ui/core/Paper';
 import { shallow } from 'enzyme';
 import Console from './';
 import List from '../List';
-import ConsoleLine from './ConsoleLine';
 
 describe('Console', () => {
   let wrapper;
   let data;
-
+  let component;
   beforeEach(() => {
+    component = props => props.toString();
     data = [
-      { module: 'hello', method: 'world', args: ['Marvin', 'Alexandre', 'Zenika'] },
-      { module: 'RTCEventEmitter', method: 'click', args: [33.6, 46.5] },
-      { module: 'RTCEventEmitter', method: 'click', args: [33.6, 46.5] },
+      {
+        mode: 0, module: 'UIModule', methode: 'createView', args: [5, 6, [3, 4]],
+      },
+      {
+        mode: 0, module: 'UIModule', methode: 'createView', args: [5, 6, [3, 4]],
+      },
+      {
+        mode: 0, module: 'UIModule', methode: 'createView', args: [5, 6, [3, 4]],
+      },
+      {
+        mode: 0, module: 'UIModule', methode: 'createView', args: [5, 6, [3, 4]],
+      },
+      {
+        mode: 0, module: 'UIModule', methode: 'createView', args: [5, 6, [3, 4]],
+      },
     ];
-    wrapper = shallow(<Console data={data} />);
+    wrapper = shallow(<Console data={data} ComponentLine={component} />);
   });
 
-  it('should have an list', () => {
-    const list = wrapper.find(List);
-    expect(list).toHaveLength(1);
+  it('should pass data to List', () => {
+    expect(wrapper.find(List).prop('data')).toBe(data);
   });
 
-  it('should have an list with data props', () => {
-    const list = wrapper.find(List);
-    expect(list.prop('data')).toBe(data);
-  });
-
-  it('should have an list with renderList function', () => {
-    const list = wrapper.find(List);
-    expect(list.prop('renderItem')).toBeInstanceOf(Function);
-  });
-
-  it('should have an list with renderList function', () => {
-    const renderItem = wrapper.find(List).prop('renderItem');
-    const item = renderItem(data[0]);
-    expect(item).toEqual(<ConsoleLine data={data[0]} />);
+  it('should pass ComponentLine to List', () => {
+    expect(wrapper.find(List).prop('Component')).toBe(component);
   });
 });

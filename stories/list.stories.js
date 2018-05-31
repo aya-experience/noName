@@ -1,14 +1,14 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import List from './../src/web/components/List';
-import Item from './../src/web/components/Item';
+import List from '../src/web/old/components/List';
+import Item from '../src/web/old/components/Item';
 
 const data = [
-  { id: 'hashID1', name: 'hamtaro' },
-  { id: 'hashID2', name: 'mickael' },
-  { id: 'hashID3', name: 'aya' },
+  { id: 'hashID1', className: 'hamtaro' },
+  { id: 'hashID2', className: 'mickael' },
+  { id: 'hashID3', className: 'aya' },
 ];
 
-const renderItem = item => <Item key={item.id}>{item.name}</Item>;
+const renderItem = item => <Item key={item.id}>{item.className}</Item>;
 
 storiesOf('List', module).add('Basic list', () => <List data={data} renderItem={renderItem} />);

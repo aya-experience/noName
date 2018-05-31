@@ -1,3 +1,5 @@
+const NotFoundError = require('../../errors/NotFoundError');
+
 class BaseModule {
   /**
    * @param {SessionManager} sessionManager
@@ -13,7 +15,7 @@ class BaseModule {
   handle(data) {
     const method = this[data.method];
     if (method) return method(data.args);
-    throw new Error(`No existing method with the name ${data.method}`);
+    throw new NotFoundError(`No existing method with the name ${data.module}@${data.method}`);
   }
 }
 

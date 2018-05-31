@@ -3,7 +3,7 @@ const { Observable } = require('rxjs');
 const Socket = require('./Socket');
 
 /**
- * Abstract Api of socket.io lib
+ * Abstract Api of SocketServer in socket.io lib
  */
 class SocketServer {
   /**

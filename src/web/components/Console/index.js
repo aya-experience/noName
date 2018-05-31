@@ -1,15 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import List from '../List';
-import Box from '../Box';
-import ConsoleLine from './ConsoleLine';
 
-const renderItem = (item, index) => <ConsoleLine data={item} key={index} />;
-
-const Console = ({ data }) => <List data={data} renderItem={renderItem} />;
+const listStyle = height => ({
+  padding: '0',
+  overflowY: 'auto',
+  height,
+});
+const Console = ({ data, ComponentLine, height }) => (
+  <List data={data} Component={ComponentLine} style={listStyle(height)} />
+);
 
 Console.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  ComponentLine: PropTypes.func.isRequired,
+  height: PropTypes.string,
+};
+
+Console.defaultProps = {
+  height: '100%',
 };
 
 export default Console;
+

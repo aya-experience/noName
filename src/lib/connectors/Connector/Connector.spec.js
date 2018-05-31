@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import io from 'socket.io-client';
-import Connector, { buildEndPointUrl } from './';
+import Connector from './';
 
 describe('Connector', () => {
   it('should have io to be set', () => {
@@ -22,5 +22,14 @@ describe('Connector', () => {
   it('should return server + / + namespace when all param is set', () => {
     const connector = new Connector('http://localhost:3000', 'hello');
     expect(io).toBeCalledWith('http://localhost:3000/hello');
+  });
+
+  it('should call io.emits', () => {
+    const connector = new Connector(null, null);
+    const ev = 'HelloWorld';
+    const data = { className: 'kevin' };
+    connector.io.emit = jest.fn();
+    connector.emit(ev, data);
+    expect(connector.io.emit).toBeCalledWith(ev, data);
   });
 });

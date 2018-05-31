@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Columns from './../src/web/components/Columns';
-import Column from './../src/web/components/Column';
+import Columns from '../src/web/old/components/Columns';
+import Column from '../src/web/old/components/Column';
 
 storiesOf('Columns', module)
   .add('with two columns', () => (

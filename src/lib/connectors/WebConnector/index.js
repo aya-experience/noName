@@ -1,6 +1,6 @@
-import { Observable } from 'rxjs';
-import io from 'socket.io-client';
+import { Observable } from 'rxjs/Rx';
 import Connector from '../Connector';
+import EmitterType from '../../enum/EmitterType';
 
 export default class WebConnector extends Connector {
   constructor({ server = null }) {
@@ -15,16 +15,16 @@ export default class WebConnector extends Connector {
       this.emit(ev, 'on');
       return () => {
         this.emit(ev, 'off');
-        io.off(ev, onData);
+        this.io.off(ev, onData);
       };
     });
   }
 
   getConsole() {
-    return this.on('console');
+    return this.on(EmitterType.Console);
   }
 
-  getViewState() {
-    return this.on('ViewState');
+  getTreeView() {
+    return this.on(EmitterType.TreeView);
   }
 }

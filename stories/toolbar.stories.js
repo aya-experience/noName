@@ -1,29 +1,29 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import ToolBar from '../src/web/components/ToolBar';
+import ToolBar from '../src/web/old/components/ToolBar';
 
 const data = [
-  { name: 'UIModule', activated: false, icon: 'ion-home' },
-  { name: 'UnknowModule', activated: true, icon: 'ion-home' },
-  { name: 'RTCEventEmitter', activated: false, icon: 'ion-home' },
+  { className: 'UIModule', activated: false, icon: 'ion-home' },
+  { className: 'UnknowModule', activated: true, icon: 'ion-home' },
+  { className: 'RTCEventEmitter', activated: false, icon: 'ion-home' },
 ];
 
 const data2 = [
   {
-    name: 'UIModule',
+    className: 'UIModule',
     activated: true,
     icon: 'ion-home',
     color: 'danger',
   },
   {
-    name: 'UnknowModule',
+    className: 'UnknowModule',
     activated: true,
     icon: 'ion-home',
     color: 'success',
   },
   {
-    name: 'RTCEventEmitter',
+    className: 'RTCEventEmitter',
     activated: true,
     icon: 'ion-home',
     color: 'primary',

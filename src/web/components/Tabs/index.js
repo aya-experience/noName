@@ -1,64 +1,111 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import List from '../List';
-import Item from '../Item';
-import Touchable from '../Touchable';
-import sizable from '../../hoc/Size';
-import { Div } from 'glamorous';
-/* eslint-disable */
-// use of tabs component bulma with a whithout href
+import MaterialTabs from '@material-ui/core/Tabs';
+import MaterialTab from '@material-ui/core/Tab';
+import { withStyles } from '@material-ui/core/styles';
 
-class Tabs extends React.Component {
+const styles = {
+  tabsRoot: {
+    borderBottom: '1px solid #e8e8e8',
+    minHeight: '25px',
+  },
+  tabRoot: {
+    maxHeight: '25px',
+  },
+  labelContainer: {
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+  content: {
+    flexGrow: 1,
+    maxHeight: 'calc(100% - 25px)',
+    overflowY: 'auto',
+  },
+};
+
+
+class Tabs extends Component {
   constructor(props) {
     super(props);
+    this.renderTab = this.renderTab.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.state = {
-      selectedKey: props.initialKey || (props.data[0] && props.data[0].key),
+      value: props.initial || props.items[0].value || 0,
     };
   }
 
-  onClick = key => {
-    this.setState({ selectedKey: key });
-    this.props.onChange(key);
-  };
+  onChange(event, value) {
+    const { onChange } = this.props;
+    if (onChange) {
+      onChange(value);
+    }
+    this.setState({ value });
+  }
 
-  renderItem = ({ key, component }) => {
-    const { selectedKey } = this.state;
-    return (
-      <Item key={key} className={selectedKey == key ? 'is-active' : ''}>
-        <Touchable value={key} onClick={this.onClick}>
-          {key}
-        </Touchable>
-      </Item>
-    );
-  };
+
+  renderTab(item, index) {
+    const { classes } = this.props;
+    return (<MaterialTab
+      key={item.value || index}
+      value={item.value || index}
+      label={item.label}
+      icon={item.icon}
+      classes={{ root: classes.tabRoot, labelContainer: classes.labelContainer }}
+    />);
+  }
+
 
   render() {
-    const { data, className } = this.props;
-    const { selectedKey } = this.state;
-    const classes = `tabs${className && ` ${className}`}`;
-    const currentTab = data.find(item => item.key === selectedKey);
+    const {
+      items, className, style, classes,
+    } = this.props;
+    const { value } = this.state;
+    const tabs = items.map(this.renderTab);
+    const selectedTab = items
+      .find((item, index) => (item.value ? item.value === value : index === value));
     return (
-      <div>
-        <nav className={classes}>
-          <List data={data} renderItem={this.renderItem} />
-        </nav>
-        {currentTab && currentTab.component()}
+      <div style={style} className={classes.container}>
+        <MaterialTabs
+          classes={{ root: classes.tabsRoot }}
+          className={className}
+          value={value}
+          onChange={this.onChange}
+        >
+          { tabs }
+        </MaterialTabs>
+        <div className={classes.content}>
+          { selectedTab.component() }
+        </div>
       </div>
     );
   }
 }
-const itemPropType = PropTypes.shape({ key: PropTypes.string, component: PropTypes.any });
+
+const itemType = PropTypes.shape({
+  value: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  icon: PropTypes.node,
+  component: PropTypes.func,
+});
 
 Tabs.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  initialKey: PropTypes.string,
-  data: PropTypes.arrayOf(itemPropType),
+  items: PropTypes.arrayOf(itemType).isRequired,
+  initial: PropTypes.string,
+  onChange: PropTypes.func,
   className: PropTypes.string,
+  style: PropTypes.shape({}),
+  classes: PropTypes.shape({}).isRequired,
 };
 
 Tabs.defaultProps = {
+  initial: '',
   className: '',
-  initialKey: '',
+  onChange: null,
+  style: {},
 };
-const SizableTabs = sizable(Tabs);
-export { Tabs as TabsBase, SizableTabs as default };
+export default withStyles(styles)(Tabs);

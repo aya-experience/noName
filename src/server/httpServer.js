@@ -6,7 +6,8 @@ const http = require('http');
 const SocketServer = require('./SocketServer');
 const Controller = require('../lib/controllers/Controller');
 const ModuleContainer = require('../lib/modules/ModuleContainer');
-const SubjectContainer = require('../lib/subject/SubjectContainer');
+const EmitterContainer = require('../lib/emitters/EmitterContainer');
+const MiddlewareContainer = require('../lib/middlewares/MiddlewareContainer');
 
 const DEV = process.env.NODE_ENV !== 'production';
 
@@ -25,8 +26,14 @@ const startServer = async (port) => {
     const handle = nextjs.getRequestHandler();
     const socketServer = new SocketServer(server);
     const moduleContainer = new ModuleContainer();
-    const subjectContainer = new SubjectContainer();
-    const controller = new Controller(socketServer, moduleContainer, subjectContainer);
+    const emitterContainer = new EmitterContainer();
+    const middlewareContainer = new MiddlewareContainer(emitterContainer);
+    const controller = new Controller(
+      socketServer,
+      moduleContainer,
+      emitterContainer,
+      middlewareContainer,
+    );
     await nextjs.prepare();
     app.get('*', handle);
     controller.start();

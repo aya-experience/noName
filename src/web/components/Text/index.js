@@ -1,18 +1,26 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import typography from '../../hoc/Typography';
+import Typography from '@material-ui/core/Typography';
 
-export function Text({ children, className }) {
-  return <p className={className}>{children}</p>;
-}
+const COLOR = ['inherit', 'primary', 'textSecondary', 'secondary', 'error', 'default'];
+
+const Text = (props) => {
+  const { children, align, color } = props;
+  return (
+    <Typography {...props} align={align} color={color} variant="body1" >{children}</Typography>
+  );
+};
 
 Text.propTypes = {
-  children: PropTypes.string.isRequired,
-  className: PropTypes.string,
+  children: PropTypes.any,
+  align: PropTypes.string,
+  color: PropTypes.oneOf(COLOR),
 };
 
 Text.defaultProps = {
-  className: '',
+  align: 'inherit',
+  color: 'default',
 };
 
-export default typography(Text);
+export default Text;

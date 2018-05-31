@@ -13,17 +13,17 @@ describe('Touchable', () => {
   });
 
   it('should render children as a text', () => {
-    expect(wrapper.find('a').text()).toBe('Content');
+    expect(wrapper.find('span').text()).toBe('Content');
   });
 
   it('should trigger onClick event whith value as param when the a is clicked and value set ', () => {
     wrapper.setProps({ value: 1 });
-    wrapper.find('a').simulate('click');
+    wrapper.find('span').simulate('click');
     expect(onClick).toBeCalledWith(1);
   });
 
   it('should trigger onClick event when the a is clicked', () => {
-    wrapper.find('a').simulate('click');
+    wrapper.find('span').simulate('click');
     expect(onClick).toBeCalled();
   });
 });

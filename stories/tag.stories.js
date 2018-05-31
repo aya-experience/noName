@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Tag from '../src/web/components/Tag';
-import COLOR from '../src/web/constant';
+import Tag from '../src/web/old/components/Tag';
+import COLOR from '../src/web/old/constant';
 
 storiesOf('Tag', module)
   .add('basic Tag', () => <Tag>My tag</Tag>)

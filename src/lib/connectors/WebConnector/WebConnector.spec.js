@@ -30,12 +30,36 @@ describe('WebConnector', () => {
     expect(connector.io.on).toBeCalled();
   });
 
-  it('should call io.on when on is called', () => {
+  it('should receive all even on subscription func', () => {
     const subscribtion = jest.fn();
     const data = { module: 'UIManager' };
     connector.io.on = jest.fn();
     connector.on('event').subscribe(subscribtion);
     connector.io.on.mock.calls[0][1](data);
     expect(subscribtion).toBeCalledWith(data);
+  });
+
+  it('should shut down connection on unsubscribe', () => {
+    connector.emit = jest.fn();
+    connector.io.off = jest.fn();
+    connector.on('event').subscribe().unsubscribe();
+    expect(connector.emit).toBeCalledWith('event', 'off');
+  });
+
+  it('should remove eventEmitter of connection on unsubscribe', () => {
+    connector.emit = jest.fn();
+    connector.io.off = jest.fn();
+    connector.on('event').subscribe().unsubscribe();
+    expect(connector.io.off).toBeCalledWith('event', expect.any(Function));
+  });
+
+  it('should return an obs when getConsole is call', () => {
+    connector.on = jest.fn(() => 'observable');
+    expect(connector.getConsole()).toBe('observable');
+  });
+
+  it('should return an obs when getTreeView is call', () => {
+    connector.on = jest.fn(() => 'observable');
+    expect(connector.getTreeView()).toBe('observable');
   });
 });

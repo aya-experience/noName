@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Pagination from '../src/web/components/Pagination';
-import COLOR from '../src/web/constant';
+import Pagination from '../src/web/old/components/Pagination';
+import COLOR from '../src/web/old/constant';
 
 storiesOf('Pagination', module)
   .add('basic Pagination', () => (

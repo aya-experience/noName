@@ -1,16 +1,25 @@
+/* eslint-disable
+  jsx-a11y/anchor-is-valid,
+  jsx-a11y/click-events-have-key-events,
+  jsx-a11y/no-static-element-interactions */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Touchable extends Component {
-  onClickHandler = (event) => {
+  constructor(props) {
+    super(props);
+    this.onClickHandler = this.onClickHandler.bind(this);
+  }
+
+  onClickHandler(event) {
     const { value, onClick } = this.props;
     if (value) return onClick(value);
     return onClick(event);
-  };
+  }
 
   render() {
     const { children } = this.props;
-    return <a onClick={this.onClickHandler}>{children}</a>;
+    return <span onClick={this.onClickHandler}>{children}</span>;
   }
 }
 

@@ -1,8 +1,8 @@
-const { Observable } = require('rxjs');
 const UIManager = require('../UIManager');
 const RCTEventEmitter = require('../RCTEventEmitter');
 const SessionManager = require('../SessionManager');
 const AppRegistry = require('../AppRegistry');
+const NotFoundError = require('../../errors/NotFoundError');
 
 class ModuleContainer {
   constructor() {
@@ -21,7 +21,7 @@ class ModuleContainer {
   get(name) {
     const ModuleClass = this.registeredModule[name];
     if (ModuleClass) return new ModuleClass(this.sessionManager);
-    throw new Error(`No existing module with the name ${name}`);
+    throw new NotFoundError(`No existing module with the name ${name}`);
   }
 }
 

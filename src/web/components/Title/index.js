@@ -1,21 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import typography from '../../hoc/Typography';
+import Typography from '@material-ui/core/Typography';
+import { COLOR, COLOR_DEFAULT } from '../../constant.json';
 
-export function Title({ children, size, className }) {
-  const classes = `title is-${size}${className && ` ${className}`}`;
-  return <h1 className={classes}>{children}</h1>;
-}
+const Title = (props) => {
+  const {
+    children, color, className, style,
+  } = props;
+  return (
+    <Typography {...props} variant="headline" component="h1" className={className} style={style} color={color}>{children}</Typography>
+  );
+};
 
 Title.propTypes = {
   children: PropTypes.string.isRequired,
-  size: PropTypes.number,
+  color: PropTypes.oneOf(COLOR),
   className: PropTypes.string,
+  style: PropTypes.shape({}),
 };
 
 Title.defaultProps = {
-  size: 1,
-  className: '',
+  color: COLOR_DEFAULT,
+  className: 'title',
+  style: {},
 };
 
-export default typography(Title);
+export default Title;

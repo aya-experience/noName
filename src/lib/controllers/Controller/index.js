@@ -1,94 +1,127 @@
+const { Observable } = require('rxjs/Rx');
 const Response = require('../../models/Response');
-const SubjectType = require('../../enum/SubjectType');
-const { Observable } = require('rxjs');
+const EmitterType = require('../../enum/EmitterType');
 
 class Controller {
   /**
    * Create a controller instance
-   * @param {SocketServerV2} socketServer
+   * @param {SocketServer} socketServer
    * @param {ModuleContainer} moduleContainer
+   * @param {EmitterContainer} emitterContainer
+   * @param {MiddlewareContainer} middlewareContainer
    */
-  constructor(socketServer, moduleContainer, subjectContainer) {
+  constructor(socketServer, moduleContainer, emitterContainer, middlewareContainer) {
     this.socketServer = socketServer;
     this.moduleContainer = moduleContainer;
-    this.subjectContainer = subjectContainer;
+    this.emitterContainer = emitterContainer;
+    this.middlewareContainer = middlewareContainer;
     this.handleSource = this.handleSource.bind(this);
     this.handleClient = this.handleClient.bind(this);
+    this.moduleMapper = this.moduleMapper.bind(this);
   }
 
   start() {
     // Handle source socket
     this.socketServer
+      // Listen all socket on the namespace /source
       .connect('/source')
       .subscribe(
         this.handleSource,
-        error => console.log(`Source: error - ${error.message}`),
-        () => console.log('Source: Stop listenning source'),
+        Controller.onError('Source'),
+        Controller.onComplete('Source'),
       );
 
     // Handle client socket
     this.socketServer
+      // Listen all socket on the namespace /client
       .connect('/client')
       .subscribe(
         this.handleClient,
-        error => console.log(`Client: error - ${error.message}`),
-        () => console.log('Client: kicked'),
+        Controller.onError('Client'),
+        Controller.onComplete('Client'),
       );
   }
 
+  static onError(target) {
+    return error => console.log(`${target}: error - ${error.message}`);
+  }
+
+  static onComplete(target) {
+    return () => console.log(`${target}: Stop listenning source`);
+  }
+
+  static onConnect(target, id) {
+    console.log(`${target} - ${id}: connected`);
+  }
+
+  static onDisconnect(target, id) {
+    return () => console.log(`${target} - ${id}: disconnected`);
+  }
+
+  moduleMapper(data) {
+    try {
+      const module = this.moduleContainer.get(data.module);
+      return module.handle(data);
+    } catch (error) {
+      if (error.type === EmitterType.NotFound) {
+        return new Response(EmitterType.NotFound, {
+          message: error.message,
+          /* error, */ data,
+        });
+      }
+      return new Response(EmitterType.Error, { message: error.message, /* error, */ data });
+    }
+  }
+
   handleSource(socket) {
-    console.log('Source: connected');
-    socket.disconnect(() => console.log('Source: disconnected'));
+    Controller.onConnect('Source',socket.id);
+    socket.disconnect().subscribe(Controller.onDisconnect('Source', socket.id));
 
     socket
       .on('bridge-data')
-      // Split array
-      .map(batch => Observable.from(batch))
       // send Observable to middleware
-      .let(obs => obs /* middleware handler */) // TODO
+      .let(this.middlewareContainer.handle)
       // handle data return response
-      .map(data => this.moduleContainer.handle(data))
-      .subscribe(response => this.subjectContainer.handle(response));
+      .map(this.moduleMapper)
+      // Redirect the response to the target emitter
+      .subscribe(this.emitterContainer.handle);
   }
-  /* eslint-disable class-methods-use-this */
+
+  // listen the channel
+  static handleSubscription(socket) {
+    return emitter => socket.on(emitter.type).do(Controller.handleMessage(socket, emitter));
+  }
+
+  // activate or desactivate emitter subscription
+  static handleMessage(socket, emitter) {
+    return (message) => {
+      switch (message) {
+        case 'on':
+          console.log(`Client ${socket.id}: subscribe to ${emitter.type}`);
+          socket.readEmitter(emitter);
+          break;
+        case 'off':
+          console.log(`Client ${socket.id}: unsubscribe to ${emitter.type}`);
+          socket.unreadEmitter(emitter);
+          break;
+        default:
+          console.log(`Client ${socket.id}: Unknow command ${message} on emitter ${emitter.type}`);
+          socket.emit(emitter.type, { message: 'Unknow command' });
+          break;
+      }
+    };
+  }
+
   handleClient(socket) {
-    console.log(`Client ${socket.id}: connected`);
-    let subscriptions = [];
-    Object.keys(SubjectType).forEach((key) => {
-      const subjectName = SubjectType[key];
-      const subject = this.subjectContainer.get(subjectName);
+    Controller.onConnect('Client', socket.id);
+    Observable.from(Object.values(EmitterType))
+      // Get The Emitter
+      .map(this.emitterContainer.get)
+      // Get the channel of the emitter
+      .flatMap(Controller.handleSubscription(socket))
+      .subscribe();
 
-      let subscription = null;
-
-      socket.on(subjectName).subscribe((message) => {
-        console.log(`Client ${socket.id}: ${
-          message !== 'on' ? 'unsubscribe' : 'subscribe'
-        } to ${subjectName}`);
-        switch (message) {
-          case 'on':
-            if (subscription === null) {
-              subscription = subject
-                .asObservable()
-                .subscribe(data => socket.emit(subjectName, data));
-              subscriptions = [...subscriptions, subscription];
-            }
-            break;
-          case 'off':
-            if (subscription) {
-              subscription = subscription.unsubscribe();
-            }
-            break;
-          // maybe one day can handle other command
-          default:
-            break;
-        }
-      });
-    });
-
-    socket.disconnect().subscribe(() => {
-      subscriptions.forEach(subscription => subscription.unsubscribe());
-      console.log(`Client ${socket.id}: disconnected`);
-    });
+    socket.disconnect().subscribe(Controller.onDisconnect('Client', socket.id));
   }
 }
 
