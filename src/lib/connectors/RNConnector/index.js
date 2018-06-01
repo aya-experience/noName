@@ -27,7 +27,7 @@ class RNConnector extends Connector {
     const connector = new RNConnector(config);
     const emitter = new EventEmitter();
     const obs = Snoopy.stream(emitter);
-    return buffer()(RNConnector.filter(obs)).subscribe(connector.onData);
+    return buffer()(obs).subscribe(connector.onData);
   }
 
   onData(data) {

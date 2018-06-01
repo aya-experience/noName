@@ -74,7 +74,7 @@ class Controller {
   }
 
   handleSource(socket) {
-    Controller.onConnect('Source',socket.id);
+    Controller.onConnect('Source', socket.id);
     socket.disconnect().subscribe(Controller.onDisconnect('Source', socket.id));
 
     socket

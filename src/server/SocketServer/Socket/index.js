@@ -24,7 +24,6 @@ class Socket {
    * remove all subscription when the socket
    */
   _onClose() {
-    console.log(this);
     Object.keys(this.subscriptions)
       .map(key => this.subscriptions[key])
       .forEach(subscription => subscription.unsubscribe());

@@ -18,11 +18,11 @@ const icon = { fontSize: '0.9rem' };
 const iconJs = { color: '#FFC107', ...icon };
 
 const BridgeLine = ({
-  mode, args, module, method,
+  type, args, module, method,
 }) => (
   <ListItem style={listItemStyle} >
     <ListItemIcon>
-      {mode === 0 ? <LanguageJavascript style={iconJs} /> : <Cellphone style={icon} />}
+      {type === 0 ? <LanguageJavascript style={iconJs} /> : <Cellphone style={icon} />}
     </ListItemIcon>
     <ListItemText disableTypography style={size}>
       <HighlightVariableText value={args} />
@@ -35,7 +35,7 @@ const BridgeLine = ({
 
 BridgeLine.propTypes = {
   args: PropTypes.arrayOf(PropTypes.any).isRequired,
-  mode: PropTypes.number.isRequired,
+  type: PropTypes.number.isRequired,
   module: PropTypes.string.isRequired,
   method: PropTypes.string.isRequired,
 };
