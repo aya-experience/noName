@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MaterialTabs from '@material-ui/core/Tabs';
 import MaterialTab from '@material-ui/core/Tab';
@@ -7,10 +7,6 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = {
   tabsRoot: {
     borderBottom: '1px solid #e8e8e8',
-    minHeight: '25px',
-  },
-  tabRoot: {
-    maxHeight: '25px',
   },
   labelContainer: {
     paddingTop: 0,
@@ -23,8 +19,6 @@ const styles = {
   },
   content: {
     flexGrow: 1,
-    maxHeight: 'calc(100% - 25px)',
-    overflowY: 'auto',
   },
 };
 

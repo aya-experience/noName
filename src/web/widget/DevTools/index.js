@@ -56,7 +56,6 @@ class DevTools extends Component {
 
   getItems() {
     const { bridgeData } = this.state;
-    console.log(bridgeData);
     return [
       { value: 'bridge', label: 'Bridge', component: () => <BridgeConsole height="150px" data={bridgeData} /> },
     ];

@@ -14,7 +14,7 @@ describe('BridgeLine', () => {
 
   beforeEach(() => {
     line = {
-      mode: 0, module: 'UIModule', method: 'createView', args: [0, 3, 3, 4, [4, 5]],
+      type: 0, module: 'UIModule', method: 'createView', args: [0, 3, 3, 4, [4, 5]],
     };
     wrapper = shallow(<BridgeLine {...line} />);
   });
@@ -34,12 +34,12 @@ describe('BridgeLine', () => {
     expect(code.prop('value')).toBe(line.args);
   });
 
-  it('should render an icon LanguageJavascript if mode = 0', () => {
+  it('should render an icon LanguageJavascript if type = 0', () => {
     expect(wrapper.find(LanguageJavascript)).toHaveLength(1);
   });
 
   it('should render an icon Cellphone if mode = 1', () => {
-    wrapper.setProps({ mode: 1 });
+    wrapper.setProps({ type: 1 });
     expect(wrapper.find(Cellphone)).toHaveLength(1);
   });
 
