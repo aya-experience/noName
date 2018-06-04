@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import TreeView from './index';
-import ComponentView from '../ComponentView';
+import ComponentView from '../ComponentView/index';
 
 describe('TreeView', () => {
   let tree;

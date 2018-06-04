@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Touchable from './';
+import Touchable from './index';
 
 describe('Touchable', () => {
   let wrapper;

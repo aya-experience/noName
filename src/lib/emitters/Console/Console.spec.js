@@ -1,5 +1,5 @@
 import { ReplaySubject, Observable } from 'rxjs/Rx';
-import Console from './';
+import Console from './index';
 import EmitterType from '../../enum/EmitterType';
 
 describe('Console', () => {

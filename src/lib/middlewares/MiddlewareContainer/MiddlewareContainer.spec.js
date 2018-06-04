@@ -1,4 +1,4 @@
-import MiddlewareContainer from './';
+import MiddlewareContainer from './index';
 
 describe('MiddlewareContainer', () => {
   let middlewareContainer;

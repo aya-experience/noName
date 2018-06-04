@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ComponentView from '../ComponentView';
+import ComponentView from '../ComponentView/index';
 
 const TreeView = ({ root, onClick, selected }) => (
   <ComponentView value={root} selected={root === selected} onClick={onClick}>

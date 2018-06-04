@@ -2,8 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import Text from '../Text';
-import Ignore from '../Ignore';
+import Text from '../Text/index';
+import Ignore from '../Ignore/index';
 
 const Highlight = ({ lang, children, ...rest }) => (
   <SyntaxHighlighter

@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import TreeNavigator from './index';
-import TreeView from '../../components/TreeView';
-import ViewInfo from '../../components/ViewInfo';
+import TreeView from '../../components/TreeView/index';
+import ViewInfo from '../../components/ViewInfo/index';
 
 describe('TreeNavigator', () => {
   let tree;

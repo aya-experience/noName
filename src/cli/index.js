@@ -2,7 +2,7 @@
  * CLI goes here
  */
 const program = require('commander');
-const packageInfo = require('../../package');
+const packageInfo = require('../../../noName-chaos/package');
 const startServer = require('../server/httpServer');
 
 program

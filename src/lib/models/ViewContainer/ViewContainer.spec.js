@@ -1,5 +1,5 @@
-import ViewContainer from './';
-import View from '../View';
+import ViewContainer from './index';
+import View from '../View/index';
 
 describe('ViewContainer', () => {
   let viewContainer;

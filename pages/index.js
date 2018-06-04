@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Main from '../src/web/layout/Main';
-import TreeNavigator from '../src/web/widget/TreeNavigator';
-import WebConnector from '../src/lib/connectors/WebConnector';
+import Main from '../../nextmaterial/src/web/layout/Main';
+import TreeNavigator from '../../nextmaterial/src/web/widget/TreeNavigator';
+import WebConnector from '../../nextmaterial/src/lib/connectors/WebConnector';
 
 class index extends Component {
   constructor(props) {

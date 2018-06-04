@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import AppBar from '../../components/AppBar';
-import DevTools from '../../widget/DevTools';
-import Flex from '../Flex';
+import AppBar from '../../components/AppBar/index';
+import DevTools from '../../widget/DevTools/index';
+import Flex from '../Flex/index';
 
 const Main = ({ children, title }) => (
   <div>

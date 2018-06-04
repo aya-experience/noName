@@ -1,5 +1,5 @@
 const { Observable } = require('rxjs/Rx');
-const Response = require('../../models/Response');
+const Response = require('../../models/Response/index');
 const EmitterType = require('../../enum/EmitterType');
 
 class Controller {

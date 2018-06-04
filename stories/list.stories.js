@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import List from '../src/web/old/components/List';
-import Item from '../src/web/old/components/Item';
+import List from '../../nextmaterial/src/web/old/components/List';
+import Item from '../../nextmaterial/src/web/old/components/Item';
 
 const data = [
   { id: 'hashID1', className: 'hamtaro' },

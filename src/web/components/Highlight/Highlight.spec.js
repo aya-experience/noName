@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Highlight from './';
+import Highlight from './index';
 
 describe('Highlight', () => {
   let wrapper;

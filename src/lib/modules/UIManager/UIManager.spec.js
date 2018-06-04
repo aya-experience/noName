@@ -1,5 +1,5 @@
-import UIManager from './';
-import View from '../../models/View';
+import UIManager from './index';
+import View from '../../models/View/index';
 import EmitterType from '../../enum/EmitterType';
 
 

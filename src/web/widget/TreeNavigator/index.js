@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
-import TreeView from '../../components/TreeView';
-import ViewInfo from '../../components/ViewInfo';
+import TreeView from '../../components/TreeView/index';
+import ViewInfo from '../../components/ViewInfo/index';
 import Grid from '@material-ui/core/Grid';
 
 const styles = {

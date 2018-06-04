@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Container from '../src/web/old/components/Container';
-import Title from '../src/web/old/components/Title';
-import Text from '../src/web/old/components/Text';
-import Sidebar from '../src/web/old/components/Sidebar';
+import Container from '../../nextmaterial/src/web/old/components/Container';
+import Title from '../../nextmaterial/src/web/old/components/Title';
+import Text from '../../nextmaterial/src/web/old/components/Text';
+import Sidebar from '../../nextmaterial/src/web/old/components/Sidebar';
 
 const children = (
   <Container>

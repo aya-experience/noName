@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import DevTools from './index';
-import Tabs from '../../components/Tabs';
-import BridgeConsole from '../../console/BridgeConsole';
+import Tabs from '../../components/Tabs/index';
+import BridgeConsole from '../../console/BridgeConsole/index';
 
 describe('DevTools', () => {
   let wrapper;

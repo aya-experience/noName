@@ -1,5 +1,5 @@
-import ModuleContainer from './';
-import UIManager from '../UIManager';
+import ModuleContainer from './index';
+import UIManager from '../UIManager/index';
 
 jest.mock('../RCTEventEmitter');
 jest.mock('../UIManager');

@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Rx';
-import ConsoleMiddleware from './';
+import ConsoleMiddleware from './index';
 
 describe('ConsoleMiddleware', () => {
   let data;

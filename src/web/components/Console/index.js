@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import List from '../List';
+import List from '../List/index';
 
 const listStyle = height => ({
   padding: '0',

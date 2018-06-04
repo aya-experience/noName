@@ -1,6 +1,6 @@
 const IO = require('socket.io');
 const { Observable } = require('rxjs');
-const Socket = require('./Socket');
+const Socket = require('./Socket/index');
 
 /**
  * Abstract Api of SocketServer in socket.io lib

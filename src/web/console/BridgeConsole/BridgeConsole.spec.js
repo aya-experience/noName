@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import BridgeConsole from './index';
 import Console from '../../components/Console/index';
 import BridgeLine from './BridgeLine/index';
-import BridgeFilterForm from './BridgeFilterForm';
+import BridgeFilterForm from './BridgeFilterForm/index';
 
 describe('BridgeConsole', () => {
   let data;

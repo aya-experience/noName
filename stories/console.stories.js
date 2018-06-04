@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Console from '../src/web/old/components/Console';
+import Console from '../../nextmaterial/src/web/old/components/Console';
 
 const data = [
   { module: 'hello', method: 'world', args: ['Marvin', 'Alexandre', 'Zenika'] },

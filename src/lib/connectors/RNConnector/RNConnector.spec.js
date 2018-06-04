@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import snoopy from 'rn-snoopy';
 import buffer from 'rn-snoopy/stream/buffer';
-import RNConnector from './';
+import RNConnector from './index';
 import { activatedModule } from '../../constants.json';
 
 

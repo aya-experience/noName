@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Notification from '../src/web/old/components/Notification';
-import Text from '../src/web/old/components/Text';
+import Notification from '../../nextmaterial/src/web/old/components/Notification';
+import Text from '../../nextmaterial/src/web/old/components/Text';
 
 storiesOf('Notification', module)
   .add('basic notification', () => (

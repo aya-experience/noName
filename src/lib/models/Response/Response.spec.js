@@ -1,4 +1,4 @@
-import Response from './';
+import Response from './index';
 
 describe('Response', () => {
   it('should create an object with type and data property', () => {

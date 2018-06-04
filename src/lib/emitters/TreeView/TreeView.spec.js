@@ -1,5 +1,5 @@
 import { BehaviorSubject, Observable } from 'rxjs/Rx';
-import TreeView from './';
+import TreeView from './index';
 import EmitterType from '../../enum/EmitterType';
 
 describe('TreeView', () => {

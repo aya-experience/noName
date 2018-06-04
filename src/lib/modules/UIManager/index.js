@@ -1,6 +1,6 @@
-const BaseModule = require('../BaseModule');
-const Response = require('../../models/Response');
-const View = require('../../models/View');
+const BaseModule = require('../BaseModule/index');
+const Response = require('../../models/Response/index');
+const View = require('../../models/View/index');
 const EmitterType = require('../../enum/EmitterType');
 
 class UIManager extends BaseModule {

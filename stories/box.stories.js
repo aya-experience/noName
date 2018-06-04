@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Box from '../src/web/old/components/Box';
-import Subtitle from '../src/web/old/components/Subtitle';
+import Box from '../../nextmaterial/src/web/old/components/Box';
+import Subtitle from '../../nextmaterial/src/web/old/components/Subtitle';
 
 storiesOf('Box', module).add('Basic box', () => (
   <Box>

@@ -1,4 +1,4 @@
-const BaseModule = require('../BaseModule');
+const BaseModule = require('../BaseModule/index');
 
 class RCTEventEmitter extends BaseModule {}
 

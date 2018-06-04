@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ObjectListView from './index';
-import List from '../List';
+import List from '../List/index';
 
 describe('ObjectListView', () => {
   it('should pass to list an array of object with attribut and value attribut', () => {

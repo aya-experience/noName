@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Main from './index';
-import AppBar from '../../components/AppBar';
+import AppBar from '../../components/AppBar/index';
 
 describe('Main', () => {
   let wrapper;

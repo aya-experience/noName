@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import ToolBar from '../src/web/old/components/ToolBar';
+import ToolBar from '../../nextmaterial/src/web/old/components/ToolBar';
 
 const data = [
   { className: 'UIModule', activated: false, icon: 'ion-home' },

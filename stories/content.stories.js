@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Content from '../src/web/old/components/Content';
+import Content from '../../nextmaterial/src/web/old/components/Content';
 
 const content = [
   <h1>Title</h1>,

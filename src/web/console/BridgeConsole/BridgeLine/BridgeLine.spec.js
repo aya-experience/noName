@@ -5,7 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import { LanguageJavascript, Cellphone } from 'mdi-material-ui';
 import BridgeLine from './index';
-import HighlightVariableText from '../../../components/HighlightVariableText';
+import HighlightVariableText from '../../../components/HighlightVariableText/index';
 
 
 describe('BridgeLine', () => {

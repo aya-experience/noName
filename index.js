@@ -1,4 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-import RNConnector from './src/lib/connectors/RNConnector';
+import RNConnector from '../nextmaterial/src/lib/connectors/RNConnector';
 
 export { RNConnector };

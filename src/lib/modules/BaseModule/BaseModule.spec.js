@@ -1,4 +1,4 @@
-import BaseModule from './';
+import BaseModule from './index';
 
 describe('BaseModule', () => {
   let baseModule;

@@ -5,7 +5,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import { LanguageJavascript, Cellphone } from 'mdi-material-ui';
-import HighlightVariableText from '../../../components/HighlightVariableText';
+import HighlightVariableText from '../../../components/HighlightVariableText/index';
 
 const listItemStyle = {
   padding: '0 200px 0 5px',

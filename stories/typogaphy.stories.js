@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Title from '../src/web/old/components/Title';
-import Subtitle from '../src/web/old/components/Subtitle';
-import Text from '../src/web/old/components/Text';
-import LinkText from '../src/web/old/components/LinkText';
+import Title from '../../nextmaterial/src/web/old/components/Title';
+import Subtitle from '../../nextmaterial/src/web/old/components/Subtitle';
+import Text from '../../nextmaterial/src/web/old/components/Text';
+import LinkText from '../../nextmaterial/src/web/old/components/LinkText';
 
 storiesOf('Typography', module)
   .add('Title', () => [

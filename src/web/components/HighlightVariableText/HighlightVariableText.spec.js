@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import HighlightVariableText from './index';
-import Highlight from '../Highlight';
+import Highlight from '../Highlight/index';
 
 
 describe('HighlightVariableText', () => {

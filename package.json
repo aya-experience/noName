@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "An application for debugging React-Native App",
   "main": "index.js",
-  "bin": {
-    "jenko": "./src/cli/index.js"
-  },
   "scripts": {
     "dev": "next",
     "serve": "node ./src/cli/index",
@@ -20,6 +17,7 @@
   "dependencies": {
     "@material-ui/core": "^1.1.0",
     "@zeit/next-css": "^0.1.5",
+    "babel-eslint": "^8.2.3",
     "bulma": "^0.6.2",
     "commander": "^2.14.1",
     "express": "^4.16.2",

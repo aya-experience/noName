@@ -1,4 +1,4 @@
-import SessionManager from './';
+import SessionManager from './index';
 
 describe('SessionManager', () => {
   let instance;

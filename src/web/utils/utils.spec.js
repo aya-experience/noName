@@ -1,4 +1,4 @@
-import { stringOrEmpty, spacerIfTrue, joinClass, randomString, generateUniqueId } from './';
+import { stringOrEmpty, spacerIfTrue, joinClass, randomString, generateUniqueId } from './index';
 
 describe('stringOrEmpty', () => {
   it('should return a string', () => {

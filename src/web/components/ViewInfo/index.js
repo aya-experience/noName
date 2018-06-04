@@ -4,8 +4,8 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
-import Subtitle from '../Subtitle';
-import ObjectListView from '../ObjectListView';
+import Subtitle from '../Subtitle/index';
+import ObjectListView from '../ObjectListView/index';
 
 const styles = {
   card: { height: '100%', borderRadius: '0' },

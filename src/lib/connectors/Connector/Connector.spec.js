@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import io from 'socket.io-client';
-import Connector from './';
+import Connector from './index';
 
 describe('Connector', () => {
   it('should have io to be set', () => {

@@ -1,5 +1,5 @@
 import { ReplaySubject, Observable } from 'rxjs/Rx';
-import ErrorEmitter from './';
+import ErrorEmitter from './index';
 import EmitterType from '../../enum/EmitterType';
 
 describe('ErrorEmitter', () => {

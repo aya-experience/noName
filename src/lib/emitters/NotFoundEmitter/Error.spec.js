@@ -1,4 +1,4 @@
-import NotFoundEmitter from './';
+import NotFoundEmitter from './index';
 import EmitterType from '../../enum/EmitterType';
 
 describe('NotFoundEmitter', () => {

@@ -1,6 +1,6 @@
-import EmitterContainer from './';
+import EmitterContainer from './index';
 import EmitterType from '../../enum/EmitterType';
-import Response from '../../models/Response';
+import Response from '../../models/Response/index';
 
 describe('EmitterContainer', () => {
   let emitters;

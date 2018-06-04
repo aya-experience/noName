@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Button from '../src/web/old/components/Button';
-import Icon from '../src/web/old/components/Icon';
+import Button from '../../nextmaterial/src/web/old/components/Button';
+import Icon from '../../nextmaterial/src/web/old/components/Icon';
 
 storiesOf('Button', module)
   .add('basic button', () => <Button onClick={action('button-click')}>Simple button</Button>)

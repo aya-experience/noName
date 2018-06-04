@@ -1,4 +1,4 @@
-const Response = require('../../models/Response');
+const Response = require('../../models/Response/index');
 const EmitterType = require('../../enum/EmitterType');
 // Logger
 class ConsoleMiddleware {

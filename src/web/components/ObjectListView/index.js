@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import List from '../List';
-import AttributItemList from '../AttributItemList';
+import List from '../List/index';
+import AttributItemList from '../AttributItemList/index';
 
 const ObjectListView = ({ data }) => {
   const items = Object.entries(data)

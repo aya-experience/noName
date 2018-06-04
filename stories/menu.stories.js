@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Menu from '../src/web/old/components/Menu';
+import Menu from '../../nextmaterial/src/web/old/components/Menu';
 
 const menu = {
   name: 'Administration',

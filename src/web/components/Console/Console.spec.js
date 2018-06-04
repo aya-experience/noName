@@ -1,8 +1,8 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import { shallow } from 'enzyme';
-import Console from './';
-import List from '../List';
+import Console from './index';
+import List from '../List/index';
 
 describe('Console', () => {
   let wrapper;

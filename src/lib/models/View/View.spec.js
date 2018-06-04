@@ -1,4 +1,4 @@
-import View from './';
+import View from './index';
 
 describe('ViewContainer', () => {
   let view;

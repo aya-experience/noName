@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import Socket from './';
+import Socket from './index';
 
 describe('Socket', () => {
   let io;

@@ -1,5 +1,5 @@
-import AppRegistry from './';
-import View from '../../models/View';
+import AppRegistry from './index';
+import View from '../../models/View/index';
 
 jest.mock('../../models/View');
 

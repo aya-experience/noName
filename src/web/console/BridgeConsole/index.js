@@ -2,7 +2,7 @@ import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import Console from '../../components/Console/index';
 import BridgeLine from './BridgeLine/index';
-import BridgeFilterForm from './BridgeFilterForm';
+import BridgeFilterForm from './BridgeFilterForm/index';
 
 const styles = {
   container: {

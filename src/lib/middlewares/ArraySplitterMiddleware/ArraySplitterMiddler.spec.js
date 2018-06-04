@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Rx';
-import ArraySplitterMiddleware from './';
+import ArraySplitterMiddleware from './index';
 
 describe('ArraySplitterMiddleware', () => {
   let data;

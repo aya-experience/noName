@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import AppBarMaterial from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from './index';
-import Title from '../Title';
+import Title from '../Title/index';
 
 describe('AppBar', () => {
   it('should render a AppBar', () => {

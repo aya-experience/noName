@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Rx';
-import Controller from './';
+import Controller from './index';
 import EmitterType from '../../enum/EmitterType';
-import NotFoundError from '../../errors/NotFoundError';
+import NotFoundError from '../../errors/NotFoundError/index';
 
 jest.mock('rxjs/Rx');
 

@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Minus, Plus } from 'mdi-material-ui';
 import ComponentView from './index';
-import Touchable from '../Touchable';
-import XmlHighlight from '../XmlHighlight';
+import Touchable from '../Touchable/index';
+import XmlHighlight from '../XmlHighlight/index';
 
 describe('ComponentView', () => {
   let value;

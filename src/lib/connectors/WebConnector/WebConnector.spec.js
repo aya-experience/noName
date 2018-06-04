@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import WebConnector from './';
+import WebConnector from './index';
 
 describe('WebConnector', () => {
   let connector;

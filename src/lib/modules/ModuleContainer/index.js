@@ -1,8 +1,8 @@
-const UIManager = require('../UIManager');
-const RCTEventEmitter = require('../RCTEventEmitter');
-const SessionManager = require('../SessionManager');
-const AppRegistry = require('../AppRegistry');
-const NotFoundError = require('../../errors/NotFoundError');
+const UIManager = require('../UIManager/index');
+const RCTEventEmitter = require('../RCTEventEmitter/index');
+const SessionManager = require('../SessionManager/index');
+const AppRegistry = require('../AppRegistry/index');
+const NotFoundError = require('../../errors/NotFoundError/index');
 
 class ModuleContainer {
   constructor() {

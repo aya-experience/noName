@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Rx';
-import Connector from '../Connector';
+import Connector from '../Connector/index';
 import EmitterType from '../../enum/EmitterType';
 
 export default class WebConnector extends Connector {

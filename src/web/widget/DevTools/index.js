@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
-import Tabs from '../../components/Tabs';
-import BridgeConsole from '../../console/BridgeConsole';
-import WebConnector from '../../../lib/connectors/WebConnector';
+import Tabs from '../../components/Tabs/index';
+import BridgeConsole from '../../console/BridgeConsole/index';
+import WebConnector from '../../../lib/connectors/WebConnector/index';
 
 const styles = {
   container: {

@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Minus, Plus } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
-import XmlHighlight from '../XmlHighlight';
-import Touchable from '../Touchable';
+import XmlHighlight from '../XmlHighlight/index';
+import Touchable from '../Touchable/index';
 
 const styles = {
   container: {

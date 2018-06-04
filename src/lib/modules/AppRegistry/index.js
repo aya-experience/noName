@@ -1,7 +1,7 @@
-const BaseModule = require('../BaseModule');
-const Response = require('../../models/Response');
-const View = require('../../models/View');
-const ViewContainer = require('../../models/ViewContainer');
+const BaseModule = require('../BaseModule/index');
+const Response = require('../../models/Response/index');
+const View = require('../../models/View/index');
+const ViewContainer = require('../../models/ViewContainer/index');
 
 class AppRegistry extends BaseModule {
   constructor(sessionManager) {

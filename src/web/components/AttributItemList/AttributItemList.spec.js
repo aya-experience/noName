@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import AttributItemList from './index';
-import Text from '../Text';
-import HighlightVariableText from '../HighlightVariableText';
+import Text from '../Text/index';
+import HighlightVariableText from '../HighlightVariableText/index';
 
 describe('AttributItemList', () => {
   let item;

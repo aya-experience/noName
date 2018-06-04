@@ -1,4 +1,4 @@
-import RTCEventEmitter from './';
+import RTCEventEmitter from './index';
 
 describe('RTCEventEmitter', () => {
   let instance;

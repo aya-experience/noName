@@ -1,8 +1,8 @@
 const EmitterType = require('../../enum/EmitterType');
-const TreeView = require('../TreeView');
-const Console = require('../Console');
-const ErrorEmitter = require('../ErrorEmitter');
-const NotFoundEmitter = require('../NotFoundEmitter');
+const TreeView = require('../TreeView/index');
+const Console = require('../Console/index');
+const ErrorEmitter = require('../ErrorEmitter/index');
+const NotFoundEmitter = require('../NotFoundEmitter/index');
 /**
  * Transform array<Emitter> to dictionnary<String,Emitter>
  * the key of the dictionnary is the attribut type of the emitter

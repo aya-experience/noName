@@ -4,7 +4,7 @@ import buffer from 'rn-snoopy/stream/buffer';
 import EventEmitter from 'react-native/Libraries/vendor/emitter/EventEmitter';
 // If you are using React 0.48 or below, then you should import:
 // import EventEmitter from 'react-native/Libraries/EventEmitter/EventEmitter';
-import Connector from '../Connector';
+import Connector from '../Connector/index';
 import { activatedModule } from '../../constants.json';
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Icon from '../src/web/old/components/Icon';
+import Icon from '../../nextmaterial/src/web/old/components/Icon';
 
 storiesOf('Icon', module)
   .add('basic icon', () => [

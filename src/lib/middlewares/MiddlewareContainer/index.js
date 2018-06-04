@@ -1,6 +1,6 @@
-const ArraySplitterMiddleware = require('../ArraySplitterMiddleware');
-const ConsoleMiddleware = require('../ConsoleMiddleware');
-const PurifyMiddleware = require('../PurifyMiddleware');
+const ArraySplitterMiddleware = require('../ArraySplitterMiddleware/index');
+const ConsoleMiddleware = require('../ConsoleMiddleware/index');
+const PurifyMiddleware = require('../PurifyMiddleware/index');
 
 const MIDDLEWARE = [ArraySplitterMiddleware, PurifyMiddleware, ConsoleMiddleware];
 

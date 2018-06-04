@@ -2,8 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ListItem from '@material-ui/core/ListItem';
-import HighlightVariableText from '../HighlightVariableText';
-import Text from '../Text';
+import HighlightVariableText from '../HighlightVariableText/index';
+import Text from '../Text/index';
 
 const styles = {
   item: {
