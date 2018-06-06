@@ -4,8 +4,7 @@
   "description": "An application for debugging React-Native App",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
-    "serve": "node ./src/cli/index",
+    "serve": "node ./src/cli/index --np",
     "test": "jest --coverage",
     "format": "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\" && prettier-eslint --write \"stories/**/*.js\"",
     "lint": "eslint ./src && eslint ./pages",
@@ -18,7 +17,6 @@
     "@material-ui/core": "^1.1.0",
     "@zeit/next-css": "^0.1.5",
     "babel-eslint": "^8.2.3",
-    "bulma": "^0.6.2",
     "commander": "^2.14.1",
     "express": "^4.16.2",
     "highlight.js": "^9.12.0",
@@ -34,15 +32,15 @@
     "rn-snoopy": "^2.0.2",
     "rxjs": "^6.1.0",
     "rxjs-compat": "^6.1.0",
-    "socket.io": "^2.1.0"
+    "socket.io": "^2.1.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^22.4.3",
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.14",
     "@storybook/addon-links": "^3.3.14",
     "@storybook/addons": "^3.3.14",
     "@storybook/react": "^3.3.14",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^22.4.3",
     "coveralls": "^3.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -52,8 +50,6 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "jest": "^22.4.2",
-    "prettier": "^1.11.0",
-    "prettier-eslint-cli": "^4.7.1",
     "webpack": "^3.1.0"
   },
   "jest": {

@@ -11,11 +11,11 @@ const MiddlewareContainer = require('../lib/middlewares/MiddlewareContainer/inde
 
 const DEV = process.env.NODE_ENV !== 'production';
 
-const startServer = async (port) => {
+const startServer = async (port,noPage) => {
   const SERVER_ADRESS = `http://localhost:${port}`;
   const serverHandler = (err) => {
     if (err) throw err;
-    open(SERVER_ADRESS);
+    if (!noPage) open(SERVER_ADRESS);
     console.log(`> Ready on ${SERVER_ADRESS}`);
   };
 
