@@ -1,5 +1,4 @@
 import Snoopy from 'rn-snoopy';
-import buffer from 'rn-snoopy/stream/buffer';
 /* eslint-disable import/no-unresolved, import/extensions */
 import EventEmitter from 'react-native/Libraries/vendor/emitter/EventEmitter';
 // If you are using React 0.48 or below, then you should import:
@@ -27,7 +26,7 @@ class RNConnector extends Connector {
     const connector = new RNConnector(config);
     const emitter = new EventEmitter();
     const obs = Snoopy.stream(emitter);
-    return buffer()(obs).subscribe(connector.onData);
+    return obs.bufferTime(1000).subscribe(connector.onData);
   }
 
   onData(data) {
