@@ -6,6 +6,7 @@
   "author": "Marvin FRACHET, Alexandre GORY",
   "license": "MIT",
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "publish": "yarn build && lerna publish",
     "test": "jest --coverage"
