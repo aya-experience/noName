@@ -4,8 +4,8 @@ import EventEmitter from 'react-native/Libraries/vendor/emitter/EventEmitter';
 // import EventEmitter from 'react-native/Libraries/EventEmitter/EventEmitter';
 import Snoopy from 'rn-snoopy';
 import Connector from 'rn-noname-connector/src/Connector';
+import { activatedModule } from '../constants.json';
 
-const activatedModule = ['Networking', 'RTCEventEmitter', 'AppRegistry', 'UIManager'];
 
 class RNConnector extends Connector {
   constructor({ server, eventName = 'bridge-data' }) {
