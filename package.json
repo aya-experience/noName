@@ -1,67 +1,21 @@
 {
-  "name": "jenko",
-  "version": "0.0.1",
-  "description": "An application for debugging React-Native App",
+  "name": "rn-noname",
+  "version": "0.2.4",
+  "description": "Connector react-native for rn-noname",
   "main": "index.js",
-  "scripts": {
-    "serve": "node ./src/cli/index --np",
-    "test": "jest --coverage",
-    "format": "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\" && prettier-eslint --write \"stories/**/*.js\"",
-    "lint": "eslint ./src && eslint ./pages",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
-  },
   "author": "Marvin FRACHET, Alexandre GORY",
   "license": "MIT",
-  "dependencies": {
-    "@material-ui/core": "^1.1.0",
-    "@zeit/next-css": "^0.1.5",
-    "babel-eslint": "^8.2.3",
-    "commander": "^2.14.1",
-    "express": "^4.16.2",
-    "highlight.js": "^9.12.0",
-    "mdi-material-ui": "^5.0.0",
-    "next": "^6.0.3",
-    "object-sizeof": "^1.2.0",
-    "opn": "^5.2.0",
-    "prop-types": "^15.6.1",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-jss": "^8.4.0",
-    "react-syntax-highlighter": "^7.0.4",
-    "rn-snoopy": "^2.0.2",
-    "rxjs": "^6.1.0",
-    "rxjs-compat": "^6.1.0",
-    "socket.io": "^2.1.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^22.4.3"
+  "scripts": {
+    "build": "lerna run build",
+    "publish": "yarn build && lerna publish",
+    "test": "sh scripts/test.sh"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^3.3.14",
-    "@storybook/addon-links": "^3.3.14",
-    "@storybook/addons": "^3.3.14",
-    "@storybook/react": "^3.3.14",
-    "coveralls": "^3.0.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.18.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "jest": "^22.4.2",
-    "webpack": "^3.1.0"
-  },
-  "jest": {
-    "setupFiles": [
-      "./configs/setup/test.setup.js"
-    ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
-      "\\rn-snoopy.js$": "<rootDir>/__mocks__/rn-snoopy.js",
-      "rn-snoopy/(.*)/buffer": "<rootDir>/__mocks__/buffer.js",
-      "react-native/(.*)/EventEmitter": "<rootDir>/__mocks__/EventEmitter.js"
-    }
+    "lerna": "^2.11.0"
   }
 }

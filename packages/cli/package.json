@@ -1,0 +1,15 @@
+{
+  "name": "rn-noname-cli",
+  "version": "0.2.5",
+  "description": "Cli react-native for rn-noname",
+  "main": "index.js",
+  "author": "Marvin FRACHET, Alexandre GORY",
+  "license": "MIT",
+  "bin": {
+    "noname": "./cli.js"
+  },
+  "dependencies": {
+    "commander": "^2.0.2",
+    "rn-noname": "^0.2.5"
+  }
+}

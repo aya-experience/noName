@@ -14,15 +14,17 @@ This application will then allow you to display its messages in a console and of
 
 ## How to use it ?
 
--   Install it with `yarn add @the-package-name` or `npm install --save-dev @the-package-name`
+-   Install it with `yarn add rn-noname-rn-connector babel-preset-env --dev` 
+ 
+    or  `npm install --save-dev rn-noname-rn-connector babel-preset-env`
 -   Setup the RNConnector in your `index.js`
 ```javascript
 import { AppRegistry } from 'react-native';
-import { RNConnector } from '@the-package-name';
+import RNConnector from 'rn-noname-rn-connector/src/RNConnector';
 import App from './App';
 
-// Setup the connector
-RNConnector.stream({ server: 'http://192.168.1.149:3000' });
+
+RNConnector.stream({ server: 'http://[Your Ip address]:3000' });
 
 AppRegistry.registerComponent('RNTest', () => App);
 ```

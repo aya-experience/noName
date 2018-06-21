@@ -1,0 +1,29 @@
+{
+  "name": "rn-noname-rn-connector",
+  "version": "0.2.4",
+  "description": "Connector react-native for rn-noname",
+  "main": "index.js",
+  "author": "Marvin FRACHET, Alexandre GORY",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src --out-dir dist --copy-files --ignore '**/*.spec.js'"
+  },
+  "dependencies": {
+    "rn-noname-connector": "^0.1.7",
+    "rn-snoopy": "^2.0.2"
+  },
+  "peerDependencies": {
+    "react-native": "^0.49.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.49",
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^22.4.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\rn-snoopy.js$": "<rootDir>/__mocks__/rn-snoopy.js"
+    }
+  }
+}
