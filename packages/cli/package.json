@@ -1,5 +1,5 @@
 {
-  "name": "rn-noname-cli",
+  "name": "@rn-debugger/cli",
   "version": "0.2.5",
   "description": "Cli react-native for rn-noname",
   "main": "index.js",
