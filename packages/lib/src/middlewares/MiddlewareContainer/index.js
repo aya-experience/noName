@@ -1,8 +1,8 @@
-const ArraySplitterMiddleware = require('../ArraySplitterMiddleware/index');
-const ConsoleMiddleware = require('../ConsoleMiddleware/index');
-const PurifyMiddleware = require('../PurifyMiddleware/index');
+const ArraySplitterMiddleware = require('../ArraySplitterMiddleware/');
+const LoggerMiddleware = require('../LoggerMiddleware/');
+const PurifyMiddleware = require('../PurifyMiddleware/');
 
-const MIDDLEWARE = [ArraySplitterMiddleware, PurifyMiddleware, ConsoleMiddleware];
+const MIDDLEWARE = [ArraySplitterMiddleware, PurifyMiddleware, LoggerMiddleware];
 
 class MiddlewareContainer {
   static middlewareGenerator(middlewares, responseDispacther) {

@@ -6,7 +6,7 @@ module.exports = {
     '<rootDir>/packages/server',
     '<rootDir>/packages/connector',
     '<rootDir>/packages/lib',
-    '<rootDir>/packages/rn-connector',
+    '<rootDir>/packages/native-connector',
   ],
   testPathIgnorePatterns: ['/node_modules/', 'dist'],
 };

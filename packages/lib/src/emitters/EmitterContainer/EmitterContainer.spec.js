@@ -9,7 +9,7 @@ describe('EmitterContainer', () => {
   beforeEach(() => {
     emitters = [
       { type: EmitterType.TreeView, next: jest.fn() },
-      { type: EmitterType.Console, next: jest.fn() },
+      { type: EmitterType.Logger, next: jest.fn() },
       { type: EmitterType.Error, next: jest.fn() },
     ];
     container = new EmitterContainer(emitters);
@@ -18,7 +18,7 @@ describe('EmitterContainer', () => {
   it('should build a map of emitter', () => {
     expect(container.emitters).toEqual({
       TreeView: emitters[0],
-      Console: emitters[1],
+      Logger: emitters[1],
       Error: emitters[2],
     });
   });

@@ -1,7 +1,7 @@
 const Response = require('../../models/Response/index');
 const EmitterType = require('../../enum/EmitterType.json');
-// Logger
-class ConsoleMiddleware {
+
+class LoggerMiddleware {
   constructor(responseDispacther) {
     this.responseDispacther = responseDispacther;
     this.log = this.log.bind(this);
@@ -12,9 +12,9 @@ class ConsoleMiddleware {
   }
 
   log(data) {
-    const response = new Response(EmitterType.Console, data);
+    const response = new Response(EmitterType.Logger, data);
     this.responseDispacther.handle(response);
   }
 }
 
-module.exports = ConsoleMiddleware;
+module.exports = LoggerMiddleware;

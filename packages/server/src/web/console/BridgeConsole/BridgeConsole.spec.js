@@ -21,7 +21,7 @@ describe('BridgeConsole', () => {
     wrapper = shallow(<BridgeConsole data={data} />);
   });
 
-  it('should pass data and BridgeComponent to Console', () => {
+  it('should pass data and BridgeComponent to Logger', () => {
     expect(wrapper.find(Console).first().props()).toMatchObject({
       data, ComponentLine: BridgeLine,
     });

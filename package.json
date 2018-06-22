@@ -1,5 +1,5 @@
 {
-  "name": "@rn-debugger",
+  "name": "rn-debugger",
   "version": "0.2.4",
   "description": "Connector react-native for rn-noname",
   "main": "index.js",

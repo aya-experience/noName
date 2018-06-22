@@ -7893,6 +7893,21 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rn-noname-connector@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/rn-noname-connector/-/rn-noname-connector-0.1.7.tgz#713e49d76efc6b128d0876d5bb509ad8d2c40d9d"
+  dependencies:
+    rxjs "^6.1.0"
+    rxjs-compat "^6.1.0"
+    socket.io-client "^2.1.0"
+
+rn-noname-lib@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/rn-noname-lib/-/rn-noname-lib-0.2.5.tgz#431985204e2d5ca098bf7f12907473f8206dc658"
+  dependencies:
+    rxjs "^6.2.0"
+    rxjs-compat "^6.2.0"
+
 rn-snoopy@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/rn-snoopy/-/rn-snoopy-2.0.2.tgz#1eec8ecd08ba9929936d8035c72dbabbecf3278a"
@@ -7938,6 +7953,10 @@ rxjs-compat@^6.1.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/rxjs-compat/-/rxjs-compat-6.2.0.tgz#2eb49cc6ac20d0d7057c6887d1895beaab0966f9"
 
+rxjs-compat@^6.2.0:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/rxjs-compat/-/rxjs-compat-6.2.1.tgz#f5a5e4bd700db414e82aa7cb34e5c9222c6d3756"
+
 rxjs@5.5.2:
   version "5.5.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.2.tgz#28d403f0071121967f18ad665563255d54236ac3"
@@ -7947,6 +7966,12 @@ rxjs@5.5.2:
 rxjs@^6.1.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.2.0.tgz#e024d0e180b72756a83c2aaea8f25423751ba978"
+  dependencies:
+    tslib "^1.9.0"
+
+rxjs@^6.2.0:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.2.1.tgz#246cebec189a6cbc143a3ef9f62d6f4c91813ca1"
   dependencies:
     tslib "^1.9.0"
 
@@ -8198,7 +8223,7 @@ socket.io-adapter@~1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/socket.io-adapter/-/socket.io-adapter-1.1.1.tgz#2a805e8a14d6372124dd9159ad4502f8cb07f06b"
 
-socket.io-client@2.1.1:
+socket.io-client@2.1.1, socket.io-client@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/socket.io-client/-/socket.io-client-2.1.1.tgz#dcb38103436ab4578ddb026638ae2f21b623671f"
   dependencies:

@@ -1,7 +1,7 @@
 const EmitterType = require('../../enum/EmitterType.json');
 const TreeView = require('../TreeView/index');
-const Console = require('../Console/index');
-const ErrorEmitter = require('../ErrorEmitter/index');
+const Logger = require('../Logger');
+const ErrorEmitter = require('../ErrorEmitter/');
 const NotFoundEmitter = require('../NotFoundEmitter/index');
 
 const assignEmitterToMap = (map, emitter) => {
@@ -16,7 +16,7 @@ const assignEmitterToMap = (map, emitter) => {
 const emitterMapGenerator = emitters =>
   emitters.reduce(assignEmitterToMap, {});
 
-const EMITTERS = [new TreeView(), new ErrorEmitter(), new NotFoundEmitter(), new Console()];
+const EMITTERS = [new TreeView(), new ErrorEmitter(), new NotFoundEmitter(), new Logger()];
 
 class EmitterContainer {
   /**

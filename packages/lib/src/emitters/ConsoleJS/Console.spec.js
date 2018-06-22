@@ -11,7 +11,7 @@ describe('Console', () => {
     expect(console).toBeInstanceOf(ReplaySubject);
   });
 
-  it('should have a type Console', () => {
+  it('should have a type Logger', () => {
     const console = new Console();
     expect(console.type).toBe(EmitterType.Console);
   });

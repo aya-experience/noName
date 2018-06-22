@@ -1,9 +1,10 @@
 import { Observable } from 'rxjs/Rx';
-import ConsoleMiddleware from './';
+import LoggerMiddleware from './';
+import EmitterType from '../../enum/EmitterType.json';
 
 jest.mock('rxjs/Rx');
 
-describe('ConsoleMiddleware', () => {
+describe('LoggerMiddleware', () => {
   let data;
   let obs;
   let consoleMiddleware;
@@ -12,7 +13,7 @@ describe('ConsoleMiddleware', () => {
   beforeEach(() => {
     Observable.clear();
     responseDispacther = { handle: jest.fn() };
-    consoleMiddleware = new ConsoleMiddleware(responseDispacther);
+    consoleMiddleware = new LoggerMiddleware(responseDispacther);
     data = [1, 2, 3];
     obs = Observable.from(data);
   });
@@ -25,7 +26,7 @@ describe('ConsoleMiddleware', () => {
     consoleMiddleware.log({ value: 'toto' });
     const response = responseDispacther.handle.mock.calls[0][0];
     expect(response).toMatchObject({
-      type: 'Console',
+      type: EmitterType.Logger,
       data: { value: 'toto' },
     });
   });

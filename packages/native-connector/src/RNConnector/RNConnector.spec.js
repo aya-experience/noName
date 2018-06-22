@@ -3,8 +3,6 @@ import RNConnector from './index';
 import { activatedModule } from '../constants.json';
 
 
-/*jest.mock('rn-snoopy');*/
-
 describe('RNConnector', () => {
   it('should create a RNConnector with deault value', () => {
     const connector = new RNConnector({});

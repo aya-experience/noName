@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "rn-noname-connector": "^0.1.7",
-    "rn-snoopy": "^2.0.2"
+    "rn-snoopy": "^2.0.2",
+    "rxjs": "^6.1.0"
   },
   "peerDependencies": {
     "react-native": "^0.49.0"
@@ -22,6 +23,7 @@
     "jest": "^22.4.2"
   },
   "jest": {
+    "testPathIgnorePatterns": ["/node_modules/","dist"],
     "moduleNameMapper": {
       "\\rn-snoopy.js$": "<rootDir>/__mocks__/rn-snoopy.js"
     }
