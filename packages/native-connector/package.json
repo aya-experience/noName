@@ -1,6 +1,6 @@
 {
   "name": "@rn-debugger/native-connector",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Connector react-native for rn-noname",
   "main": "index.js",
   "author": "Marvin FRACHET, Alexandre GORY",
@@ -23,7 +23,10 @@
     "jest": "^22.4.2"
   },
   "jest": {
-    "testPathIgnorePatterns": ["/node_modules/","dist"],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "dist"
+    ],
     "moduleNameMapper": {
       "\\rn-snoopy.js$": "<rootDir>/__mocks__/rn-snoopy.js"
     }
