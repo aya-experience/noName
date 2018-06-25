@@ -12,7 +12,7 @@
     "access": "public"
   },
   "dependencies": {
-    "rn-noname-connector": "^0.1.7",
+    "@rn-debugger/connector": "^0.3.0",
     "rn-snoopy": "^2.0.2",
     "rxjs": "^6.1.0"
   },

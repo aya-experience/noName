@@ -13,6 +13,6 @@
   },
   "dependencies": {
     "commander": "^2.0.2",
-    "rn-noname": "^0.2.5"
+    "@rn-debugger/server": "^0.3.0"
   }
 }
