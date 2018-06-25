@@ -1,6 +1,6 @@
 {
   "name": "@rn-debugger/cli",
-  "version": "0.2.8",
+  "version": "0.3.0",
   "description": "Cli react-native for rn-noname",
   "main": "index.js",
   "author": "Marvin FRACHET, Alexandre GORY",
