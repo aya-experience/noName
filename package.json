@@ -8,7 +8,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "publish": "yarn build && lerna publish",
+    "publish": "lerna publish",
     "test": "jest --coverage"
   },
   "devDependencies": {
