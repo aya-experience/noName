@@ -8,6 +8,9 @@
   "scripts": {
     "build": "babel src --out-dir dist --copy-files"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "rxjs": "^6.1.0",
     "rxjs-compat": "^6.1.0",

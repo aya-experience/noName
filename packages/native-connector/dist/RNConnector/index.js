@@ -10,15 +10,23 @@ var _EventEmitter = require('react-native/Libraries/vendor/emitter/EventEmitter'
 
 var _EventEmitter2 = _interopRequireDefault(_EventEmitter);
 
+var _operators = require('rxjs/operators');
+
 var _rnSnoopy = require('rn-snoopy');
 
 var _rnSnoopy2 = _interopRequireDefault(_rnSnoopy);
 
-var _Connector2 = require('rn-noname-connector/src/Connector');
+var _Connector2 = require('rn-noname-connector/dist/Connector');
 
 var _Connector3 = _interopRequireDefault(_Connector2);
 
+var _rxjs = require('rxjs');
+
 var _constants = require('../constants.json');
+
+var _LogInterceptor = require('../LogInterceptor');
+
+var _LogInterceptor2 = _interopRequireDefault(_LogInterceptor);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60,17 +68,16 @@ var RNConnector = function (_Connector) {
       return _constants.activatedModule.includes(data.module);
     }
   }, {
-    key: 'filter',
-    value: function filter(obs) {
-      return obs.filter(RNConnector.onlyActivatedModule);
-    }
-  }, {
     key: 'stream',
     value: function stream(config) {
       var connector = new RNConnector(config);
       var emitter = new _EventEmitter2.default();
-      var obs = _rnSnoopy2.default.stream(emitter);
-      return RNConnector.filter(obs).bufferTime(1000).subscribe(connector.onData);
+      var logInterceptor = _LogInterceptor2.default.getInstance();
+      console.log(_LogInterceptor2.default.getInstance);
+      console.log(logInterceptor);
+      var obs = (0, _rxjs.merge)(_rnSnoopy2.default.stream(emitter), logInterceptor.asObservable());
+      obs.pipe((0, _operators.filter)(RNConnector.onlyActivatedModule), (0, _operators.bufferTime)(1000));
+      return obs.subscribe(connector.onData);
     }
   }]);
 

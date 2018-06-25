@@ -12,7 +12,7 @@ var _Connector2 = require('../Connector/');
 
 var _Connector3 = _interopRequireDefault(_Connector2);
 
-var _constant = require('../constant');
+var _constant = require('../constant.json');
 
 var _constant2 = _interopRequireDefault(_constant);
 

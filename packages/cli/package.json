@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Marvin FRACHET, Alexandre GORY",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "noname": "./cli.js"
   },

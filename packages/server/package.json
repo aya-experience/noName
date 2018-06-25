@@ -12,6 +12,9 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Marvin FRACHET, Alexandre GORY",
   "license": "MIT",
   "dependencies": {

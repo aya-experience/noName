@@ -8,6 +8,9 @@
   "scripts": {
     "build": "babel src --out-dir dist --copy-files --ignore '**/*.spec.js'"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "rn-noname-connector": "^0.1.7",
     "rn-snoopy": "^2.0.2",
