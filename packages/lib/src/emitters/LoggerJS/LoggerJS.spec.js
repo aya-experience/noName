@@ -13,7 +13,7 @@ describe('Console', () => {
 
   it('should have a type Logger', () => {
     const console = new Console();
-    expect(console.type).toBe(EmitterType.Console);
+    expect(console.type).toBe(EmitterType.LoggerJS);
   });
 
   it('should return an observable when asObservable is call', () => {

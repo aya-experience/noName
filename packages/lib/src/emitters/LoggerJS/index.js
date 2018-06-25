@@ -4,10 +4,10 @@ const EmitterType = require('../../enum/EmitterType.json');
 const TICK = 1000; // 1 second
 const SIZE = 50;
 
-class Console extends ReplaySubject {
+class LoggerJS extends ReplaySubject {
   constructor() {
     super(SIZE);
-    this.type = EmitterType.Console;
+    this.type = EmitterType.LoggerJS;
   }
 
   asObservable() {
@@ -15,4 +15,4 @@ class Console extends ReplaySubject {
   }
 }
 
-module.exports = Console;
+module.exports = LoggerJS;

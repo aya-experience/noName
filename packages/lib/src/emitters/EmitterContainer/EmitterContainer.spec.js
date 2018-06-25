@@ -50,6 +50,6 @@ describe('EmitterContainer', () => {
 
   it('should have 4 default emitter', () => {
     container = new EmitterContainer();
-    expect(Object.keys(container.emitters)).toHaveLength(4);
+    expect(Object.keys(container.emitters)).toHaveLength(5);
   });
 });

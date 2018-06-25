@@ -37,6 +37,6 @@ describe('MiddlewareContainer', () => {
 
   it('should by default have 3 middleware', () => {
     const container = new MiddlewareContainer();
-    expect(container.middlewares).toHaveLength(3);
+    expect(container.middlewares).toHaveLength(4);
   });
 });

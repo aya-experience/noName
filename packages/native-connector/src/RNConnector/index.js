@@ -1,10 +1,11 @@
 /* eslint-disable import/no-unresolved, import/extensions */
 import EventEmitter from 'react-native/Libraries/vendor/emitter/EventEmitter';
-import { merge, filter } from 'rxjs/operators';
+import { filter, bufferTime } from 'rxjs/operators';
 // If you are using React 0.48 or below, then you should import:
 // import EventEmitter from 'react-native/Libraries/EventEmitter/EventEmitter';
 import Snoopy from 'rn-snoopy';
 import Connector from 'rn-noname-connector/dist/Connector';
+import { merge } from 'rxjs';
 import { activatedModule } from '../constants.json';
 import LogInterceptor from '../LogInterceptor';
 
@@ -20,18 +21,18 @@ class RNConnector extends Connector {
     return activatedModule.includes(data.module);
   }
 
-  static filter(obs) {
-    return obs.filter(RNConnector.onlyActivatedModule);
-  }
-
   static stream(config) {
     const connector = new RNConnector(config);
     const emitter = new EventEmitter();
     const logInterceptor = LogInterceptor.getInstance();
-    // merge(logInterceptor.asObservable())
-    const obs = Snoopy.stream(emitter);
-    console.log('obs',obs);
-    return RNConnector.filter(obs).bufferTime(1000).subscribe(connector.onData);
+    console.log(LogInterceptor.getInstance);
+    console.log(logInterceptor);
+    const obs = merge(Snoopy.stream(emitter), logInterceptor.asObservable());
+    obs.pipe(
+      filter(RNConnector.onlyActivatedModule),
+      bufferTime(1000),
+    );
+    return obs.subscribe(connector.onData);
   }
 
   onData(data) {

@@ -1,9 +1,15 @@
 import snoopy from 'rn-snoopy';
+import rxjs  from 'rxjs';
 import RNConnector from './index';
 import { activatedModule } from '../constants.json';
 
 
 describe('RNConnector', () => {
+
+  beforeEach(() => {
+    rxjs.clear();
+  });
+
   it('should create a RNConnector with deault value', () => {
     const connector = new RNConnector({});
     expect(connector).toMatchObject({
@@ -40,14 +46,4 @@ describe('RNConnector', () => {
     expect(RNConnector.onlyActivatedModule({ module: activatedModule[0] })).toBeTruthy();
   });
 
-  it('should filter on the observable passed to filter method', () => {
-    const obs = { filter: jest.fn(() => obs) };
-    RNConnector.filter(obs);
-    expect(obs.filter).toBeCalledWith(RNConnector.onlyActivatedModule);
-  });
-
-  it('should filter return an obs', () => {
-    const obs = { filter: jest.fn(() => obs) };
-    expect(RNConnector.filter(obs)).toBe(obs);
-  });
 });
