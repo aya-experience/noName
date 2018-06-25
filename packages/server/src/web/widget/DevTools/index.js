@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
-import WebConnector from 'rn-noname-connector/dist/WebConnector';
+import WebConnector from '@rn-debugger/connector/dist/WebConnector';
 import Tabs from '../../components/Tabs/index';
 import BridgeConsole from '../../console/BridgeConsole/index';
 

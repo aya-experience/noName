@@ -4,7 +4,7 @@
  */
 const program = require('commander');
 const packageInfo = require('./package');
-const startServer = require('rn-noname/src/server/httpServer');
+const startServer = require('@rn-debugger/server/src/server/httpServer');
 
 program
   .version(packageInfo.version)

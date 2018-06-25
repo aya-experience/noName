@@ -8,7 +8,7 @@ const fs = require('fs');
 
 const {
   Controller, ModuleContainer, EmitterContainer, MiddlewareContainer,
-} = require('rn-noname-lib');
+} = require('@rn-debugger/lib');
 const SocketServer = require('./SocketServer/index');
 
 

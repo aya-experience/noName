@@ -16,7 +16,7 @@ var _rnSnoopy = require('rn-snoopy');
 
 var _rnSnoopy2 = _interopRequireDefault(_rnSnoopy);
 
-var _Connector2 = require('rn-noname-connector/dist/Connector');
+var _Connector2 = require('@rn-debugger/connector/dist/Connector');
 
 var _Connector3 = _interopRequireDefault(_Connector2);
 

@@ -4,7 +4,7 @@ import { filter, bufferTime } from 'rxjs/operators';
 // If you are using React 0.48 or below, then you should import:
 // import EventEmitter from 'react-native/Libraries/EventEmitter/EventEmitter';
 import Snoopy from 'rn-snoopy';
-import Connector from 'rn-noname-connector/dist/Connector';
+import Connector from '@rn-debugger/connector/dist/Connector';
 import { merge } from 'rxjs';
 import { activatedModule } from '../constants.json';
 import LogInterceptor from '../LogInterceptor';

@@ -1,7 +1,7 @@
 {
   "name": "rn-debugger",
   "version": "0.2.4",
-  "description": "Connector react-native for rn-noname",
+  "description": "Tool for debug application. Scan the react-native bridge",
   "main": "index.js",
   "author": "Marvin FRACHET, Alexandre GORY",
   "license": "MIT",
