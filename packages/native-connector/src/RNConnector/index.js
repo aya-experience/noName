@@ -25,14 +25,11 @@ class RNConnector extends Connector {
     const connector = new RNConnector(config);
     const emitter = new EventEmitter();
     const logInterceptor = LogInterceptor.getInstance();
-    console.log(LogInterceptor.getInstance);
-    console.log(logInterceptor);
-    const obs = merge(Snoopy.stream(emitter), logInterceptor.asObservable());
-    obs.pipe(
-      filter(RNConnector.onlyActivatedModule),
-      bufferTime(1000),
+    const obs = merge(
+      filter(RNConnector.onlyActivatedModule)(Snoopy.stream(emitter)),
+      logInterceptor.asObservable(),
     );
-    return obs.subscribe(connector.onData);
+    return bufferTime(1000)(obs).subscribe(connector.onData);
   }
 
   onData(data) {
