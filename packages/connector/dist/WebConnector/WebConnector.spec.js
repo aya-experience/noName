@@ -60,7 +60,7 @@ describe('WebConnector', function () {
     expect(connector.io.off).toBeCalledWith('event', expect.any(Function));
   });
 
-  it('should return an obs when getConsole is call', function () {
+  it('should return an obs when getLogger is call', function () {
     connector.on = jest.fn(function () {
       return 'observable';
     });
@@ -72,5 +72,12 @@ describe('WebConnector', function () {
       return 'observable';
     });
     expect(connector.getTreeView()).toBe('observable');
+  });
+
+  it('should return an obs when getLoggerJS is call', function () {
+    connector.on = jest.fn(function () {
+      return 'observable';
+    });
+    expect(connector.getLoggerJS()).toBe('observable');
   });
 });

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { Subject } from 'rxjs';
 
-const MODULE_NAME = 'ConsoleJS';
+const MODULE_NAME = 'LoggerJS';
 const TYPE = 10;
 const INTERCEPTED_METHOD = ['log', 'error', 'info', 'warn'];
 

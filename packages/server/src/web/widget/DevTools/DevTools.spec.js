@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import DevTools from './index';
 import Tabs from '../../components/Tabs/index';
 import BridgeConsole from '../../console/BridgeConsole/index';
+import LoggerJS from "../../console/LoggerJS";
 
 describe('DevTools', () => {
   let wrapper;
@@ -18,13 +19,19 @@ describe('DevTools', () => {
   it('should return an array of items tab', () => {
     const instance = wrapper.instance();
     const items = instance.getItems();
-    expect(items).toHaveLength(1);
+    expect(items).toHaveLength(2);
   });
 
-  it('should have component func in the first item', () => {
+  it('should have BridgeConsole tab', () => {
     const instance = wrapper.instance();
     const item = instance.getItems()[0];
     expect(item.component().type).toEqual(BridgeConsole);
+  });
+
+  it('should have LoggerJS tab', () => {
+    const instance = wrapper.instance();
+    const item = instance.getItems()[1];
+    expect(item.component().type).toEqual(LoggerJS);
   });
 
   it('should dataMerger merge data and newData', () => {
@@ -52,7 +59,7 @@ describe('DevTools', () => {
     DevTools.dataMerger = jest.fn().mockReturnValue(func);
     const instance = wrapper.instance();
     const dataState = wrapper.state().bridgeData;
-    instance.handleData([]);
+    instance.handleData('bridgeData')([]);
     expect(DevTools.dataMerger).toBeCalledWith(dataState, 50);
   });
 
@@ -71,7 +78,7 @@ describe('DevTools', () => {
     const instance = wrapper.instance();
     const data = ['lolololol0', 'lalalalala'];
     instance.setState = jest.fn();
-    instance.updateData(data);
+    instance.updateData('bridgeData')(data);
     expect(instance.setState).toBeCalledWith({ bridgeData: data });
   });
 });

@@ -3,6 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import WebConnector from '@rn-debugger/connector/dist/WebConnector';
 import Tabs from '../../components/Tabs/index';
 import BridgeConsole from '../../console/BridgeConsole/index';
+import LoggerJS from '../../console/LoggerJS';
 
 
 const styles = {
@@ -36,6 +37,7 @@ class DevTools extends Component {
     super(props);
     this.state = {
       bridgeData: [],
+      loggerJSData: [],
     };
     this.updateData = this.updateData.bind(this);
     this.handleData = this.handleData.bind(this);
@@ -46,8 +48,13 @@ class DevTools extends Component {
     this.subscription = this.connector
       .getLogger()
       .filter(DevTools.noEmpty)
-      .map(this.handleData)
-      .subscribe(this.updateData);
+      .map(this.handleData('bridgeData'))
+      .subscribe(this.updateData('bridgeData'));
+    this.subscription = this.connector
+      .getLoggerJS()
+      .filter(DevTools.noEmpty)
+      .map(this.handleData('loggerJSData'))
+      .subscribe(this.updateData('loggerJSData'));
   }
 
 
@@ -56,18 +63,26 @@ class DevTools extends Component {
   }
 
   getItems() {
-    const { bridgeData } = this.state;
+    const { bridgeData, loggerJSData } = this.state;
     return [
-      { value: 'bridge', label: 'Bridge', component: () => <BridgeConsole height="150px" data={bridgeData} /> },
+      {
+        value: 'bridge',
+        label: 'Bridge',
+        component: () => <BridgeConsole height="150px" data={bridgeData} />,
+      }, {
+        value: 'js',
+        label: 'JS',
+        component: () => <LoggerJS height="150px" data={loggerJSData} />,
+      },
     ];
   }
 
-  handleData(data) {
-    return DevTools.dataMerger(this.state.bridgeData, defaultMaxSize)(data);
+  handleData(type) {
+    return data => DevTools.dataMerger(this.state[type], defaultMaxSize)(data);
   }
 
-  updateData(data) {
-    this.setState({ bridgeData: data });
+  updateData(type) {
+    return data => this.setState({ [type]: data });
   }
 
   render() {
