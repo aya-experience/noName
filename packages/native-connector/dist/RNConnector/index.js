@@ -73,11 +73,8 @@ var RNConnector = function (_Connector) {
       var connector = new RNConnector(config);
       var emitter = new _EventEmitter2.default();
       var logInterceptor = _LogInterceptor2.default.getInstance();
-      console.log(_LogInterceptor2.default.getInstance);
-      console.log(logInterceptor);
-      var obs = (0, _rxjs.merge)(_rnSnoopy2.default.stream(emitter), logInterceptor.asObservable());
-      obs.pipe((0, _operators.filter)(RNConnector.onlyActivatedModule), (0, _operators.bufferTime)(1000));
-      return obs.subscribe(connector.onData);
+      var obs = (0, _rxjs.merge)((0, _operators.filter)(RNConnector.onlyActivatedModule)(_rnSnoopy2.default.stream(emitter)), logInterceptor.asObservable());
+      return (0, _operators.bufferTime)(1000)(obs).subscribe(connector.onData);
     }
   }]);
 
