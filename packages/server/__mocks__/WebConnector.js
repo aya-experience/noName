@@ -18,7 +18,7 @@ export default class WebConnector {
   static obs = observableGenerator();
 
   constructor() {
-    this.getConsole = jest.fn().mockReturnValue(WebConnector.obs);
+    this.getLogger = jest.fn().mockReturnValue(WebConnector.obs);
     this.getTreeView = jest.fn().mockReturnValue(WebConnector.obs);
   }
 }

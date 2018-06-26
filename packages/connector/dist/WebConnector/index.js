@@ -57,9 +57,14 @@ var WebConnector = function (_Connector) {
       });
     }
   }, {
-    key: 'getConsole',
-    value: function getConsole() {
-      return this.on(_constant2.default.Console);
+    key: 'getLogger',
+    value: function getLogger() {
+      return this.on(_constant2.default.Logger);
+    }
+  }, {
+    key: 'getLoggerJS',
+    value: function getLoggerJS() {
+      return this.on(_constant2.default.LoggerJS);
     }
   }, {
     key: 'getTreeView',

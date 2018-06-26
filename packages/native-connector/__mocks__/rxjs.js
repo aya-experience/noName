@@ -1,6 +1,7 @@
 export const observable = {
   pipe: jest.fn().mockReturnThis(),
   subscribe: jest.fn(),
+  lift: jest.fn().mockReturnThis(),
   clear: () => {
     observable.pipe.mockClear();
     observable.subscribe.mockClear();

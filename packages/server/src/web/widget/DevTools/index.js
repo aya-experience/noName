@@ -44,7 +44,7 @@ class DevTools extends Component {
   componentDidMount() {
     this.connector = new WebConnector({});
     this.subscription = this.connector
-      .getConsole()
+      .getLogger()
       .filter(DevTools.noEmpty)
       .map(this.handleData)
       .subscribe(this.updateData);

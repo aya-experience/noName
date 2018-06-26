@@ -64,7 +64,7 @@ describe('WebConnector', function () {
     connector.on = jest.fn(function () {
       return 'observable';
     });
-    expect(connector.getConsole()).toBe('observable');
+    expect(connector.getLogger()).toBe('observable');
   });
 
   it('should return an obs when getTreeView is call', function () {

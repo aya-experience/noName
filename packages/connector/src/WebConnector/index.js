@@ -21,8 +21,12 @@ export default class WebConnector extends Connector {
     });
   }
 
-  getConsole() {
-    return this.on(EmitterType.Console);
+  getLogger() {
+    return this.on(EmitterType.Logger);
+  }
+
+  getLoggerJS() {
+    return this.on(EmitterType.LoggerJS);
   }
 
   getTreeView() {
