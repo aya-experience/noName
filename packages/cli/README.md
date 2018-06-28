@@ -1,4 +1,4 @@
-# Project @rn-debugger
+# Project @rn-debugger/cli
 
 ## Why use it
 
