@@ -1,6 +1,6 @@
 {
   "name": "@rn-debugger/lib",
-  "version": "0.3.2",
+  "version": "0.4.0-0",
   "description": "Lib for rn-noname",
   "main": "index.js",
   "author": "Marvin FRACHET, Alexandre GORY",
