@@ -4,6 +4,7 @@ import WebConnector from '@rn-debugger/connector/dist/WebConnector';
 import Tabs from '../../components/Tabs/index';
 import BridgeConsole from '../../console/BridgeConsole/index';
 import LoggerJS from '../../console/LoggerJS';
+import Network from '../../console/Network';
 
 
 const styles = {
@@ -35,9 +36,11 @@ class DevTools extends Component {
 
   constructor(props) {
     super(props);
+    this.subscriptions = [];
     this.state = {
       bridgeData: [],
       loggerJSData: [],
+      networkData: [],
     };
     this.updateData = this.updateData.bind(this);
     this.handleData = this.handleData.bind(this);
@@ -45,25 +48,30 @@ class DevTools extends Component {
 
   componentDidMount() {
     this.connector = new WebConnector({});
-    this.subscription = this.connector
+    this.subscriptions.push(this.connector
       .getLogger()
       .filter(DevTools.noEmpty)
       .map(this.handleData('bridgeData'))
-      .subscribe(this.updateData('bridgeData'));
-    this.subscription = this.connector
+      .subscribe(this.updateData('bridgeData')));
+    this.subscriptions.push(this.connector
       .getLoggerJS()
       .filter(DevTools.noEmpty)
       .map(this.handleData('loggerJSData'))
-      .subscribe(this.updateData('loggerJSData'));
+      .subscribe(this.updateData('loggerJSData')));
+    this.subscriptions.push(this.connector
+      .getNetwork()
+      .filter(DevTools.noEmpty)
+      .map(this.handleData('networkData'))
+      .subscribe(this.updateData('networkData')));
   }
 
 
   componentWillUnmount() {
-    this.subscription.unsubscribe();
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   getItems() {
-    const { bridgeData, loggerJSData } = this.state;
+    const { bridgeData, loggerJSData, networkData } = this.state;
     return [
       {
         value: 'bridge',
@@ -73,7 +81,12 @@ class DevTools extends Component {
         value: 'js',
         label: 'JS',
         component: () => <LoggerJS height="150px" data={loggerJSData} />,
+      }, {
+        value: 'net',
+        label: 'HTTP',
+        component: () => <Network height="150px" data={networkData} />,
       },
+
     ];
   }
 
