@@ -1,6 +1,6 @@
 {
   "name": "@rn-debugger/native-connector",
-  "version": "0.4.0-0",
+  "version": "0.4.0",
   "description": "Connector react-native for rn-noname",
   "main": "index.js",
   "author": "Marvin FRACHET, Alexandre GORY",
@@ -12,7 +12,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@rn-debugger/connector": "^0.4.0-0",
+    "@rn-debugger/connector": "^0.4.0",
     "rn-snoopy": "^2.0.2",
     "rxjs": "^6.1.0"
   },
