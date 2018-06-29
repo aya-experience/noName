@@ -71,6 +71,11 @@ var WebConnector = function (_Connector) {
     value: function getTreeView() {
       return this.on(_constant2.default.TreeView);
     }
+  }, {
+    key: 'getNetwork',
+    value: function getNetwork() {
+      return this.on(_constant2.default.TreeView);
+    }
   }]);
 
   return WebConnector;
