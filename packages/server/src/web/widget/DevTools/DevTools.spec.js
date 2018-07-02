@@ -3,7 +3,8 @@ import { shallow } from 'enzyme';
 import DevTools from './index';
 import Tabs from '../../components/Tabs/index';
 import BridgeConsole from '../../console/BridgeConsole/index';
-import LoggerJS from "../../console/LoggerJS";
+import LoggerJS from '../../console/LoggerJS';
+import Network from '../../console/Network';
 
 describe('DevTools', () => {
   let wrapper;
@@ -19,7 +20,7 @@ describe('DevTools', () => {
   it('should return an array of items tab', () => {
     const instance = wrapper.instance();
     const items = instance.getItems();
-    expect(items).toHaveLength(2);
+    expect(items).toHaveLength(3);
   });
 
   it('should have BridgeConsole tab', () => {
@@ -32,6 +33,12 @@ describe('DevTools', () => {
     const instance = wrapper.instance();
     const item = instance.getItems()[1];
     expect(item.component().type).toEqual(LoggerJS);
+  });
+
+  it('should have Network tab', () => {
+    const instance = wrapper.instance();
+    const item = instance.getItems()[2];
+    expect(item.component().type).toEqual(Network);
   });
 
   it('should dataMerger merge data and newData', () => {
@@ -64,14 +71,14 @@ describe('DevTools', () => {
   });
 
   it('should create a subscription when mounted', () => {
-    expect(wrapper.instance().subscription).toBeDefined();
+    expect(wrapper.instance().subscriptions).toHaveLength(3);
   });
 
   it('should remove a subscription when unmounted', () => {
     const instance = wrapper.instance();
-    instance.subscription = { unsubscribe: jest.fn() };
+    instance.subscriptions = [{ unsubscribe: jest.fn() }];
     instance.componentWillUnmount();
-    expect(instance.subscription.unsubscribe).toBeCalled();
+    expect(instance.subscriptions[0].unsubscribe).toBeCalled();
   });
 
   it('should upateData call setState', () => {

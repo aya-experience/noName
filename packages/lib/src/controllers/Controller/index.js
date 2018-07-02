@@ -21,7 +21,8 @@ class Controller {
   }
 
   start() {
-    console.log("Listen Source Socket");
+    console.log('Listen Source Socket');
+    console.log('test');
     // Handle source socket
     this.socketServer
       // Listen all socket on the namespace /source
@@ -31,7 +32,7 @@ class Controller {
         Controller.onError('Source'),
         Controller.onComplete('Source'),
       );
-    console.log("Listen Source Client");
+    console.log('Listen Source Client');
     // Handle client socket
     this.socketServer
       // Listen all socket on the namespace /client

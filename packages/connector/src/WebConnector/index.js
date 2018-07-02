@@ -32,4 +32,8 @@ export default class WebConnector extends Connector {
   getTreeView() {
     return this.on(EmitterType.TreeView);
   }
+
+  getNetwork() {
+    return this.on(EmitterType.Network);
+  }
 }

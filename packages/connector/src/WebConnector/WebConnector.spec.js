@@ -67,4 +67,9 @@ describe('WebConnector', () => {
     connector.on = jest.fn(() => 'observable');
     expect(connector.getLoggerJS()).toBe('observable');
   });
+
+  it('should return an obs when getNetwork is call', () => {
+    connector.on = jest.fn(() => 'observable');
+    expect(connector.getNetwork()).toBe('observable');
+  });
 });

@@ -2,6 +2,7 @@ const UIManager = require('../UIManager/index');
 const RCTEventEmitter = require('../RCTEventEmitter/index');
 const SessionManager = require('../SessionManager/index');
 const AppRegistry = require('../AppRegistry/index');
+const Networking = require('../Networking');
 const NotFoundError = require('../../errors/NotFoundError/index');
 
 class ModuleContainer {
@@ -10,6 +11,7 @@ class ModuleContainer {
       UIManager,
       RCTEventEmitter,
       AppRegistry,
+      Networking,
     };
     this.sessionManager = new SessionManager();
   }
