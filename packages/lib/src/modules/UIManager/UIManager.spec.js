@@ -10,10 +10,11 @@ describe('RTCEventEmitter', () => {
 
   beforeEach(() => {
     viewContainer = {
-      clearJSResponders: jest.fn(),
-      setJsResponder: jest.fn(),
+      clearResponders: jest.fn(),
+      registerResponder: jest.fn(),
       get: jest.fn(),
       addView: jest.fn(),
+      registerFocus: jest.fn(),
     };
     sessionManager = {
       get: jest.fn(() => viewContainer),
@@ -28,7 +29,7 @@ describe('RTCEventEmitter', () => {
 
   it('should call viewContainer.clearJSResponders', () => {
     instance.clearJSResponder();
-    expect(viewContainer.clearJSResponders).toBeCalled();
+    expect(viewContainer.clearResponders).toBeCalled();
   });
 
   it('should clearJSResponders return a response', () => {
@@ -41,8 +42,10 @@ describe('RTCEventEmitter', () => {
 
   it('should call viewContainer.setJSResponder', () => {
     const args = [5, 56];
+    const view = {};
+    viewContainer.get.mockReturnValue(view);
     instance.setJSResponder(args);
-    expect(viewContainer.setJsResponder).toBeCalledWith(5, 56);
+    expect(viewContainer.registerResponder).toBeCalledWith(view);
   });
 
   it('should setJSResponder return a response', () => {
@@ -245,5 +248,13 @@ describe('RTCEventEmitter', () => {
       type: EmitterType.TreeView,
       data: viewContainer,
     });
+  });
+
+  it('should focus call viewContainer.registerFocus with a view', () => {
+    const args = [1];
+    const view = { };
+    viewContainer.get.mockReturnValueOnce(view);
+    instance.focus(args);
+    expect(viewContainer.registerFocus).toBeCalledWith(view);
   });
 });
