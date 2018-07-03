@@ -6,7 +6,7 @@ import { filter, bufferTime } from 'rxjs/operators';
 import Snoopy from 'rn-snoopy';
 import Connector from '@rn-debugger/connector/dist/Connector';
 import { merge } from 'rxjs';
-import { activatedModule } from '../constants.json';
+import { bannedModule } from '../constants.json';
 import LogInterceptor from '../LogInterceptor';
 
 
@@ -18,7 +18,7 @@ class RNConnector extends Connector {
   }
 
   static onlyActivatedModule(data) {
-    return activatedModule.includes(data.module);
+    return !bannedModule.includes(data.module);
   }
 
   static stream(config) {

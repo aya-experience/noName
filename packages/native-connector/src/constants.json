@@ -1,1 +1,16 @@
-{ "activatedModule": ["Networking", "RTCEventEmitter", "AppRegistry", "UIManager"]}
+{
+  "activatedModule": [
+    "Networking",
+    "RTCEventEmitter",
+    "AppRegistry",
+    "UIManager",
+    "FileReaderModule",
+    "BlobModule"
+  ],
+  "bannedModule": [
+    "Timing",
+    "JSTimers",
+    "WebSocketModule",
+    "RTCDeviceEventEmitter"
+  ]
+}
