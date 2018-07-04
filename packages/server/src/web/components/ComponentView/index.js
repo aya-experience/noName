@@ -3,6 +3,7 @@ import { Minus, Plus } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import XmlHighlight from '../XmlHighlight/index';
 import Touchable from '../Touchable/index';
+import { joinClass } from '../../utils/index';
 
 const styles = {
   container: {
@@ -52,14 +53,14 @@ class ComponentView extends Component {
     return func ? <Touchable onClick={func} value={this.props.value} >{value}</Touchable> : value;
   }
 
-  inlineView(selectedClass, onClick, { className, id }) {
-    const openTag = <XmlHighlight className={selectedClass} onClick={onClick}>{`<${className} id="${id}"/>`}</XmlHighlight>;
+  inlineView(classes, onClick, { className, id }) {
+    const openTag = <XmlHighlight className={classes} onClick={onClick}>{`<${className} id="${id}"/>`}</XmlHighlight>;
     return this.ifFunction(onClick, openTag);
   }
 
-  childrenView(selectedClass, onClick, { className, id }, children) {
-    const openTag = <XmlHighlight className={selectedClass} onClick={onClick}>{`<${className} id="${id}">`}</XmlHighlight>;
-    const closeTag = <XmlHighlight className={selectedClass} onClick={onClick}>{`</${className}>`}</XmlHighlight>;
+  childrenView(classes, onClick, { className, id }, children) {
+    const openTag = <XmlHighlight className={classes} onClick={onClick}>{`<${className} id="${id}">`}</XmlHighlight>;
+    const closeTag = <XmlHighlight className={classes} onClick={onClick}>{`</${className}>`}</XmlHighlight>;
     return (
       <Fragment>
         {this.ifFunction(onClick, openTag)}
@@ -73,16 +74,21 @@ class ComponentView extends Component {
     const {
       value, children, onClick, selected,
     } = this.props;
+    const { isFocused, isResponding } = value;
     const { open } = this.state;
     const hasChildren = React.isValidElement(children)
       || (Array.isArray(children) && !!children.length);
     const icon = hasChildren ? this.getIcon() : null;
-    const selectedClass = selected ? 'selected' : '';
+    const classes = joinClass(
+      selected && 'selected',
+      isFocused && 'focus',
+      isResponding && 'responding',
+    );
     const renderFunc = hasChildren && open ? this.childrenView : this.inlineView;
     return (
       <div style={styles.container}>
         {icon}
-        {renderFunc(selectedClass, onClick, value, children)}
+        {renderFunc(classes, onClick, value, children)}
       </div>
     );
   }

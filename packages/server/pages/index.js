@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import WebConnector from '@rn-debugger/connector/dist/WebConnector';
 import Main from '../src/web/layout/Main';
 import TreeNavigator from '../src/web/widget/TreeNavigator';
-import withRoot from '../src/web/material-utils/withRoot';
 
 
 class index extends Component {
@@ -24,6 +23,7 @@ class index extends Component {
   }
 
   updateTreeView(tree) {
+    console.log(tree);
     this.setState({ tree });
   }
 

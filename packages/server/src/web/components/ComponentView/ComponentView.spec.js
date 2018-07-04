@@ -93,4 +93,28 @@ describe('ComponentView', () => {
     const highlighter = wrapper.find(XmlHighlight);
     expect(highlighter.hasClass('selected')).toBeTruthy();
   });
+
+  it('should not give a class focus to XmlHighlight if isFocused is false', () => {
+    const highlighter = wrapper.find(XmlHighlight);
+    expect(highlighter.hasClass('focus')).toBeFalsy();
+  });
+
+  it('should give a class focus to XmlHighlight if isFocused is true', () => {
+    const view = wrapper.prop('value');
+    wrapper.setProps({ value: { ...view, isFocused: true } });
+    const highlighter = wrapper.find(XmlHighlight);
+    expect(highlighter.hasClass('focus')).toBeTruthy();
+  });
+
+  it('should not give a class focus to XmlHighlight if isResponding is false', () => {
+    const highlighter = wrapper.find(XmlHighlight);
+    expect(highlighter.hasClass('responding')).toBeFalsy();
+  });
+
+  it('should give a class focus to XmlHighlight if isResponding is true', () => {
+    const view = wrapper.prop('value');
+    wrapper.setProps({ value: { ...view, isResponding: true } });
+    const highlighter = wrapper.find(XmlHighlight);
+    expect(highlighter.hasClass('responding')).toBeTruthy();
+  });
 });

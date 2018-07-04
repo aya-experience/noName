@@ -18,7 +18,15 @@ Google Code style (c) Aahan Krish <geekpanth3r@gmail.com>
 }
 
 .selected > .hljs-tag {
-  background-color: rgba(230,28,28,0.5);
+  background-color: rgba(230,28,28,0.3);
+}
+
+.focus > .hljs-tag {
+  background-color: rgba(230, 63, 0, 0.3);
+}
+
+.responding > .hljs-tag {
+  background-color: rgba(22, 79, 230, 0.3);
 }
 
 .hljs-comment,

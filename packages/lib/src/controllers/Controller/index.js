@@ -22,7 +22,6 @@ class Controller {
 
   start() {
     console.log('Listen Source Socket');
-    console.log('test');
     // Handle source socket
     this.socketServer
       // Listen all socket on the namespace /source
