@@ -1,6 +1,6 @@
 {
   "name": "@rn-debugger/cli",
-  "version": "0.4.0",
+  "version": "0.5.0-alpha.579a3dd",
   "description": "Cli react-native for @rn-debugger",
   "main": "cli.js",
   "author": "Marvin FRACHET, Alexandre GORY",
@@ -12,7 +12,8 @@
     "rn-debugger": "./cli.js"
   },
   "dependencies": {
-    "@rn-debugger/server": "^0.4.0",
+    "@rn-debugger/server": "^0.5.0-alpha.579a3dd",
     "commander": "^2.0.2"
-  }
+  },
+  "gitHead": "579a3ddac506b8696dd521885242840b3f34083b"
 }
