@@ -1,16 +1,16 @@
 {
+  "bannedModule": [
+    "RCTEventEmitter"
+  ],
   "activatedModule": [
     "Networking",
-    "RTCEventEmitter",
     "AppRegistry",
     "UIManager",
-    "FileReaderModule",
-    "BlobModule"
-  ],
-  "bannedModule": [
     "Timing",
     "JSTimers",
     "WebSocketModule",
-    "RTCDeviceEventEmitter"
+    "RCTDeviceEventEmitter",
+    "FileReaderModule",
+    "BlobModule"
   ]
 }
