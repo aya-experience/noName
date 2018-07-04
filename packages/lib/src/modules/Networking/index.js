@@ -13,7 +13,6 @@ class Networking extends BaseModule {
   }
 
   sendRequest(args) {
-    console.log('Networking@sendRequest', args);
     const request = new NetworkRequest(...args);
     return new Response(EmetterType.Network, request);
   }

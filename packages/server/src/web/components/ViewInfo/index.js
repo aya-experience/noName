@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Divider from '@material-ui/core/Divider';
 import Subtitle from '../Subtitle/index';
 import ObjectListView from '../ObjectListView/index';
+import Text from '../Text';
 
 const styles = {
   card: { height: '100%', borderRadius: '0' },
@@ -19,7 +20,7 @@ const ViewInfo = ({ value: { id, className, props } }) => (
     <Divider />
     <CardContent>
       <Subtitle>Props : </Subtitle>
-      <ObjectListView data={props} />
+      {props ? <ObjectListView data={props} /> : <Text>No Props Available</Text>}
     </CardContent>
   </Card>
 );

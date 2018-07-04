@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Console from '../../components/Console/index';
 import BridgeLine from './BridgeLine/index';
@@ -35,7 +35,7 @@ class BridgeConsole extends Component {
 
   filter(line) {
     const { module, method } = this.state.filters;
-    return line.module.includes(module) && line.method.includes(method);
+    return (line.module || '').includes(module) && (line.method || '').includes(method);
   }
 
   render() {
@@ -45,7 +45,7 @@ class BridgeConsole extends Component {
       <div style={styles.container}>
         <BridgeFilterForm module={module} method={method} onChange={this.filterChange} />
         <div style={styles.console}>
-          <Console data={data.filter(this.filter)} ComponentLine={BridgeLine} {...rest}/>
+          <Console data={data.filter(this.filter)} ComponentLine={BridgeLine} {...rest} />
         </div>
       </div>
     );

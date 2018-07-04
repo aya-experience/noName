@@ -70,6 +70,7 @@ class Controller {
           /* error, */ data,
         });
       }
+      console.log(error);
       return new Response(EmitterType.Error, { message: error.message, /* error, */ data });
     }
   }

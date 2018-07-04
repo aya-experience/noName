@@ -1,7 +1,7 @@
 const { BehaviorSubject } = require('rxjs/Rx');
 const EmitterType = require('../../enum/EmitterType.json');
 
-const DEBOUNCE_TIME = 2000; // 1 second
+const DEBOUNCE_TIME = 10; // 1 second
 
 class TreeView extends BehaviorSubject {
   constructor() {

@@ -19,7 +19,7 @@ const styles = {
   },
 };
 
-const defaultMaxSize = 50;
+const defaultMaxSize = 10000;
 
 
 class DevTools extends Component {
@@ -64,7 +64,6 @@ class DevTools extends Component {
       .map(this.handleData('networkData'))
       .subscribe(this.updateData('networkData')));
   }
-
 
   componentWillUnmount() {
     this.subscriptions.forEach(sub => sub.unsubscribe());

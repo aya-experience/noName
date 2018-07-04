@@ -17,6 +17,8 @@ describe('BridgeConsole', () => {
       mode: 0, module: 'UIModule', method: 'createView', args: [0, 3, 3, 4, [4, 5]],
     }, {
       mode: 0, module: 'UIModule', method: 'createView', args: [0, 3, 3, 4, [4, 5]],
+    }, {
+      mode: 0, module: null, method: null, args: [0, 3, 3, 4, [4, 5]],
     }];
     wrapper = shallow(<BridgeConsole data={data} />);
   });

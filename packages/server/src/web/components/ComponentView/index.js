@@ -19,6 +19,7 @@ const styles = {
   },
 };
 
+const DELAY_IS_UPDATING = 250;
 
 /* eslint-disable react/forbid-prop-types */
 class ComponentView extends Component {
@@ -28,16 +29,35 @@ class ComponentView extends Component {
     this.close = this.close.bind(this);
     this.ifFunction = this.ifFunction.bind(this);
     this.inlineView = this.inlineView.bind(this);
+    this.removeIsUpdating = this.removeIsUpdating.bind(this);
     this.childrenView = this.childrenView.bind(this);
     this.state = {
       open: false,
+      isUpdating: false,
     };
+  }
+
+  componentDidMount() {
+    this.setIsUpdating();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(prevProps.value) !== JSON.stringify(this.props.value)) this.setIsUpdating();
+  }
+
+  setIsUpdating() {
+    this.setState({ isUpdating: true });
+    setTimeout(this.removeIsUpdating, DELAY_IS_UPDATING);
   }
 
   getIcon() {
     return this.state.open ?
       <Minus style={styles.icon} onClick={this.close} /> :
       <Plus style={styles.icon} onClick={this.open} />;
+  }
+
+  removeIsUpdating() {
+    this.setState({ isUpdating: false });
   }
 
   open() {
@@ -75,14 +95,14 @@ class ComponentView extends Component {
       value, children, onClick, selected,
     } = this.props;
     const { isFocused, isResponding } = value;
-    const { open } = this.state;
+    const { open, isUpdating } = this.state;
     const hasChildren = React.isValidElement(children)
       || (Array.isArray(children) && !!children.length);
     const icon = hasChildren ? this.getIcon() : null;
     const classes = joinClass(
       selected && 'selected',
       isFocused && 'focus',
-      isResponding && 'responding',
+      isUpdating && 'responding',
     );
     const renderFunc = hasChildren && open ? this.childrenView : this.inlineView;
     return (

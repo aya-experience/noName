@@ -67,7 +67,7 @@ describe('DevTools', () => {
     const instance = wrapper.instance();
     const dataState = wrapper.state().bridgeData;
     instance.handleData('bridgeData')([]);
-    expect(DevTools.dataMerger).toBeCalledWith(dataState, 50);
+    expect(DevTools.dataMerger).toBeCalledWith(dataState, 10000);
   });
 
   it('should create a subscription when mounted', () => {
