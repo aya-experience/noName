@@ -1,0 +1,6 @@
+{
+  "COLOR": [
+    "inherit", "primary", "textSecondary", "secondary", "error", "default"
+  ],
+  "COLOR_DEFAULT": "default"
+}

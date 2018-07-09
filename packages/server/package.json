@@ -1,0 +1,69 @@
+{
+  "name": "@rn-debugger/server",
+  "version": "0.5.0",
+  "description": "An application for debugging React-Native App",
+  "main": "index.js",
+  "scripts": {
+    "build": "NODE_ENV=production next build",
+    "serve": "node server.js",
+    "test": "jest --coverage",
+    "format": "prettier-eslint --write \"pages/**/*.js\" && prettier-eslint --write \"src/**/*.js\" && prettier-eslint --write \"stories/**/*.js\"",
+    "lint": "eslint ./src && eslint ./pages",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Marvin FRACHET, Alexandre GORY",
+  "license": "MIT",
+  "dependencies": {
+    "@material-ui/core": "^1.2.1",
+    "@rn-debugger/connector": "^0.5.0",
+    "@rn-debugger/lib": "^0.5.0",
+    "@zeit/next-css": "^0.2.0",
+    "commander": "^2.14.1",
+    "express": "^4.16.2",
+    "highlight.js": "^9.12.0",
+    "jss": "^9.7.0",
+    "mdi-material-ui": "^5.0.0",
+    "next": "^6.0.3",
+    "object-sizeof": "^1.2.0",
+    "opn": "^5.2.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-jss": "^8.4.0",
+    "react-syntax-highlighter": "^7.0.4",
+    "rn-snoopy": "^2.0.2",
+    "rxjs": "^6.1.0",
+    "rxjs-compat": "^6.1.0",
+    "socket.io": "^2.1.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.3.14",
+    "@storybook/addon-links": "^3.3.14",
+    "@storybook/addons": "^3.3.14",
+    "@storybook/react": "^3.3.14",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^22.4.3",
+    "coveralls": "^3.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^22.4.2",
+    "webpack": "^3.1.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "./configs/setup/test.setup.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\rn-snoopy.js$": "<rootDir>/__mocks__/rn-snoopy.js",
+      "rn-snoopy/(.*)/buffer": "<rootDir>/__mocks__/buffer.js",
+      "react-native/(.*)/EventEmitter": "<rootDir>/__mocks__/EventEmitter.js"
+    }
+  },
+  "gitHead": "579a3ddac506b8696dd521885242840b3f34083b"
+}

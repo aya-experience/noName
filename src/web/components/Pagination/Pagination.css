@@ -1,7 +1,0 @@
-.pagination .button:focus {
-  box-shadow: none;
-}
-
-.pagination .button:focus:not(:active) {
-  box-shadow: none;
-}
