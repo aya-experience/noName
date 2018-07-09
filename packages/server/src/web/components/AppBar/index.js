@@ -4,12 +4,12 @@ import AppBarMaterial from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Title from '../Title/index';
 
-const titleStyle = { flex: 1 };
+const titleStyle = { flex: 1, color: '#ffffff' };
 
 const AppBar = ({ title }) => (
   <AppBarMaterial position="static">
     <Toolbar>
-      <Title style={titleStyle} color="textSecondary">{title}</Title>
+      <Title style={titleStyle}  >{title}</Title>
     </Toolbar>
   </AppBarMaterial>
 );

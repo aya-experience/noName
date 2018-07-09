@@ -22,7 +22,6 @@ class Controller {
 
   start() {
     console.log('Listen Source Socket');
-    console.log('test');
     // Handle source socket
     this.socketServer
       // Listen all socket on the namespace /source
@@ -71,6 +70,7 @@ class Controller {
           /* error, */ data,
         });
       }
+      console.log(error);
       return new Response(EmitterType.Error, { message: error.message, /* error, */ data });
     }
   }

@@ -10,6 +10,14 @@ class UIManager extends BaseModule {
     this.setChildren = this.setChildren.bind(this);
     this.manageChildren = this.manageChildren.bind(this);
     this.measureInWindow = this.measureInWindow.bind(this);
+    this.clearJSResponder = this.clearJSResponder.bind(this);
+    this._move = this._move.bind(this);
+    this._addChildren = this._addChildren.bind(this);
+    this._removeChildren = this._removeChildren.bind(this);
+    this.focus = this.focus.bind(this);
+    this.dispatchViewManagerCommand = this.dispatchViewManagerCommand.bind(this);
+    this.setJSResponder = this.setJSResponder.bind(this);
+    this.measure = this.measure.bind(this);
     this.handle = this.handle.bind(this);
   }
 
@@ -114,13 +122,14 @@ class UIManager extends BaseModule {
 
   setJSResponder(args) {
     const viewContainer = this._getViewContainer();
-    viewContainer.setJsResponder(args[0], args[1]);
+    const view = viewContainer.get(args[0]);
+    viewContainer.registerResponder(view);
     return new Response(EmitterType.TreeView, viewContainer);
   }
 
   clearJSResponder() {
     const viewContainer = this._getViewContainer();
-    viewContainer.clearJSResponders();
+    viewContainer.clearResponders();
     return new Response(EmitterType.TreeView, viewContainer);
   }
 
@@ -133,6 +142,14 @@ class UIManager extends BaseModule {
 
   _getViewContainer() {
     return this.sessionManager.get('ViewContainer');
+  }
+
+  focus(args) {
+    const viewContainer = this._getViewContainer();
+    const view = viewContainer.get(args[0]);
+    viewContainer.registerFocus(view);
+    console.log('focus', viewContainer.focus);
+    return new Response(EmitterType.TreeView, viewContainer);
   }
 }
 

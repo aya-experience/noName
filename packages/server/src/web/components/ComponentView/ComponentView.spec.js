@@ -93,4 +93,37 @@ describe('ComponentView', () => {
     const highlighter = wrapper.find(XmlHighlight);
     expect(highlighter.hasClass('selected')).toBeTruthy();
   });
+
+  it('should not give a class focus to XmlHighlight if isFocused is false', () => {
+    const highlighter = wrapper.find(XmlHighlight);
+    expect(highlighter.hasClass('focus')).toBeFalsy();
+  });
+
+  it('should give a class focus to XmlHighlight if isFocused is true', () => {
+    const view = wrapper.prop('value');
+    wrapper.setProps({ value: { ...view, isFocused: true } });
+    const highlighter = wrapper.find(XmlHighlight);
+    expect(highlighter.hasClass('focus')).toBeTruthy();
+  });
+
+  it('should give a class focus to XmlHighlight if isResponding is true', () => {
+    const view = wrapper.prop('value');
+    wrapper.setProps({ value: { ...view, isResponding: true } });
+    const highlighter = wrapper.find(XmlHighlight);
+    expect(highlighter.hasClass('responding')).toBeTruthy();
+  });
+
+  it('should removeIsUpdating call setState', () => {
+    const instance = wrapper.instance();
+    instance.setState = jest.fn();
+    instance.removeIsUpdating();
+    expect(instance.setState).toBeCalledWith({ isUpdating: false });
+  });
+
+  it('should setIsUpdating call setState', () => {
+    const instance = wrapper.instance();
+    instance.setState = jest.fn();
+    instance.setIsUpdating();
+    expect(instance.setState).toBeCalledWith({ isUpdating: true });
+  });
 });

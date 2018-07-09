@@ -6,7 +6,8 @@ class ViewContainer {
     this.root = root;
     this.views = {};
     this.views[root.id] = root;
-    this.jsResponders = {};
+    this.responders = [];
+    this.focus = null;
     this.get = this.get.bind(this);
   }
 
@@ -26,12 +27,20 @@ class ViewContainer {
     return this.views[id];
   }
 
-  clearJSResponders() {
-    this.jsResponders = {};
+  clearResponders() {
+    this.responders.forEach(view => view.deactivateResponding());
+    this.responders = [];
   }
 
-  addJSResponder(tag, value) {
-    this.jsResponders[tag] = value;
+  registerFocus(view) {
+    if (this.focus) this.focus.unfocus();
+    view.focus();
+    this.focus = view;
+  }
+
+  registerResponder(view) {
+    view.activateResponding();
+    this.responders.push(view);
   }
 }
 

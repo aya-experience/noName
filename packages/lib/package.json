@@ -1,6 +1,6 @@
 {
   "name": "@rn-debugger/lib",
-  "version": "0.4.0",
+  "version": "0.5.0-0",
   "description": "Lib for rn-noname",
   "main": "index.js",
   "author": "Marvin FRACHET, Alexandre GORY",
@@ -17,5 +17,6 @@
     "babel-jest": "^22.4.3",
     "babel-preset-env": "^1.7.0",
     "jest": "^22.4.2"
-  }
+  },
+  "gitHead": "579a3ddac506b8696dd521885242840b3f34083b"
 }

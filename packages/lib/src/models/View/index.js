@@ -11,7 +11,25 @@ class View {
     this.props = props;
     this.children = [];
     this.measures = {};
+    this.isResponding = false;
+    this.isFocused = false;
     this.commandCalls = [];
+  }
+
+  activateResponding() {
+    this.isResponding = true;
+  }
+
+  deactivateResponding() {
+    this.isResponding = false;
+  }
+
+  focus() {
+    this.isFocused = true;
+  }
+
+  unfocus() {
+    this.isFocused = false;
   }
 
   /**

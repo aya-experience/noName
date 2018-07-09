@@ -73,4 +73,30 @@ describe('ViewContainer', () => {
     view.addCommandCall(10, [45, 65]);
     expect(view.commandCalls).toHaveLength(1);
   });
+
+  it('should have by default isResponding = false', () => {
+    expect(view.isResponding).toBeFalsy();
+  });
+
+  it('should activateResponding set isResponding=true', () => {
+    view.activateResponding();
+    expect(view.isResponding).toBeTruthy();
+  });
+
+  it('should deactivateResponding set isResponding=false', () => {
+    view.activateResponding();
+    view.deactivateResponding();
+    expect(view.isResponding).toBeFalsy();
+  });
+
+  it('should focus set isFocused=true', () => {
+    view.focus();
+    expect(view.isFocused).toBeTruthy();
+  });
+
+  it('should unfocus set isFocused=false', () => {
+    view.focus();
+    view.unfocus();
+    expect(view.isFocused).toBeFalsy();
+  });
 });

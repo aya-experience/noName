@@ -1,6 +1,6 @@
 {
   "name": "@rn-debugger/connector",
-  "version": "0.4.0",
+  "version": "0.5.0-0",
   "description": "Connector react-native for rn-noname",
   "main": "index.js",
   "author": "Marvin FRACHET, Alexandre GORY",
@@ -27,5 +27,6 @@
       "/node_modules/",
       "dist"
     ]
-  }
+  },
+  "gitHead": "579a3ddac506b8696dd521885242840b3f34083b"
 }

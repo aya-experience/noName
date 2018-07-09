@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import TreeView from '../../components/TreeView/index';
 import ViewInfo from '../../components/ViewInfo/index';
-import Grid from '@material-ui/core/Grid';
 
 const styles = {
   container: {
@@ -49,7 +49,6 @@ class TreeNavigator extends Component {
             </Grid>
           )}
         </Grid>
-
       </Paper>
 
     );

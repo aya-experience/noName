@@ -65,7 +65,7 @@ var RNConnector = function (_Connector) {
   }], [{
     key: 'onlyActivatedModule',
     value: function onlyActivatedModule(data) {
-      return _constants.activatedModule.includes(data.module);
+      return !_constants.bannedModule.includes(data.module);
     }
   }, {
     key: 'stream',

@@ -1,11 +1,10 @@
 import snoopy from 'rn-snoopy';
-import rxjs  from 'rxjs';
+import rxjs from 'rxjs';
 import RNConnector from './index';
 import { activatedModule } from '../constants.json';
 
 
 describe('RNConnector', () => {
-
   beforeEach(() => {
     rxjs.clear();
   });
@@ -39,11 +38,10 @@ describe('RNConnector', () => {
   });
 
   it('should return false when a module is not in ActivatedModule', () => {
-    expect(RNConnector.onlyActivatedModule({ module: 'AbsolutelyUnknownModule' })).toBeFalsy();
+    expect(RNConnector.onlyActivatedModule({ module: 'RCTEventEmitter' })).toBeFalsy();
   });
 
   it('should return true when a module is a ActivatedModule', () => {
     expect(RNConnector.onlyActivatedModule({ module: activatedModule[0] })).toBeTruthy();
   });
-
 });

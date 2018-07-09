@@ -3,6 +3,7 @@ import { Minus, Plus } from 'mdi-material-ui';
 import PropTypes from 'prop-types';
 import XmlHighlight from '../XmlHighlight/index';
 import Touchable from '../Touchable/index';
+import { joinClass } from '../../utils/index';
 
 const styles = {
   container: {
@@ -18,6 +19,7 @@ const styles = {
   },
 };
 
+const DELAY_IS_UPDATING = 250;
 
 /* eslint-disable react/forbid-prop-types */
 class ComponentView extends Component {
@@ -27,16 +29,35 @@ class ComponentView extends Component {
     this.close = this.close.bind(this);
     this.ifFunction = this.ifFunction.bind(this);
     this.inlineView = this.inlineView.bind(this);
+    this.removeIsUpdating = this.removeIsUpdating.bind(this);
     this.childrenView = this.childrenView.bind(this);
     this.state = {
       open: false,
+      isUpdating: false,
     };
+  }
+
+  componentDidMount() {
+    this.setIsUpdating();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(prevProps.value) !== JSON.stringify(this.props.value)) this.setIsUpdating();
+  }
+
+  setIsUpdating() {
+    this.setState({ isUpdating: true });
+    setTimeout(this.removeIsUpdating, DELAY_IS_UPDATING);
   }
 
   getIcon() {
     return this.state.open ?
       <Minus style={styles.icon} onClick={this.close} /> :
       <Plus style={styles.icon} onClick={this.open} />;
+  }
+
+  removeIsUpdating() {
+    this.setState({ isUpdating: false });
   }
 
   open() {
@@ -52,14 +73,14 @@ class ComponentView extends Component {
     return func ? <Touchable onClick={func} value={this.props.value} >{value}</Touchable> : value;
   }
 
-  inlineView(selectedClass, onClick, { className, id }) {
-    const openTag = <XmlHighlight className={selectedClass} onClick={onClick}>{`<${className} id="${id}"/>`}</XmlHighlight>;
+  inlineView(classes, onClick, { className, id }) {
+    const openTag = <XmlHighlight className={classes} onClick={onClick}>{`<${className} id="${id}"/>`}</XmlHighlight>;
     return this.ifFunction(onClick, openTag);
   }
 
-  childrenView(selectedClass, onClick, { className, id }, children) {
-    const openTag = <XmlHighlight className={selectedClass} onClick={onClick}>{`<${className} id="${id}">`}</XmlHighlight>;
-    const closeTag = <XmlHighlight className={selectedClass} onClick={onClick}>{`</${className}>`}</XmlHighlight>;
+  childrenView(classes, onClick, { className, id }, children) {
+    const openTag = <XmlHighlight className={classes} onClick={onClick}>{`<${className} id="${id}">`}</XmlHighlight>;
+    const closeTag = <XmlHighlight className={classes} onClick={onClick}>{`</${className}>`}</XmlHighlight>;
     return (
       <Fragment>
         {this.ifFunction(onClick, openTag)}
@@ -73,16 +94,21 @@ class ComponentView extends Component {
     const {
       value, children, onClick, selected,
     } = this.props;
-    const { open } = this.state;
+    const { isFocused, isResponding } = value;
+    const { open, isUpdating } = this.state;
     const hasChildren = React.isValidElement(children)
       || (Array.isArray(children) && !!children.length);
     const icon = hasChildren ? this.getIcon() : null;
-    const selectedClass = selected ? 'selected' : '';
+    const classes = joinClass(
+      selected && 'selected',
+      isFocused && 'focus',
+      isUpdating && 'responding',
+    );
     const renderFunc = hasChildren && open ? this.childrenView : this.inlineView;
     return (
       <div style={styles.container}>
         {icon}
-        {renderFunc(selectedClass, onClick, value, children)}
+        {renderFunc(classes, onClick, value, children)}
       </div>
     );
   }
