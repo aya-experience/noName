@@ -16,17 +16,5 @@
     "rxjs-compat": "^6.1.0",
     "socket.io-client": "^2.1.0"
   },
-  "devDependencies": {
-    "@babel/core": "^7.0.0-beta.49",
-    "babel-jest": "^22.4.3",
-    "babel-preset-env": "^1.7.0",
-    "jest": "^22.4.2"
-  },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "dist"
-    ]
-  },
   "gitHead": "579a3ddac506b8696dd521885242840b3f34083b"
 }

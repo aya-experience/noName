@@ -1,6 +1,10 @@
 import { Observable } from 'rxjs';
 import Socket from './index';
 
+// TODO Update test with rxjs mock
+jest.unmock('rxjs/Rx');
+jest.unmock('rxjs');
+
 describe('Socket', () => {
   let io;
   let socket;

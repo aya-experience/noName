@@ -1,6 +1,10 @@
 import { Observable } from 'rxjs';
 import WebConnector from './index';
 
+// TODO update test to use rxjs mock
+jest.unmock('rxjs/Rx');
+jest.unmock('rxjs');
+
 describe('WebConnector', () => {
   let connector;
   let config;
@@ -50,6 +54,7 @@ describe('WebConnector', () => {
     connector.emit = jest.fn();
     connector.io.off = jest.fn();
     connector.on('event').subscribe().unsubscribe();
+    console.log(connector);
     expect(connector.io.off).toBeCalledWith('event', expect.any(Function));
   });
 
