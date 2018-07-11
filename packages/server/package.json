@@ -1,6 +1,6 @@
 {
   "name": "@rn-debugger/server",
-  "version": "0.5.1",
+  "version": "0.6.0-alpha.09901cc",
   "description": "An application for debugging React-Native App",
   "main": "index.js",
   "scripts": {
@@ -14,15 +14,15 @@
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^1.2.1",
-    "@rn-debugger/connector": "^0.5.1",
-    "@rn-debugger/lib": "^0.5.1",
+    "@rn-debugger/connector": "^0.6.0-alpha.09901cc",
+    "@rn-debugger/lib": "^0.6.0-alpha.09901cc",
     "@zeit/next-css": "^0.2.0",
     "commander": "^2.14.1",
     "express": "^4.16.2",
     "highlight.js": "^9.12.0",
     "jss": "^9.7.0",
     "mdi-material-ui": "^5.0.0",
-    "next": "^6.0.3",
+    "next": "^6.1.1",
     "object-sizeof": "^1.2.0",
     "opn": "^5.2.0",
     "prop-types": "^15.6.1",
@@ -35,5 +35,5 @@
     "rxjs-compat": "^6.1.0",
     "socket.io": "^2.1.0"
   },
-  "gitHead": "579a3ddac506b8696dd521885242840b3f34083b"
+  "gitHead": "09901cceef336225267cc65164691504c60ff4be"
 }

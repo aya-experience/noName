@@ -1,6 +1,6 @@
 {
   "name": "@rn-debugger/native-connector",
-  "version": "0.5.1",
+  "version": "0.6.0-alpha.09901cc",
   "description": "Connector react-native for rn-noname",
   "main": "index.js",
   "author": "Marvin FRACHET, Alexandre GORY",
@@ -12,12 +12,12 @@
     "access": "public"
   },
   "dependencies": {
-    "@rn-debugger/connector": "^0.5.1",
+    "@rn-debugger/connector": "^0.6.0-alpha.09901cc",
     "rn-snoopy": "^2.0.2",
     "rxjs": "^6.1.0"
   },
   "peerDependencies": {
     "react-native": "^0.49.0"
   },
-  "gitHead": "579a3ddac506b8696dd521885242840b3f34083b"
+  "gitHead": "09901cceef336225267cc65164691504c60ff4be"
 }
