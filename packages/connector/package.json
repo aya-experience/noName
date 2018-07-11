@@ -1,6 +1,6 @@
 {
   "name": "@rn-debugger/connector",
-  "version": "0.6.0-alpha.09901cc",
+  "version": "0.6.0",
   "description": "Connector react-native for rn-noname",
   "main": "index.js",
   "author": "Marvin FRACHET, Alexandre GORY",
