@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import MaterialList from '@material-ui/core/List';
 import List from './index';
 
@@ -17,7 +17,7 @@ describe('List', () => {
       { value: 'Alexandre', key: 'A3' },
       { value: 'Alexandre' },
     ];
-    wrapper = mount(<List data={data} Component={component} />);
+    wrapper = shallow(<List data={data} Component={component} />);
   });
 
   it('should render all item in data with component', () => {

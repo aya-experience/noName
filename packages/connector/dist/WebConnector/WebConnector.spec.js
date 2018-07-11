@@ -8,6 +8,10 @@ var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// TODO update test to use rxjs mock
+jest.unmock('rxjs/Rx');
+jest.unmock('rxjs');
+
 describe('WebConnector', function () {
   var connector = void 0;
   var config = void 0;
@@ -57,6 +61,7 @@ describe('WebConnector', function () {
     connector.emit = jest.fn();
     connector.io.off = jest.fn();
     connector.on('event').subscribe().unsubscribe();
+    console.log(connector);
     expect(connector.io.off).toBeCalledWith('event', expect.any(Function));
   });
 

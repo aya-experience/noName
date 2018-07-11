@@ -23,7 +23,6 @@ class index extends Component {
   }
 
   updateTreeView(tree) {
-    console.log(tree);
     this.setState({ tree });
   }
 
