@@ -14,9 +14,9 @@ This application will then allow you to display its messages in a console and of
 
 ## How to use it ?
 
--   Install it with `yarn add @rn-debugger/native-connector babel-preset-env --dev` 
+-   Install it with `yarn add @rn-debugger/native-connector --dev` 
  
-    or  `npm install --save-dev @rn-debugger/native-connector babel-preset-env`
+    or  `npm install --save-dev @rn-debugger/native-connector`
 -   Setup the RNConnector in your `index.js`
 
 ```javascript
