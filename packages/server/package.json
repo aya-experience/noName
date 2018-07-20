@@ -17,9 +17,7 @@
     "@rn-debugger/connector": "^0.6.1",
     "@rn-debugger/lib": "^0.6.1",
     "@zeit/next-css": "^0.2.0",
-    "commander": "^2.14.1",
     "express": "^4.16.2",
-    "highlight.js": "^9.12.0",
     "jss": "^9.7.0",
     "mdi-material-ui": "^5.0.0",
     "next": "^6.1.1",
@@ -30,7 +28,6 @@
     "react-dom": "^16.4.0",
     "react-jss": "^8.4.0",
     "react-syntax-highlighter": "^7.0.4",
-    "rn-snoopy": "^2.0.2",
     "rxjs": "^6.1.0",
     "rxjs-compat": "^6.1.0",
     "socket.io": "^2.1.0"
