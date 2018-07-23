@@ -79,11 +79,11 @@ class DevTools extends Component {
       }, {
         value: 'js',
         label: 'JS',
-        component: () => <LoggerJS height="150px" data={loggerJSData} />,
+        component: () => <LoggerJS height="170px" data={loggerJSData} />,
       }, {
         value: 'net',
         label: 'HTTP',
-        component: () => <Network height="150px" data={networkData} />,
+        component: () => <Network height="170px" data={networkData} />,
       },
 
     ];
