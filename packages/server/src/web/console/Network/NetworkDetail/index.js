@@ -15,20 +15,22 @@ const styles = {
 
 const NetworkDetail = ({
   request: {
-    method, url, headers, data,
+    method, url, headers, data, responseType,
   },
 }) => (
   <Card style={styles.card}>
     <CardHeader
-      title={method}
+      title={`${method} - ${responseType}`}
       subheader={url}
     />
-    <CardContent>
-      <Divider />
-      <Subtitle>Headers : </Subtitle>
-      <Divider />
-      {headers ? <ObjectListView data={headers} /> : <Text>No Props Available</Text>}
-    </CardContent>
+    {headers && (
+      <CardContent>
+        <Divider />
+        <Subtitle>Headers : </Subtitle>
+        <Divider />
+        <ObjectListView data={headers} />
+      </CardContent>
+    )}
 
     {data && (
     <CardContent>
@@ -46,6 +48,7 @@ NetworkDetail.propTypes = {
   request: PropTypes.shape({
     method: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
+    responseType: PropTypes.string.isRequired,
     headers: PropTypes.object,
     data: PropTypes.object,
   }).isRequired,

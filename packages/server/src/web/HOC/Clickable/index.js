@@ -4,14 +4,19 @@ import PropTypes from 'prop-types';
 
 const clickable = (Component, onClick) => {
   class ClickableComponent extends React.Component {
-    onClick() {
+    constructor(props) {
+      super(props);
+      this.onClickHandler = this.onClickHandler.bind(this);
+    }
+
+    onClickHandler() {
       onClick(this.props.value);
     }
 
 
     render() {
       return (
-        <div onClick={this.onClick}>
+        <div onClick={this.onClickHandler}>
           <Component {...this.props.value} />
         </div>
       );

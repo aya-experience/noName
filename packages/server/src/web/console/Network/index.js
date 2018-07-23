@@ -7,7 +7,7 @@ import NetworkDetail from './NetworkDetail';
 const styles = {
   container: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     height: '100%',
   },
@@ -26,6 +26,7 @@ class Network extends React.Component {
   }
 
   updateSelected(request) {
+    console.log(request);
     this.setState({ selectedRequest: request });
   }
 
@@ -39,7 +40,7 @@ class Network extends React.Component {
           style={styles.console}
           data={data}
           ComponentLine={NetworkLine}
-          onClick
+          onClick={this.updateSelected}
           {...rest}
         />
         {selectedRequest && <NetworkDetail request={selectedRequest} />}
