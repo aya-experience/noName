@@ -2,12 +2,14 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import MaterialList from '@material-ui/core/List';
 import ClickableList from './index';
+import List from '../List';
 
 
 describe('ClickableList', () => {
   let component;
   let wrapper;
   let data;
+  let onClick;
 
   beforeEach(() => {
     component = props => props.toString();
@@ -17,7 +19,13 @@ describe('ClickableList', () => {
       { value: 'Alexandre', key: 'A3' },
       { value: 'Alexandre' },
     ];
-    wrapper = shallow(<ClickableList data={data} Component={component} />);
+    onClick = jest.fn();
+    wrapper = shallow(<ClickableList data={data} onClick={onClick} Component={component} />);
+  });
+
+  it('should render a list when onClick is not set', () => {
+    wrapper.setProps({ onClick: null });
+    expect(wrapper.find(List).at(0).props()).toBe(wrapper.props());
   });
 
   it('should render all item in data with component', () => {

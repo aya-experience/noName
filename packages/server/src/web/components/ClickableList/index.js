@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MaterialList from '@material-ui/core/List';
 import clickable from '../../HOC/Clickable';
+import List from '../List';
 
-const ClickableList = ({
-  data, Component, style, className, onClick,
-}) => {
-  const ClickableComponent = onClick ? clickable(Component, onClick) : Component;
-
+const ClickableList = (props) => {
+  if (!props.onClick) {
+    return <List {...props} />;
+  }
+  const {
+    data, Component, style, className, onClick,
+  } = props;
+  const ClickableComponent = clickable(Component, onClick);
   return (
     <MaterialList style={style} className={className}>
       {data.map((item, index) => <ClickableComponent key={item.key || index} value={item} />)}

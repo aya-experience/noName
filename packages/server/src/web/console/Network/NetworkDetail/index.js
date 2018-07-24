@@ -8,16 +8,16 @@ import Subtitle from '../../../components/Subtitle';
 import ObjectListView from '../../../components/ObjectListView';
 import HighlightVariableText from '../../../components/HighlightVariableText';
 
-const styles = {
+const classes = {
   card: { height: '100%', borderRadius: '0' },
 };
 
 const NetworkDetail = ({
   request: {
     method, url, headers, data, responseType,
-  },
+  }, styles,
 }) => (
-  <Card style={styles.card}>
+  <Card style={({ ...classes.card, ...styles })}>
     <CardHeader
       title={`${method} - ${responseType}`}
       subheader={url}
@@ -54,6 +54,11 @@ NetworkDetail.propTypes = {
     headers: PropTypes.array,
     data: PropTypes.object,
   }).isRequired,
+  styles: PropTypes.shape({}),
+};
+
+NetworkDetail.defaultProps = {
+  styles: {},
 };
 
 export default NetworkDetail;

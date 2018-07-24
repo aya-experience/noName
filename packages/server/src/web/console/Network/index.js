@@ -14,6 +14,10 @@ const styles = {
   console: {
     flex: '1 0 0',
   },
+  aside: {
+    flex: '1 0 0',
+    maxHeight: '100%',
+  },
 };
 
 class Network extends React.Component {
@@ -42,7 +46,7 @@ class Network extends React.Component {
           onClick={this.updateSelected}
           {...rest}
         />
-        {selectedRequest && <NetworkDetail request={selectedRequest} />}
+        {selectedRequest && <NetworkDetail styles={styles.aside} request={selectedRequest} />}
       </div>
     );
   }
