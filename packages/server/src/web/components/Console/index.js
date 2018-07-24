@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import List from '../List';
+import ClickableList from '../ClickableList';
 
 const listStyle = height => ({
   padding: '0',
@@ -8,18 +8,28 @@ const listStyle = height => ({
   height,
   wordBreak: 'break-all',
 });
-const Console = ({ data, ComponentLine, height }) => (
-  <List data={data} Component={ComponentLine} style={listStyle(height)} />
+
+const Console = ({
+  data, ComponentLine, height, onClick,
+}) => (
+  <ClickableList
+    data={data}
+    Component={ComponentLine}
+    onClick={onClick}
+    style={listStyle(height)}
+  />
 );
 
 Console.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   ComponentLine: PropTypes.func.isRequired,
   height: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 Console.defaultProps = {
   height: '100%',
+  onClick: null,
 };
 
 export default Console;

@@ -1,8 +1,7 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
 import { shallow } from 'enzyme';
 import Console from './index';
-import List from '../List/index';
+import ClickableList from '../ClickableList';
 
 describe('Console', () => {
   let wrapper;
@@ -30,11 +29,11 @@ describe('Console', () => {
     wrapper = shallow(<Console data={data} ComponentLine={component} />);
   });
 
-  it('should pass data to List', () => {
-    expect(wrapper.find(List).prop('data')).toBe(data);
+  it('should pass data to ClickableList', () => {
+    expect(wrapper.find(ClickableList).prop('data')).toBe(data);
   });
 
-  it('should pass ComponentLine to List', () => {
-    expect(wrapper.find(List).prop('Component')).toBe(component);
+  it('should pass ComponentLine to ClickableList', () => {
+    expect(wrapper.find(ClickableList).prop('Component')).toBe(component);
   });
 });

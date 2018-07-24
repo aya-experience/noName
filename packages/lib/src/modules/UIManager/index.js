@@ -148,7 +148,6 @@ class UIManager extends BaseModule {
     const viewContainer = this._getViewContainer();
     const view = viewContainer.get(args[0]);
     viewContainer.registerFocus(view);
-    console.log('focus', viewContainer.focus);
     return new Response(EmitterType.TreeView, viewContainer);
   }
 }

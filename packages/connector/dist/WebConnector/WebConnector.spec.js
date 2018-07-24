@@ -61,7 +61,6 @@ describe('WebConnector', function () {
     connector.emit = jest.fn();
     connector.io.off = jest.fn();
     connector.on('event').subscribe().unsubscribe();
-    console.log(connector);
     expect(connector.io.off).toBeCalledWith('event', expect.any(Function));
   });
 
