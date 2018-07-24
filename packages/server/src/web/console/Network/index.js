@@ -26,7 +26,6 @@ class Network extends React.Component {
   }
 
   updateSelected(request) {
-    console.log(request);
     this.setState({ selectedRequest: request });
   }
 

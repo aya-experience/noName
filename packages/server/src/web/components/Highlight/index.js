@@ -6,15 +6,7 @@ import Text from '../Text/index';
 import Ignore from '../Ignore/index';
 
 const Highlight = ({ lang, children, ...rest }) => (
-  <SyntaxHighlighter
-    PreTag={Ignore}
-    codeTagProps={rest}
-    CodeTag={Text}
-    language={lang}
-    useInlineStyles={false}
-  >
-    {children}
-  </SyntaxHighlighter>
+  null
 );
 
 Highlight.propTypes = {

@@ -32,7 +32,7 @@ describe('Clickable', () => {
 
   it('should trigger onClick when onClickHandler is call', () => {
     const instance = wrapper.instance();
-    instance.onClickHandler(value)
+    instance.onClickHandler(value);
     expect(onClick).toBeCalledWith(value);
   });
 });

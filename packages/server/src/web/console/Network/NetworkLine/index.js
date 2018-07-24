@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
 const NetworkLine = ({ method, url }) => (
-  <ListItem>
+  <ListItem button>
     <ListItemText
       primary={method}
     />

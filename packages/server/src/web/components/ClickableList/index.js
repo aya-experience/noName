@@ -6,7 +6,7 @@ import clickable from '../../HOC/Clickable';
 const ClickableList = ({
   data, Component, style, className, onClick,
 }) => {
-  const ClickableComponent = clickable(Component, onClick);
+  const ClickableComponent = onClick ? clickable(Component, onClick) : Component;
 
   return (
     <MaterialList style={style} className={className}>
@@ -20,12 +20,13 @@ ClickableList.propTypes = {
   Component: PropTypes.func.isRequired,
   style: PropTypes.shape({}),
   className: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 ClickableList.defaultProps = {
   style: {},
   className: '',
+  onClick: null,
 };
 
 export default ClickableList;
