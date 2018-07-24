@@ -1,6 +1,6 @@
 {
   "name": "@rn-debugger/server",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "An application for debugging React-Native App",
   "main": "index.js",
   "scripts": {
@@ -14,8 +14,8 @@
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^1.2.1",
-    "@rn-debugger/connector": "^0.7.0",
-    "@rn-debugger/lib": "^0.7.0",
+    "@rn-debugger/connector": "^0.8.0",
+    "@rn-debugger/lib": "^0.8.0",
     "@zeit/next-css": "^0.2.0",
     "express": "^4.16.2",
     "jss": "^9.7.0",
